@@ -1,0 +1,257 @@
+/* src/components/CodePreview.module.css */
+
+.codePreview {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.codePreview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></g></svg>') repeat;
+    z-index: 0;
+}
+
+.previewHeader {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.previewTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.previewSubtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.codeContainer {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tabBar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0;
+    justify-content: center;
+}
+
+.tab {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.tab:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.activeTab {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1f2937;
+    border-bottom: none;
+}
+
+.tabIcon {
+    font-size: 1rem;
+}
+
+.codeBlock {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 0 12px 12px 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.codeHeader {
+    background: #f3f4f6;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+[data-theme="dark"] .codeHeader {
+    background: #374151;
+    border-bottom-color: #4b5563;
+}
+
+.windowDots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ef4444;
+}
+
+.dot:nth-child(2) {
+    background: #f59e0b;
+}
+
+.dot:nth-child(3) {
+    background: #10b981;
+}
+
+.fileName {
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .fileName {
+    color: #9ca3af;
+}
+
+.codeContent {
+    background: white;
+    color: #1f2937;
+    padding: 2rem;
+    margin: 0;
+    font-family: 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    min-height: 200px;
+}
+
+[data-theme="dark"] .codeContent {
+    background: #1f2937;
+    color: #f9fafb;
+}
+
+.featureList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.featureIcon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.feature h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.feature p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 996px) {
+    .codePreview {
+        padding: 4rem 0;
+    }
+
+    .previewTitle {
+        font-size: 2rem;
+    }
+
+    .previewSubtitle {
+        font-size: 1.1rem;
+    }
+
+    .tabBar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .codeContent {
+        padding: 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    .featureList {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .feature {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .previewTitle {
+        font-size: 1.8rem;
+    }
+
+    .tab {
+        flex: 1;
+        justify-content: center;
+        min-width: 0;
+    }
+
+    .tabIcon {
+        display: none;
+    }
+
+    .codeContent {
+        font-size: 0.8rem;
+        min-height: 150px;
+    }
+
+    .fileName {
+        font-size: 0.8rem;
+    }
+}
