@@ -36,7 +36,7 @@ Before getting started, ensure your development environment meets these requirem
 | **Construct 3** | Latest stable release (recommended) |
 | **Browser** | Chrome 70+, Firefox 65+, Safari 12+, Edge 79+ |
 | **WebGL** | WebGL 2.0 support required |
-| **Hardware** | Dedicated graphics card recommended for complex scenes |
+<!-- | **Hardware** | Dedicated graphics card recommended for complex scenes | -->
 
 :::tip Performance Tip
 For optimal performance, use Chrome or Edge browsers when developing with MakeIt3D.
@@ -94,26 +94,27 @@ Let's create your first 3D scene in just a few minutes:
 3. Insert → New Object → Plugins → MakeIt3D
 ```
 
-### Step 2: Add Your First 3D Object
+<!-- ### Step 2: Add Your First 3D Object
 ```
 1. Select your MakeIt3D object
 2. In the Properties panel, set:
    - Scene Width: 800
    - Scene Height: 600
    - Enable Auto-Resize: Yes
-```
+``` -->
 
-### Step 3: Create 3D Content
+### Step 2: Create 3D Content
 Add this to your **Start of Layout** event:
 ```
 System → On start of layout
-├─ MakeIt3D → Create Box (width: 2, height: 2, depth: 2)
-├─ MakeIt3D → Set Object Material (color: "#ff6b6b")
+├─ MakeIt3D → Create Scene
+├─ MakeIt3D → Add Cube (Id, position, rotation, color, scale)
+├─ MakeIt3D → Set Object Material (Id, color: MakeIt3D.RGB(255,255,0))
 ├─ MakeIt3D → Set Camera Position (x: 0, y: 0, z: 5)
-└─ MakeIt3D → Enable Orbit Controls
+└─ MakeIt3D → Enable Orbit Controls(Set Orbit Control Properties)
 ```
 
-### Step 4: Run Your Project
+### Step 3: Run Your Project
 Press **F5** to preview your project. You should see a rotating red cube that you can orbit around with your mouse!
 
 ---

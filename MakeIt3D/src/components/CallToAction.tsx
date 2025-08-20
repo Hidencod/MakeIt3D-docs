@@ -14,15 +14,14 @@ export default function CallToAction() {
                                 Ready to transform your games with 3D?
                             </h2>
                             <p className={styles.ctaDescription}>
-                                Join thousands of developers who are already creating amazing 3D experiences
-                                with MakeIt3D. Get started today and bring your creative vision to life.
+                                Be among the first to create amazing 3D experiences with MakeIt3D. Get ready to bring your creative vision to life.
                             </p>
 
                             <div className={styles.ctaFeatures}>
-                                <div className={styles.ctaFeature}>
+                                {/* <div className={styles.ctaFeature}>
                                     <span className={styles.ctaFeatureIcon}>✅</span>
                                     <span>30-day money-back guarantee</span>
-                                </div>
+                                </div> */}
                                 <div className={styles.ctaFeature}>
                                     <span className={styles.ctaFeatureIcon}>✅</span>
                                     <span>Free updates for life</span>
@@ -66,7 +65,7 @@ export default function CallToAction() {
                                     <span></span>
                                     <span></span>
                                 </div>
-                                <span className={styles.visualTitle}>MakeIt3D Demo</span>
+                                <span className={styles.visualTitle}></span>
                             </div>
                             <div className={styles.visualContent}>
                                 <div className={styles.cube}>
@@ -81,8 +80,20 @@ export default function CallToAction() {
                         </div>
                     </div>
                 </div>
-
                 <div className={styles.ctaFooter}>
+                    <div className={styles.socialProof}>
+                        <div className={styles.rating}>
+                            <span>✨ Coming Soon</span>
+                        </div>
+                        <div className={styles.badges}>
+                            <span className={styles.badge}>🚀 Early Access</span>
+                            <span className={styles.badge}>🔒 Be the First to Try</span>
+                            <span className={styles.badge}>💡 Developer Friendly</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* <div className={styles.ctaFooter}>
                     <div className={styles.socialProof}>
                         <div className={styles.rating}>
                             <div className={styles.stars}>
@@ -96,7 +107,7 @@ export default function CallToAction() {
                             <span className={styles.badge}>💎 Premium Quality</span>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
     );
