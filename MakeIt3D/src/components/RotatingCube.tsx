@@ -36,8 +36,28 @@ export default function RotatingCube() {
                 /></div>
 
                 {/* Face 4 (conic gradient) */}
-                <div className="cube-face">Test
+                <div
+                    className="cube-face"
+                    style={{
+                        fontFamily: "Poppins, sans-serif",
+                        textAlign: "center",
+                        display: "flex",          // add flex here
+                        flexDirection: "column",  // stack vertically
+                        alignItems: "center"      // center horizontally
+                    }}
+                >
+                    <div style={{ fontSize: "24px", fontWeight: "bold" }}>MakeIt3D</div>
+                    <div style={{ fontSize: "12px", opacity: 0.7, marginTop: "4px" }}>
+                        powered by Three.js
+                    </div>
                 </div>
+
+
+
+
+
+
+
 
                 {/* Face 5 (striped gradient with overlay) */}
                 <div className="cube-face">✨</div>

@@ -55,8 +55,8 @@ function HomepageHeader(): JSX.Element {
 
             <div className={styles.heroStats}>
               <div className={styles.stat}>
-                <span className={styles.statNumber}>50+</span>
-                <span className={styles.statLabel}>3D Actions</span>
+                <span className={styles.statNumber}>Easy</span>
+                <span className={styles.statLabel}>Integration</span>
               </div>
               <div className={styles.stat}>
                 <span className={styles.statNumber}>WebGL</span>
@@ -105,7 +105,7 @@ export default function Home(): ReactNode {
       <HomepageHeader />
 
       <main className={styles.main}>
-        <TrustedBy />
+        {/* <TrustedBy /> */}
         <FeatureShowcase />
         <CodePreview />
         <CallToAction />

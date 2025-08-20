@@ -5,32 +5,30 @@ import styles from './CodePreview.module.css';
 const codeExamples = {
     basic: `// Create a simple 3D scene in Construct 3
 System → On start of layout
-├─ MakeIt3D → Create Scene (800, 600)
-├─ MakeIt3D → Create Cube (0, 0, 0, 1, 1, 1)
-├─ MakeIt3D → Set Object Color ("cube_1", "#ff6b6b")
+├─ MakeIt3D → Create Scene (layer, room lighting, postprocessing, axis helper, grid helper, orbit controls)
+├─ MakeIt3D → Add Cube (ObjectId, position, rotation, color, scale, height segmets, width segments, depth segments)
+├─ MakeIt3D → Set Object Color ("cube_1", MakeIt3D.RGB(255, 0, 0))
 └─ MakeIt3D → Set Camera Position (0, 0, 5)`,
 
     advanced: `// Advanced 3D scene with lighting and animation
 System → On start of layout
-├─ MakeIt3D → Create Scene (1200, 800)
-├─ MakeIt3D → Load Model ("characters/hero.glb", 0, 0, 0)
-├─ MakeIt3D → Create Directional Light (1, 1, 1, "#ffffff", 1.0)
-├─ MakeIt3D → Set Ambient Light ("#404040", 0.3)
-├─ MakeIt3D → Enable Orbit Controls
+├─ MakeIt3D → Create Scene (layer, room lighting, postprocessing, axis helper, grid helper, orbit controls)
+├─ MakeIt3D → Load Model (ObjectId,"characters/hero.glb", position, rotation, scale, intially visble)
+├─ MakeIt3D → Add Directional Light (ObjectId, position, target object, target position, color, intensity, cast shadow)
+├─ MakeIt3D → Set Ambient Light (ObjectId, color, intensity)
+├─ MakeIt3D → Enable Orbit Controls (Set Orbit Control Propersties)
 └─ MakeIt3D → Play Animation ("hero", "idle")
 
 Every 0.1 seconds
-└─ MakeIt3D → Rotate Object ("hero", 0, 1, 0)`,
+└─ MakeIt3D → Translate Object ("hero", 0, 0, 1)`,
 
     materials: `// Working with materials and textures
 System → On start of layout
-├─ MakeIt3D → Create Sphere (0, 0, 0, 1)
-├─ MakeIt3D → Apply Texture ("sphere_1", "textures/metal.jpg")
-├─ MakeIt3D → Set Material Properties ("sphere_1", 0.2, 1.0, 0)
-└─ MakeIt3D → Set Environment Map ("textures/hdri.hdr")
+├─ MakeIt3D →  Add Cube ("mycube", position, rotation, color, scale, height segmets, width segments, depth segments)
+├─ MakeIt3D → Set Texture ("mycube", "textures/metal.jpg")
 
 Mouse → On Left Click
-└─ MakeIt3D → Set Object Color ("sphere_1", choose("red", "blue", "green"))`
+└─ MakeIt3D → Set Object Color ("mycube", MakeIt3D.RGB(0, 255, 0))`
 };
 
 const tabs = [
@@ -93,8 +91,8 @@ export default function CodePreview() {
                         <div className={styles.feature}>
                             <span className={styles.featureIcon}>⚡</span>
                             <div>
-                                <h4>Real-time Updates</h4>
-                                <p>Changes reflect instantly in your 3D scene</p>
+                                <h4>Inbuilt Editor</h4>
+                                <p>Use inbuilt three.js editor to create levels</p>
                             </div>
                         </div>
                         <div className={styles.feature}>

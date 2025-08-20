@@ -24,17 +24,17 @@ const features: Feature[] = [
     {
         icon: '🎨',
         title: 'Rich Materials',
-        description: 'Support for textures, lighting, shadows, and advanced materials including PBR workflows.'
+        description: 'Support for textures, lighting, shadows, and advanced materials.'
     },
     {
         icon: '📦',
-        title: '50+ 3D Objects',
-        description: 'Built-in primitives, model loading (GLB/GLTF), and tools for creating custom geometries.'
+        title: '3D Objects',
+        description: 'Built-in primitives, model loading (GLB/GLTF and Fbx), and tools for creating custom geometries.'
     },
     {
         icon: '🎬',
         title: 'Animation System',
-        description: 'Smooth animations, tweening, and keyframe control integrated with Construct 3 timelines.'
+        description: 'Play, resume and stop animation controls including animation transition and blending.'
     },
     {
         icon: '📱',
@@ -78,7 +78,7 @@ export default function FeatureShowcase() {
                     ))}
                 </div>
 
-                <div className={styles.showcaseFooter}>
+                {/* <div className={styles.showcaseFooter}>
                     <div className={styles.statsContainer}>
                         <div className={styles.statItem}>
                             <span className={styles.statNumber}>1000+</span>
@@ -93,7 +93,7 @@ export default function FeatureShowcase() {
                             <span className={styles.statLabel}>Support</span>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
     );
