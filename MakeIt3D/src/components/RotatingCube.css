@@ -1,8 +1,8 @@
 .cube-container {
     position: relative;
     perspective: 1000px;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,19 +114,19 @@
     }
 
     25% {
-        transform: rotateX(10deg) rotateY(90deg) rotateZ(-10deg);
+        transform: rotateX(10deg) rotateY(90deg) rotateZ(-5deg);
     }
 
     50% {
-        transform: rotateX(-10deg) rotateY(180deg) rotateZ(10deg);
+        transform: rotateX(-10deg) rotateY(180deg) rotateZ(5deg);
     }
 
     75% {
-        transform: rotateX(10deg) rotateY(270deg) rotateZ(-10deg);
+        transform: rotateX(10deg) rotateY(270deg) rotateZ(-5deg);
     }
 
     100% {
-        transform: rotateX(-10deg) rotateY(360deg) rotateZ(10deg);
+        transform: rotateX(-10deg) rotateY(360deg) rotateZ(5deg);
     }
 }
 
