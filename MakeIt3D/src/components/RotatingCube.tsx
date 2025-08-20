@@ -1,43 +1,38 @@
-import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import React from "react";
+import "./RotatingCube.css";
 
-const Cube: React.FC = () => {
-    const meshRef = useRef<THREE.Mesh>(null!);
-
-    useFrame(() => {
-        if (meshRef.current) {
-            meshRef.current.rotation.x += 0.01;
-            meshRef.current.rotation.y += 0.01;
-        }
-    });
-
+export default function RotatingCube() {
     return (
-        <mesh ref={meshRef}>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color="#f39c12" />
-        </mesh>
-    );
-};
+        <div className="cube-container">
+            <div className="glow"></div>
+            <div className="rotating-cube">
+                {/* Face 1 (stripes) */}
+                <div className="cube-face">3D</div>
 
-const RotatingCube: React.FC = () => {
-    return (
-        <Canvas
-            style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: 0,
-                pointerEvents: 'none',
-            }}
-            camera={{ position: [0, 0, 3] }}
-        >
-            <ambientLight />
-            <directionalLight position={[2, 2, 5]} />
-            <Cube />
-        </Canvas>
-    );
-};
+                {/* Face 2 (radial dots) → VIDEO */}
+                <div className="cube-face">
+                    <video
+                        src="/test.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                    />
+                </div>
 
-export default RotatingCube;
+                {/* Face 3 (split gradient) */}
+                <div className="cube-face">⚡</div>
+
+                {/* Face 4 (conic gradient) */}
+                <div className="cube-face">🎨</div>
+
+                {/* Face 5 (striped gradient with overlay) */}
+                <div className="cube-face">✨</div>
+
+                {/* Face 6 (radial circles) */}
+                <div className="cube-face">🚀</div>
+            </div>
+        </div>
+    );
+}
