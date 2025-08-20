@@ -11,6 +11,7 @@ import Hero3DScene from '@site/src/components/Hero3DScene';
 import FeatureShowcase from '@site/src/components/FeatureShowcase';
 import CodePreview from '@site/src/components/CodePreview';
 import CallToAction from '@site/src/components/CallToAction';
+import RotatingCube from '../components/RotatingCube';
 
 function HomepageHeader(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -18,6 +19,9 @@ function HomepageHeader(): JSX.Element {
     <header className={clsx(styles.hero)}>
       <div className={styles.heroBackground}>
         <Hero3DScene />
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-400 to-purple-600">
+          <RotatingCube />
+        </div>
       </div>
 
       <div className={styles.heroContent}>

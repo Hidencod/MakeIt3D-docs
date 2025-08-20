@@ -2,6 +2,7 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
+import RotatingCube from './RotatingCube';
 import * as THREE from 'three';
 
 function AnimatedPoints() {
@@ -126,6 +127,7 @@ export default function Hero3DScene() {
         
         <AnimatedPoints />
         <FloatingCubes />
+       
       </Canvas>
     </div>
   );
