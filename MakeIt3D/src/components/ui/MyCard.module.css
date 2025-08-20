@@ -1,0 +1,221 @@
+/* src/components/ui/MyCard.module.css */
+
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+/* Light mode base styles */
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark mode base styles */
+[data-theme="dark"] .card {
+    background: rgba(17, 24, 39, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Actions Card */
+.actionsCard {
+    border-left: 4px solid #8b5cf6;
+}
+
+.actionsCard:hover {
+    border-color: #8b5cf6;
+    box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 10px 10px -5px rgba(139, 92, 246, 0.1);
+}
+
+[data-theme="dark"] .actionsCard {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(17, 24, 39, 0.9) 100%);
+}
+
+[data-theme="dark"] .actionsCard:hover {
+    box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.4), 0 10px 10px -5px rgba(139, 92, 246, 0.2);
+}
+
+/* Conditions Card */
+.conditionsCard {
+    border-left: 4px solid #3b82f6;
+}
+
+.conditionsCard:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2), 0 10px 10px -5px rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="dark"] .conditionsCard {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(17, 24, 39, 0.9) 100%);
+}
+
+[data-theme="dark"] .conditionsCard:hover {
+    box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4), 0 10px 10px -5px rgba(59, 130, 246, 0.2);
+}
+
+/* Expressions Card */
+.expressionsCard {
+    border-left: 4px solid #10b981;
+}
+
+.expressionsCard:hover {
+    border-color: #10b981;
+    box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.2), 0 10px 10px -5px rgba(16, 185, 129, 0.1);
+}
+
+[data-theme="dark"] .expressionsCard {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(17, 24, 39, 0.9) 100%);
+}
+
+[data-theme="dark"] .expressionsCard:hover {
+    box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.4), 0 10px 10px -5px rgba(16, 185, 129, 0.2);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    transition: color 0.3s ease;
+    line-height: 1.25;
+}
+
+[data-theme="dark"] .title {
+    color: #9ca3af;
+}
+
+.icon {
+    font-size: 1.25rem;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.card:hover .icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.content {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.card:hover .content {
+    transform: scale(1.05);
+}
+
+/* Light mode content colors */
+.actionsContent {
+    color: #8b5cf6;
+}
+
+.conditionsContent {
+    color: #3b82f6;
+}
+
+.expressionsContent {
+    color: #10b981;
+}
+
+/* Dark mode content colors */
+[data-theme="dark"] .actionsContent {
+    color: #a78bfa;
+}
+
+[data-theme="dark"] .conditionsContent {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .expressionsContent {
+    color: #34d399;
+}
+
+.subtitle {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+[data-theme="dark"] .subtitle {
+    color: #6b7280;
+}
+
+/* Accent line */
+.accentLine {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .accentLine {
+    opacity: 1;
+}
+
+.actionsAccent {
+    background: linear-gradient(90deg, #8b5cf6, #ec4899);
+}
+
+.conditionsAccent {
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+}
+
+.expressionsAccent {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+/* Subtle pattern overlay */
+.patternOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+[data-theme="dark"] .patternOverlay {
+    background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+}
+
+.card:hover .patternOverlay {
+    opacity: 1;
+}

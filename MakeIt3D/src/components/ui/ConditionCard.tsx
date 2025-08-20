@@ -1,0 +1,105 @@
+// src/components/ui/ConditionCard.tsx
+import React from "react";
+import styles from './ConditionCard.module.css';
+
+interface ConditionProps {
+    name: string;
+    description?: string;
+    parameters?: string[];
+    example?: string;
+    trigger?: string; // What triggers this condition
+    category: 'object' | 'model' | 'scene' | 'camera' | 'animation' | 'physics';
+    eventType?: 'trigger' | 'state'; // trigger-based vs state-checking
+}
+
+interface ConditionCardProps {
+    condition: ConditionProps;
+    className?: string;
+}
+
+export default function ConditionCard({ condition, className = "" }: ConditionCardProps) {
+    const getCategoryIcon = (category: string) => {
+        const icons = {
+            object: '📦',
+            model: '🏗️',
+            scene: '🌍',
+            camera: '📷',
+            animation: '🎬',
+            physics: '⚡'
+        };
+        return icons[category as keyof typeof icons] || '🔍';
+    };
+
+    const getCategoryColor = (category: string) => {
+        const colors = {
+            object: 'var(--object-color)',
+            model: 'var(--model-color)',
+            scene: 'var(--scene-color)',
+            camera: 'var(--camera-color)',
+            animation: 'var(--animation-color)',
+            physics: 'var(--physics-color)'
+        };
+        return colors[category as keyof typeof colors] || '#6b7280';
+    };
+
+    const getEventTypeIcon = (eventType?: string) => {
+        return eventType === 'trigger' ? '⚡' : '🔍';
+    };
+
+    const getEventTypeBadge = (eventType?: string) => {
+        return eventType === 'trigger' ? 'Event Trigger' : 'State Check';
+    };
+
+    return (
+        <div
+            className={`${styles.conditionCard} ${condition.eventType === 'trigger' ? styles.triggerCard : styles.stateCard} ${className}`}
+            style={{ '--category-color': getCategoryColor(condition.category) } as React.CSSProperties}
+        >
+            <div className={styles.header}>
+                <div className={styles.iconContainer}>
+                    <span className={styles.icon}>{getCategoryIcon(condition.category)}</span>
+                </div>
+                <div className={styles.titleContainer}>
+                    <h3 className={styles.conditionName}>{condition.name}</h3>
+                    <span className={styles.category}>{condition.category}</span>
+                </div>
+                <div className={styles.eventTypeIcon}>
+                    {getEventTypeIcon(condition.eventType)}
+                </div>
+            </div>
+
+            {condition.description && (
+                <p className={styles.description}>{condition.description}</p>
+            )}
+
+            {condition.trigger && (
+                <div className={styles.trigger}>
+                    <h4 className={styles.triggerTitle}>Triggers when:</h4>
+                    <p className={styles.triggerText}>{condition.trigger}</p>
+                </div>
+            )}
+
+            {condition.parameters && condition.parameters.length > 0 && (
+                <div className={styles.parameters}>
+                    <h4 className={styles.parametersTitle}>Parameters:</h4>
+                    <div className={styles.parametersList}>
+                        {condition.parameters.map((param, index) => (
+                            <span key={index} className={styles.parameter}>{param}</span>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {condition.example && (
+                <div className={styles.example}>
+                    <h4 className={styles.exampleTitle}>Example Usage:</h4>
+                    <code className={styles.exampleCode}>{condition.example}</code>
+                </div>
+            )}
+
+            <div className={styles.badge}>
+                <span className={styles.badgeText}>{getEventTypeBadge(condition.eventType)}</span>
+            </div>
+        </div>
+    );
+}

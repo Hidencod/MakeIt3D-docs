@@ -1,0 +1,64 @@
+/* src/components/ui/HeroBanner.module.css */
+
+.heroBanner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroBanner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 0;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+}
+
+.heroTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+[data-theme="dark"] .heroBanner {
+    background: linear-gradient(135deg, #4c1d95 0%, #581c87 100%);
+}
+
+@media (max-width: 768px) {
+    .heroBanner {
+        padding: 2rem 1rem;
+    }
+
+    .heroTitle {
+        font-size: 2rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1.1rem;
+    }
+}

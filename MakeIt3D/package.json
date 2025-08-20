@@ -18,10 +18,16 @@
     "@docusaurus/core": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
     "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
+    "@react-three/fiber": "^9.3.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.540.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwind-variants": "^2.1.0",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.179.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.1",

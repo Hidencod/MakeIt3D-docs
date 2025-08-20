@@ -1,0 +1,89 @@
+// src/components/ui/ActionCard.tsx
+import React from "react";
+import styles from './ActionCard.module.css';
+
+interface ActionProps {
+    name: string;
+    description?: string;
+    parameters?: string[];
+    example?: string;
+    category: 'scene' | 'objects' | 'transformations' | 'camera' | 'lights' | 'materials' | 'animation' | 'utils';
+}
+
+interface ActionCardProps {
+    action: ActionProps;
+    className?: string;
+}
+
+export default function ActionCard({ action, className = "" }: ActionCardProps) {
+    const getCategoryIcon = (category: string) => {
+        const icons = {
+            scene: '🌍',
+            objects: '📦',
+            transformations: '🔄',
+            camera: '📷',
+            lights: '💡',
+            materials: '🎨',
+            animation: '🎬',
+            utils: '🔧'
+        };
+        return icons[category as keyof typeof icons] || '⚙️';
+    };
+
+    const getCategoryColor = (category: string) => {
+        const colors = {
+            scene: 'var(--scene-color)',
+            objects: 'var(--objects-color)',
+            transformations: 'var(--transformations-color)',
+            camera: 'var(--camera-color)',
+            lights: 'var(--lights-color)',
+            materials: 'var(--materials-color)',
+            animation: 'var(--animation-color)',
+            utils: 'var(--utils-color)'
+        };
+        return colors[category as keyof typeof colors] || '#6b7280';
+    };
+
+    return (
+        <div
+            className={`${styles.actionCard} ${className}`}
+            style={{ '--category-color': getCategoryColor(action.category) } as React.CSSProperties}
+        >
+            <div className={styles.header}>
+                <div className={styles.iconContainer}>
+                    <span className={styles.icon}>{getCategoryIcon(action.category)}</span>
+                </div>
+                <div className={styles.titleContainer}>
+                    <h3 className={styles.actionName}>{action.name}</h3>
+                    <span className={styles.category}>{action.category}</span>
+                </div>
+            </div>
+
+            {action.description && (
+                <p className={styles.description}>{action.description}</p>
+            )}
+
+            {action.parameters && action.parameters.length > 0 && (
+                <div className={styles.parameters}>
+                    <h4 className={styles.parametersTitle}>Parameters:</h4>
+                    <div className={styles.parametersList}>
+                        {action.parameters.map((param, index) => (
+                            <span key={index} className={styles.parameter}>{param}</span>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {action.example && (
+                <div className={styles.example}>
+                    <h4 className={styles.exampleTitle}>Example:</h4>
+                    <code className={styles.exampleCode}>{action.example}</code>
+                </div>
+            )}
+
+            <div className={styles.badge}>
+                <span className={styles.badgeText}>Action</span>
+            </div>
+        </div>
+    );
+}
