@@ -1,0 +1,105 @@
+/* src/components/ui/NextSteps.module.css */
+
+.nextStepsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.nextStepCard {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .nextStepCard {
+    background: rgba(17, 24, 39, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.nextStepCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+    border-color: var(--ifm-color-primary);
+}
+
+[data-theme="dark"] .nextStepCard:hover {
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.4);
+}
+
+.nextStepCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nextStepCard:hover::before {
+    opacity: 1;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.75rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+[data-theme="dark"] .cardTitle {
+    color: #f9fafb;
+}
+
+.cardDescription {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .cardDescription {
+    color: #9ca3af;
+}
+
+.cardLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--ifm-color-primary);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.cardLink:hover {
+    color: var(--ifm-color-primary-dark);
+    text-decoration: none;
+    transform: translateX(2px);
+}
+
+@media (max-width: 768px) {
+    .nextStepsGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .nextStepCard {
+        padding: 1.5rem;
+    }
+}

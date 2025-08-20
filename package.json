@@ -2,6 +2,11 @@
   "dependencies": {
     "@react-three/drei": "^10.7.3",
     "@react-three/fiber": "^9.3.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.540.0",
+    "tailwind-variants": "^2.1.0",
+    "tailwindcss-animate": "^1.0.7",
     "three": "^0.179.1"
   }
 }

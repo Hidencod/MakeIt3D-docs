@@ -1,0 +1,293 @@
+/* src/components/ui/ExpressionCard.module.css */
+
+:root {
+    --scene-color: #10b981;
+    --camera-color: #f59e0b;
+    --object-color: #3b82f6;
+    --model-color: #8b5cf6;
+    --animation-color: #06b6d4;
+    --physics-color: #ef4444;
+    --utils-color: #6b7280;
+}
+
+.expressionCard {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+[data-theme="dark"] .expressionCard {
+    background: rgba(17, 24, 39, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Distinctive accent for expressions - dotted pattern */
+.expressionCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--category-color) 0%, var(--return-type-color) 100%);
+    opacity: 0.8;
+}
+
+.expressionCard::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, transparent 0%, transparent 3px, white 3px, white 6px);
+    opacity: 0.3;
+}
+
+[data-theme="dark"] .expressionCard::after {
+    background: repeating-linear-gradient(90deg, transparent 0%, transparent 3px, #111827 3px, #111827 6px);
+}
+
+.expressionCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+    border-color: var(--category-color);
+}
+
+[data-theme="dark"] .expressionCard:hover {
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.4);
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.iconContainer {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--category-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+
+.icon {
+    font-size: 1.25rem;
+    filter: brightness(1.2);
+}
+
+.titleContainer {
+    flex: 1;
+    min-width: 0;
+}
+
+.expressionName {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.4;
+    font-family: 'Monaco', 'Consolas', monospace;
+}
+
+[data-theme="dark"] .expressionName {
+    color: #f9fafb;
+}
+
+.category {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--category-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.returnTypeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.returnTypeIcon {
+    font-size: 1rem;
+}
+
+.returnType {
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--return-type-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.description {
+    color: #6b7280;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+[data-theme="dark"] .description {
+    color: #9ca3af;
+}
+
+.parameters {
+    margin-bottom: 1rem;
+}
+
+.parametersTitle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .parametersTitle {
+    color: #d1d5db;
+}
+
+.parametersList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.parameter {
+    background: rgba(0, 0, 0, 0.05);
+    color: #374151;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .parameter {
+    background: rgba(255, 255, 255, 0.1);
+    color: #d1d5db;
+}
+
+.usage {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--category-color);
+}
+
+[data-theme="dark"] .usage {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.usageTitle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .usageTitle {
+    color: #d1d5db;
+}
+
+.usageCode {
+    background: transparent;
+    color: var(--category-color);
+    font-size: 0.875rem;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-weight: 600;
+    display: block;
+}
+
+.example {
+    margin-bottom: 1rem;
+}
+
+.exampleTitle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .exampleTitle {
+    color: #d1d5db;
+}
+
+.exampleCode {
+    background: #f3f4f6;
+    color: #1f2937;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-family: 'Monaco', 'Consolas', monospace;
+    display: block;
+    border-left: 3px solid var(--return-type-color);
+}
+
+[data-theme="dark"] .exampleCode {
+    background: #374151;
+    color: #f9fafb;
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.badgeText {
+    background: linear-gradient(135deg, var(--category-color), var(--return-type-color));
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+/* Grid layout for cards */
+.expressionsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Special styling for return type indicators */
+.returnTypeContainer {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding: 0.5rem;
+    min-width: 60px;
+}
+
+[data-theme="dark"] .returnTypeContainer {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+}
