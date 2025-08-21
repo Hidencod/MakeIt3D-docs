@@ -13,7 +13,7 @@
     height: 250px;
     position: relative;
     transform-style: preserve-3d;
-    animation: rotateCube 25s infinite linear;
+    animation: rotateCube 40s infinite linear;
 }
 
 .cube-face {
