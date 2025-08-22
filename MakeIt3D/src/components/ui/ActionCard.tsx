@@ -72,12 +72,12 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
 
             {action.parameters && action.parameters.length > 0 && (
                 <div className={styles.parameters}>
-                    <h4 className={styles.parametersTitle}>Parameters:</h4>
+                    <h4 className={styles.parametersTitle}>Parameters</h4>
                     <div className={styles.parametersList}>
                         {action.parameters.map((param, index) => (
                             <div key={index} className={styles.parameterItem}>
                                 <span className={styles.parameterName}>{param.name}</span>
-                                <span className={styles.parameterDescription}> - {param.description}</span>
+                                <div className={styles.parameterDescription}>{param.description}</div>
                             </div>
                         ))}
                     </div>
