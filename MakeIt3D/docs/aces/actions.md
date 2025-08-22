@@ -24,7 +24,7 @@ import ActionCard from '@site/src/components/ui/ActionCard';
       { name: "addGridHelper?", description: "Add a ground grid to help with scale and positioning." },
       { name: "enableOrbitControls?", description: "Enable camera orbit controls with mouse/touch." }
     ],
-    example: "MakeIt3D.CreateScene(0, true, false, true, true, true)"
+    example: "MakeIt3D.CreateScene(0 or Layer name, true, false, true, true, true)"
   }}
 />
 
@@ -43,11 +43,59 @@ import ActionCard from '@site/src/components/ui/ActionCard';
       { name: "addGridHelper?", description: "Add a ground grid to help with scale and positioning." },
       { name: "enableOrbitControls?", description: "Enable camera orbit controls with mouse/touch." }
     ],
-      example: "MakeIt3D.SetBackgroundColor(\"#87CEEB\")"
+      example: "MakeIt3D.CreateScene(0 or Layer name, json path, false, false, true, true, true)"
+    }}
+  />
+  
+  <ActionCard 
+    action={{
+      name: "Update RenderLoop",
+      category: "scene",
+      description: "If the automatic render loop update is inconsistent, users can manually update the render loop by calling this function with the delta time on each tick.",
+       parameters: [
+      { name: "deltaTime?", description: "Delta time from construct3 event sheet" },
+    ],
+      example: "MakeIt3D.UpdateRenderLoop(dt)"
     }}
   />
 </div>
+## Camera
 
+<div className="actionsGrid">
+  <ActionCard 
+  action={{
+    name: "Adjust Camera Properties",
+    category: "camera",
+    description: "Use this to adjust camera properties such as field of view (FOV), near clip, and far clip planes.",
+parameters: [
+  { name: "Field Of View", description: "Field of view angle for the camera, in degrees." },
+  { name: "Near Clip", description: "The closest distance at which the camera will render objects." },
+  { name: "Far Clip", description: "The farthest distance at which the camera will render objects." }
+],
+
+    example: "MakeIt3D.AdjustCamera(75,0.1,2000)"
+  }}
+/>
+</div>
+<div className="actionsGrid">
+  <ActionCard 
+  action={{
+    name: "Follow Object",
+    category: "camera",
+    description: "Follow the object with the given ID, maintaining a specified offset and smoothing the movement using a lerp factor.",
+parameters: [
+  { name: "Object Id", description: "The ID of the object to follow." },
+  { name: "Offset X", description: "Camera offset along the X-axis." },
+  { name: "Offset Y", description: "Camera offset along the Y-axis." },
+  { name: "Offset Z", description: "Camera offset along the Z-axis." },
+  { name: "Lerp Factor", description: "Smoothing factor for the camera movement. A value between 0 and 1." }
+]
+,
+
+    example: "MakeIt3D.FollowObject('hero',5,5,5,0.5)"
+  }}
+/>
+</div>
 ## 3D Objects
 
 <div className="actionsGrid">
