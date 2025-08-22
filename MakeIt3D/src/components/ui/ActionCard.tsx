@@ -1,11 +1,18 @@
 // src/components/ui/ActionCard.tsx
+
 import React from "react";
 import styles from './ActionCard.module.css';
+
+// 👇 Structured parameter type
+interface ParameterInfo {
+    name: string;
+    description: string;
+}
 
 interface ActionProps {
     name: string;
     description?: string;
-    parameters?: string[];
+    parameters?: ParameterInfo[];
     example?: string;
     category: 'scene' | 'objects' | 'transformations' | 'camera' | 'lights' | 'materials' | 'animation' | 'utils';
 }
@@ -68,7 +75,10 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
                     <h4 className={styles.parametersTitle}>Parameters:</h4>
                     <div className={styles.parametersList}>
                         {action.parameters.map((param, index) => (
-                            <span key={index} className={styles.parameter}>{param}</span>
+                            <div key={index} className={styles.parameterItem}>
+                                <span className={styles.parameterName}>{param.name}</span>
+                                <span className={styles.parameterDescription}> - {param.description}</span>
+                            </div>
                         ))}
                     </div>
                 </div>
