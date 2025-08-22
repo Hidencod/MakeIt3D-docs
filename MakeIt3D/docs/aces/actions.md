@@ -17,7 +17,7 @@ import ActionCard from '@site/src/components/ui/ActionCard';
     category: "scene",
     description: "Initialize a new 3D scene with optional helpers and controls.",
     parameters: [
-      { name: "layerIndex?", description: "Index of the scene layer (default is 0)." },
+      { name: "layerIndex?", description: "Index or name of layer where scene is created." },
       { name: "addRoomLighting?", description: "Add basic ambient lighting to the scene." },
       { name: "enablePostProcessing?", description: "Enable visual effects like bloom or depth of field." },
       { name: "addAxisHelper?", description: "Show XYZ axis helper for orientation." },
@@ -31,19 +31,18 @@ import ActionCard from '@site/src/components/ui/ActionCard';
   
   <ActionCard 
     action={{
-      name: "Clear Scene",
-      category: "scene", 
-      description: "Remove all objects from the current scene.",
-      example: "MakeIt3D.ClearScene()"
-    }}
-  />
-  
-  <ActionCard 
-    action={{
-      name: "Set Background Color",
+      name: "Load Scene From JSON",
       category: "scene",
-      description: "Change the background color of the 3D scene.",
-      parameters: ["color"],
+      description: "Loads json scene saved by three.js editor",
+       parameters: [
+      { name: "layerIndex?", description: "Index or name of layer where scene is created." },
+      { name: "path?", description: "path for json (select from dropdown)" },
+      { name: "useSceneCamera?", description: "check this to use camera from json scene" },
+      { name: "enablePostProcessing?", description: "Enable visual effects like bloom or depth of field." },
+      { name: "addAxisHelper?", description: "Show XYZ axis helper for orientation." },
+      { name: "addGridHelper?", description: "Add a ground grid to help with scale and positioning." },
+      { name: "enableOrbitControls?", description: "Enable camera orbit controls with mouse/touch." }
+    ],
       example: "MakeIt3D.SetBackgroundColor(\"#87CEEB\")"
     }}
   />
