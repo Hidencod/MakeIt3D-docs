@@ -59,6 +59,7 @@ import ActionCard from '@site/src/components/ui/ActionCard';
     }}
   />
 </div>
+
 ## Camera
 
 <div className="actionsGrid">
@@ -66,12 +67,21 @@ import ActionCard from '@site/src/components/ui/ActionCard';
   action={{
     name: "Adjust Camera Properties",
     category: "camera",
-    description: "Use this to adjust camera properties such as field of view (FOV), near clip, and far clip planes.",
-parameters: [
-  { name: "Field Of View", description: "Field of view angle for the camera, in degrees." },
-  { name: "Near Clip", description: "The closest distance at which the camera will render objects." },
-  { name: "Far Clip", description: "The farthest distance at which the camera will render objects." }
-],
+    description: "Use this to adjust camera properties such as field of view (FOV) for perspective cameras, or zoom level for orthographic cameras, as well as near and far clip planes.",
+parameters:  [
+    { 
+      name: "Field Of View / Zoom", 
+      description: "For perspective cameras: the field of view angle in degrees. For orthographic cameras: the zoom level (higher = closer view, lower = wider view)." 
+    },
+    { 
+      name: "Near Clip", 
+      description: "The closest distance at which the camera will render objects." 
+    },
+    { 
+      name: "Far Clip", 
+      description: "The farthest distance at which the camera will render objects." 
+    }
+  ],
 
     example: "MakeIt3D.AdjustCamera(75,0.1,2000)"
   }}
@@ -93,6 +103,85 @@ parameters: [
 ,
 
     example: "MakeIt3D.FollowObject('hero',5,5,5,0.5)"
+  }}
+/>
+
+<ActionCard 
+    action={{
+      name: "Set Camera Type",
+      category: "camera",
+      description: "Switch between perspective and orthographic projection.",
+      parameters: [
+    { 
+      name: "Camera Type", 
+      description: "Select the camera projection type.", 
+      type: "combo", 
+      options: ["perspective", "orthographic"] 
+    }
+  ],
+      example: "MakeIt3D.SetCameraType(\"perspective\")"
+    }}
+  />
+
+  <ActionCard 
+    action={{
+      name: "Set Camera Position",
+      category: "camera",
+      description: "Position the camera at specific coordinates.",
+      parameters: [
+        { name: "Position X", description: "Camera postion x." },
+        { name: "Position Y", description: "Camera position y." },
+        { name: "Position Z", description: "Camera position z." }
+      ],
+      example: "MakeIt3D.SetCameraPosition(0, 5, 10)"
+    }}
+  />
+
+  <ActionCard 
+    action={{
+      name: "Set Camera Rotation",
+      category: "camera",
+      description: "Rotate the camera to a specific orientation (Euler angles).",
+      parameters: [
+        { name: "Rotation X", description: "Camera rotation around the X axis (pitch), in degrees." },
+    { name: "Rotation Y", description: "Camera rotation around the Y axis (yaw), in degrees." },
+    { name: "Rotation Z", description: "Camera rotation around the Z axis (roll), in degrees." }
+  ],
+      example: "MakeIt3D.SetCameraRotation(0, 5, 10)"
+    }}
+  />
+
+  <ActionCard 
+  action={{
+    name: "Look At Object",
+    category: "camera",
+    description: "Look at the object with the given ID and smoothing the lookat using a lerp factor.",
+parameters: [
+  { name: "Object Id", description: "The ID of the object to lookat." },
+  { name: "Offset X", description: "Camera lookat offset along the X-axis." },
+  { name: "Offset Y", description: "Camera lookat offset along the Y-axis." },
+  { name: "Offset Z", description: "Camera lookat offset along the Z-axis." },
+  { name: "Lerp Factor", description: "Smoothing factor for the camera lookat. A value between 0 and 1." }
+]
+,
+
+    example: "MakeIt3D.LookAt('hero',5,5,5,0.5)"
+  }}
+/>
+<ActionCard 
+  action={{
+    name: "Look At Point",
+    category: "camera",
+    description: "Look at the given x, y, z co-ordinates and smoothing the lookat using a lerp factor.",
+parameters: [
+  { name: "Offset X", description: "Camera lookat offset along the X-axis." },
+  { name: "Offset Y", description: "Camera lookat offset along the Y-axis." },
+  { name: "Offset Z", description: "Camera lookat offset along the Z-axis." },
+  { name: "Lerp Factor", description: "Smoothing factor for the camera lookat. A value between 0 and 1." }
+]
+,
+
+    example: "MakeIt3D.LookAt(5,5,5,0.5)"
   }}
 />
 </div>
@@ -207,15 +296,7 @@ parameters: [
     }}
   />
   
-  <ActionCard 
-    action={{
-      name: "Set Camera Type",
-      category: "camera",
-      description: "Switch between perspective and orthographic projection.",
-      parameters: ["type"],
-      example: "MakeIt3D.SetCameraType(\"perspective\")"
-    }}
-  />
+  
   
   <ActionCard 
     action={{
