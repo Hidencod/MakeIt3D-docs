@@ -8,18 +8,26 @@ This section lists all available **Actions** in MakeIt3D. Use these in Construct
 
 import ActionCard from '@site/src/components/ui/ActionCard';
 
-## Scene Management
+## Initialization
 
 <div className="actionsGrid">
   <ActionCard 
-    action={{
-      name: "Create Scene",
-      category: "scene",
-      description: "Initialize a new 3D scene with default settings.",
-      parameters: ["width", "height", "backgroundColor?"],
-      example: "MakeIt3D.CreateScene(800, 600, \"#ffffff\")"
-    }}
-  />
+  action={{
+    name: "Create Scene",
+    category: "scene",
+    description: "Initialize a new 3D scene with optional helpers and controls.",
+    parameters: [
+      { name: "layerIndex?", description: "Index of the scene layer (default is 0)." },
+      { name: "addRoomLighting?", description: "Add basic ambient lighting to the scene." },
+      { name: "enablePostProcessing?", description: "Enable visual effects like bloom or depth of field." },
+      { name: "addAxisHelper?", description: "Show XYZ axis helper for orientation." },
+      { name: "addGridHelper?", description: "Add a ground grid to help with scale and positioning." },
+      { name: "enableOrbitControls?", description: "Enable camera orbit controls with mouse/touch." }
+    ],
+    example: "MakeIt3D.CreateScene(0, true, false, true, true, true)"
+  }}
+/>
+
   
   <ActionCard 
     action={{
