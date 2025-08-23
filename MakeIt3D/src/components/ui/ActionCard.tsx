@@ -67,7 +67,10 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
             </div>
 
             {action.description && (
-                <p className={styles.description}>{action.description}</p>
+                <p
+                    className={styles.description}
+                    dangerouslySetInnerHTML={{ __html: action.description }}
+                />
             )}
 
             {action.parameters && action.parameters.length > 0 && (
