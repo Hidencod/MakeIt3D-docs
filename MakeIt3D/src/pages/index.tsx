@@ -17,7 +17,7 @@ function HomepageHeader(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx(styles.hero)}>
-      <div className={styles.heroBackground}>
+      <div className={styles.heroBackground} >
         <Hero3DScene />
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-400 to-purple-600">
           <RotatingCube />

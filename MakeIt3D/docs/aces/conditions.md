@@ -17,23 +17,52 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
       category: "object",
       eventType: "trigger",
       description: "Triggered when a new 3D object is successfully created in the scene.",
-      trigger: "A new object is spawned or loaded",
-      parameters: ["objectId", "objectType"],
-      example: "// When any object is created\nOn Object Created -> Log \"New object: \" & ObjectID"
+      trigger: "A new object is spawned or created",
+      parameters: [
+        { name: "objectId", description: "Object Id to check whether created" }
+      ],
+      example: "// On Object Created With Id \"hero\" -> Log \"New object: \" & ObjectID"
     }}
   />
-  
   <ConditionCard 
-    condition={{
-      name: "On Object Destroyed",
-      category: "object",
-      eventType: "trigger", 
-      description: "Triggered when a 3D object is removed from the scene.",
-      trigger: "An object is deleted or destroyed",
-      parameters: ["objectId"],
-      example: "// When specific object is destroyed\nOn Object Destroyed (\"player_cube\") -> Restart Level"
-    }}
-  />
+  condition={{
+    name: "Is Object Loaded In Scene",
+    category: "object",
+    eventType: "state",
+    description: "Returns true if the object with the specified ID is currently loaded in the scene.",
+    trigger: "Checks whether a specific object is present in the scene.",
+    parameters: [
+      { name: "objectId", description: "The ID of the object to check for presence in the scene." }
+    ],
+    example: "// If Object with Id \"enemyBoss\" is loaded -> Play animation"
+  }}
+/>
+
+  <ConditionCard 
+  condition={{
+    name: "On Object Destroyed",
+    category: "object",
+    eventType: "trigger",
+    description: "Triggered when an object is destroyed and removed from the scene. If no object ID is provided, the condition triggers for any object.",
+    trigger: "An object with the specified ID is destroyed or removed from the scene.",
+    parameters: [
+      { name: "objectId", description: "The ID of the object to monitor for destruction (optional: leave empty to listen for all objects)." }
+    ],
+    example: "// On Object Destroyed with ID \"barrel01\" -> Spawn explosion effect"
+  }}
+/>
+<ConditionCard 
+  condition={{
+    name: "On Object Failed Create",
+    category: "object",
+    eventType: "trigger",
+    description: "Triggered when a 3D object fails to be created in the scene.",
+    trigger: "An object creation attempt fails due to invalid data, missing assets, or other errors.",
+    parameters: [],
+    example: "// On Object Failed To Create -> Log error or retry"
+  }}
+/>
+
   
   <ConditionCard 
     condition={{
@@ -58,94 +87,90 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
   />
 </div>
 
-## Model Conditions
-
-<div className="conditionsGrid">
-  <ConditionCard 
-    condition={{
-      name: "On Model Loaded",
-      category: "model",
-      eventType: "trigger",
-      description: "Triggered when a 3D model file finishes loading successfully.",
-      trigger: "A 3D model (GLB, GLTF, OBJ) completes loading",
-      parameters: ["modelPath", "objectId"],
-      example: "// When character model loads\nOn Model Loaded (\"models/character.glb\") -> Start Animation"
-    }}
-  />
-  
-  <ConditionCard 
-    condition={{
-      name: "On Model Load Error",
-      category: "model",
-      eventType: "trigger",
-      description: "Triggered when a 3D model fails to load due to an error.",
-      trigger: "A model loading operation encounters an error",
-      parameters: ["modelPath", "errorMessage"],
-      example: "// Handle loading errors\nOn Model Load Error -> Display \"Failed to load model\""
-    }}
-  />
-</div>
-
 ## Scene Conditions
 
 <div className="conditionsGrid">
-  <ConditionCard 
-    condition={{
-      name: "On Scene Ready",
-      category: "scene",
-      eventType: "trigger",
-      description: "Triggered when the 3D scene has finished initializing and is ready for use.",
-      trigger: "The 3D context is created and scene is initialized",
-      example: "// Scene is ready to use\nOn Scene Ready -> Create Initial Objects"
-    }}
-  />
-  
-  <ConditionCard 
-    condition={{
-      name: "Is Scene Loading",
-      category: "scene",
-      eventType: "state",
-      description: "Check if the scene is currently in a loading state.",
-      example: "// Show loading screen while scene loads\nIs Scene Loading -> Set Loading Text Visible"
-    }}
-  />
-  
-  <ConditionCard 
-    condition={{
-      name: "Object Count",
-      category: "scene",
-      eventType: "state",
-      description: "Compare the current number of objects in the scene.",
-      parameters: ["comparison", "value"],
-      example: "// Check if scene has more than 50 objects\nObject Count > 50 -> Optimize Scene"
-    }}
-  />
+<ConditionCard 
+  condition={{
+    name: "On 3D Scene Created",
+    category: "scene",
+    eventType: "trigger",
+    description: "Triggered when a new 3D scene is successfully created.",
+    trigger: "A new scene is created and initialized in the engine.",
+    example: "// On scene creation -> Log \"Scene created successfully\""
+  }}
+/>
+
+<ConditionCard 
+  condition={{
+    name: "On 3D Scene Create Fail",
+    category: "scene",
+    eventType: "trigger",
+    description: "Triggered when a 3D scene fails to create due to an error or invalid input.",
+    trigger: "A scene creation attempt fails.",
+    example: "// On scene creation failure -> Log \"Failed to create scene\""
+  }}
+/>
+
 </div>
 
-## Camera Conditions
+## Animations
 
-<div className="conditionsGrid">
-  <ConditionCard 
-    condition={{
-      name: "Camera Is Moving",
-      category: "camera",
-      eventType: "state",
-      description: "Check if the camera is currently in motion.",
-      example: "// Disable UI while camera moves\nCamera Is Moving -> Set UI Opacity to 50%"
-    }}
-  />
-  
-  <ConditionCard 
-    condition={{
-      name: "On Camera Move Complete",
-      category: "camera",
-      eventType: "trigger",
-      description: "Triggered when a smooth camera movement finishes.",
-      trigger: "A camera animation or smooth movement completes",
-      example: "// Re-enable controls after camera move\nOn Camera Move Complete -> Enable Player Input"
-    }}
-  />
-</div>
+<ConditionCard 
+  condition={{
+    name: "On Animation Clip Finished",
+    category: "animation",
+    eventType: "trigger",
+    description: "Triggered when a specific animation clip finishes playing on an object.",
+    trigger: "An animation clip finishes playing completely.",
+    parameters: [
+      { name: "objectId", description: "The ID of the object whose animation finished" },
+      { name: "animationIndex", description: "The index of the animation clip that finished" }
+    ],
+    example: "// On Animation Clip Finished for object \"player\" index 2 -> Trigger next action"
+  }}
+/>
+<ConditionCard 
+  condition={{
+    name: "On Animation Loop Finished",
+    category: "animation",
+    eventType: "trigger",
+    description: "Triggered when an animation loop finishes playing on an object.",
+    trigger: "An animation loop completes (e.g., a looping walk cycle ends its set loop count).",
+    parameters: [
+      { name: "objectId", description: "The ID of the object whose animation loop finished" },
+      { name: "animationIndex", description: "The index of the animation loop that finished" }
+    ],
+    example: "// On Animation Loop Finished for object \"npc01\" index 0 -> Switch to idle animation"
+  }}
+/>
+<ConditionCard 
+  condition={{
+    name: "For Each Animation",
+    category: "animation",
+    eventType: "loop",
+    description: "Loops through each animation available on a specified object.",
+    trigger: "Iterates through all animations for a given object.",
+    parameters: [
+      { name: "objectId", description: "The ID of the object whose animations will be iterated" }
+    ],
+    example: "// For Each Animation on object 'enemy' -> Print animation name or index"
+  }}
+/>
+
+## Raycast
+<ConditionCard 
+  condition={{
+    name: "On Raycast Hit",
+    category: "object",
+    eventType: "trigger",
+    description: "Triggered when a raycast hits any object in the scene.",
+    trigger: "A raycast intersects with an object.",
+    parameters: [],
+    example: "// On raycast hit -> Log \"Ray hit object!\""
+  }}
+/>
+
 
 ## Usage Tips
 

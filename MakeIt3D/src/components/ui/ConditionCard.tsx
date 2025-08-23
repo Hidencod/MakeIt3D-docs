@@ -2,10 +2,16 @@
 import React from "react";
 import styles from './ConditionCard.module.css';
 
+// Enhanced parameter type with description support
+interface ParameterInfo {
+    name: string;
+    description: string;
+}
+
 interface ConditionProps {
     name: string;
     description?: string;
-    parameters?: string[];
+    parameters?: ParameterInfo[]; // Now structured like ActionCard
     example?: string;
     trigger?: string; // What triggers this condition
     category: 'object' | 'model' | 'scene' | 'camera' | 'animation' | 'physics';
@@ -21,13 +27,13 @@ export default function ConditionCard({ condition, className = "" }: ConditionCa
     const getCategoryIcon = (category: string) => {
         const icons = {
             object: '📦',
-            model: '🏗️',
+            model: '🗿',
             scene: '🌍',
             camera: '📷',
             animation: '🎬',
             physics: '⚡'
         };
-        return icons[category as keyof typeof icons] || '🔍';
+        return icons[category as keyof typeof icons] || '📋';
     };
 
     const getCategoryColor = (category: string) => {
@@ -43,12 +49,32 @@ export default function ConditionCard({ condition, className = "" }: ConditionCa
     };
 
     const getEventTypeIcon = (eventType?: string) => {
-        return eventType === 'trigger' ? '⚡' : '🔍';
+        switch (eventType) {
+            case 'trigger':
+                return '⚡';
+            case 'state':
+                return '📋';
+            case 'loop':
+                return '🔁';
+            default:
+                return '📋';
+        }
     };
 
+
     const getEventTypeBadge = (eventType?: string) => {
-        return eventType === 'trigger' ? 'Event Trigger' : 'State Check';
+        switch (eventType) {
+            case 'trigger':
+                return 'Event Trigger';
+            case 'state':
+                return 'State Check';
+            case 'loop':
+                return 'Loop / Iteration';
+            default:
+                return 'Condition';
+        }
     };
+
 
     return (
         <div
@@ -81,10 +107,13 @@ export default function ConditionCard({ condition, className = "" }: ConditionCa
 
             {condition.parameters && condition.parameters.length > 0 && (
                 <div className={styles.parameters}>
-                    <h4 className={styles.parametersTitle}>Parameters:</h4>
+                    <h4 className={styles.parametersTitle}>Parameters</h4>
                     <div className={styles.parametersList}>
                         {condition.parameters.map((param, index) => (
-                            <span key={index} className={styles.parameter}>{param}</span>
+                            <div key={index} className={styles.parameterItem}>
+                                <span className={styles.parameterName}>{param.name}</span>
+                                <div className={styles.parameterDescription}>{param.description}</div>
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -100,6 +129,7 @@ export default function ConditionCard({ condition, className = "" }: ConditionCa
             <div className={styles.badge}>
                 <span className={styles.badgeText}>{getEventTypeBadge(condition.eventType)}</span>
             </div>
+            
         </div>
     );
 }

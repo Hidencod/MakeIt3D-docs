@@ -46,7 +46,9 @@ import ActionCard from '@site/src/components/ui/ActionCard';
       example: "MakeIt3D.CreateScene(0 or Layer name, json path, false, false, true, true, true)"
     }}
   />
-  
+  :::note Note
+This 3D scene uses Construct's HTML Layer feature to render Three.js. The plugin automatically enables it for the selected layer and disables it on others — no setup needed, just keep it in mind.
+:::
   <ActionCard 
     action={{
       name: "Update RenderLoop",
@@ -766,6 +768,11 @@ This ID is required to reference the object later in actions such as *Follow Obj
     example: "MakeIt3D.AddPointLight('PointLight01', MakeIt3D.Vector3(1,2,3), MakeIt3D.Color(255,255,255), 1.0, 100, 2, true, true)"
   }}
 />
+:::danger Do NOT Create Lights Every Tick  
+Creating lights in an `Every Tick` event will constantly add new lights to the scene, causing severe performance drops and memory issues.  
+Only create lights once — such as in **On Start of Layout** or when needed.
+:::
+
 <ActionCard 
   action={{
     name: "Create Directional Light",
@@ -1027,6 +1034,11 @@ This ID is required to reference the object later in actions such as *Follow Obj
     example: "MakeIt3D.SetStandardMaterial('obj01', '#ff0000', 0.5, 0.3, false, '#000000', 1.0, 0.9)"
   }}
 />
+:::danger Do NOT Create Materials Every Tick  
+Creating new materials inside an `Every Tick` event will rapidly consume memory and degrade performance.  
+Materials should be created **once** and reused — ideally during **On Start of Layout** or when the object is initialized.
+:::
+
 <ActionCard
   action={{
     name: "Set Phong Material",
