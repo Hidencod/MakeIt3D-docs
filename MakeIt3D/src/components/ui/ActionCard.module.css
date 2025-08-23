@@ -6,9 +6,12 @@
     --transformations-color: #10b981;
     --camera-color: #f59e0b;
     --lights-color: #ef4444;
-    --materials-color: #ec4899;
+    --materials-color: #b38aff;
     --animation-color: #06b6d4;
     --utils-color: #6b7280;
+    --raycast-color: #f97316;
+    --line-color: #33cc99;
+    --postprocessing-color: #a66cff;
 }
 
 .actionCard {
