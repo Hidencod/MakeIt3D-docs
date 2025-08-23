@@ -2,10 +2,16 @@
 import React from "react";
 import styles from './ExpressionCard.module.css';
 
+// Enhanced parameter type with description support
+interface ParameterInfo {
+    name: string;
+    description: string;
+}
+
 interface ExpressionProps {
     name: string;
     description?: string;
-    parameters?: string[];
+    parameters?: ParameterInfo[]; // Now structured like ActionCard and ConditionCard
     returnType: 'number' | 'string' | 'boolean' | 'object';
     example?: string;
     category: 'scene' | 'camera' | 'object' | 'model' | 'animation' | 'physics' | 'utils';
@@ -23,9 +29,9 @@ export default function ExpressionCard({ expression, className = "" }: Expressio
             scene: '🌍',
             camera: '📷',
             object: '📦',
-            model: '🏗️',
+            model: '🗿',
             animation: '🎬',
-            physics: '⚡',
+            raycast: '⚡',
             utils: '🔧'
         };
         return icons[category as keyof typeof icons] || '📊';
@@ -38,7 +44,7 @@ export default function ExpressionCard({ expression, className = "" }: Expressio
             object: 'var(--object-color)',
             model: 'var(--model-color)',
             animation: 'var(--animation-color)',
-            physics: 'var(--physics-color)',
+            raycast: 'var(--physics-color)',
             utils: 'var(--utils-color)'
         };
         return colors[category as keyof typeof colors] || '#6b7280';
@@ -92,10 +98,13 @@ export default function ExpressionCard({ expression, className = "" }: Expressio
 
             {expression.parameters && expression.parameters.length > 0 && (
                 <div className={styles.parameters}>
-                    <h4 className={styles.parametersTitle}>Parameters:</h4>
+                    <h4 className={styles.parametersTitle}>Parameters</h4>
                     <div className={styles.parametersList}>
                         {expression.parameters.map((param, index) => (
-                            <span key={index} className={styles.parameter}>{param}</span>
+                            <div key={index} className={styles.parameterItem}>
+                                <span className={styles.parameterName}>{param.name}</span>
+                                <div className={styles.parameterDescription}>{param.description}</div>
+                            </div>
                         ))}
                     </div>
                 </div>
