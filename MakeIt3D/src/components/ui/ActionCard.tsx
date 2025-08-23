@@ -27,12 +27,15 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
         const icons = {
             scene: '🌍',
             objects: '📦',
-            transformations: '🔄',
+            transforms: '🔄',
             camera: '📷',
             lights: '💡',
-            materials: '🎨',
+            material: '🎨',
             animation: '🎬',
-            utils: '🔧'
+            utils: '🔧',
+            raycast: '🎯',  // Target icon for raycasting
+            lines: '📏',
+            postprocessing: '🪄'
         };
         return icons[category as keyof typeof icons] || '⚙️';
     };
@@ -41,12 +44,15 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
         const colors = {
             scene: 'var(--scene-color)',
             objects: 'var(--objects-color)',
-            transformations: 'var(--transformations-color)',
+            transforms: 'var(--transformations-color)',
             camera: 'var(--camera-color)',
             lights: 'var(--lights-color)',
-            materials: 'var(--materials-color)',
+            material: 'var(--materials-color)',
             animation: 'var(--animation-color)',
-            utils: 'var(--utils-color)'
+            utils: 'var(--utils-color)',
+            raycast: 'var(--raycast-color)',
+            lines: 'var(--line-color)',
+            postprocessing: 'var(--postprocessing-color)'
         };
         return colors[category as keyof typeof colors] || '#6b7280';
     };
