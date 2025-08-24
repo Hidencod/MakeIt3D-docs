@@ -25,7 +25,7 @@ MakeIt3D is a cutting-edge Construct 3 plugin that integrates Three.js functiona
 ## Getting Started
 
 1. Install the MakeIt3D plugin in Construct 3
-2. Check out our [Quick Start Guide](/docs/getting-started)
+2. Check out our [Quick Start Guide](/docs/intro)
 3. Explore the [Actions](/docs/aces/actions), [Conditions](/docs/aces/conditions), and [Expressions](/docs/aces/expressions)
 4. Configure your project using the [Properties](/docs/aces/properties) panel
 
