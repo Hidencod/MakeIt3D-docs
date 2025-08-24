@@ -1,0 +1,170 @@
+---
+slug: advanced-lighting-materials
+title: Advanced Lighting and Materials in MakeIt3D
+authors: [jammanna]
+tags: [tutorials, makeit3d, webgl, 3d-development]
+---
+
+Take your 3D scenes to the next level with advanced lighting techniques and material properties in MakeIt3D.
+
+This comprehensive guide covers physically-based rendering (PBR), dynamic shadows, and professional lighting setups.
+
+<!-- truncate -->
+
+## Understanding Material Types
+
+MakeIt3D supports several material types, each with unique properties:
+
+### Basic Material
+- **Use case**: Simple, unlit objects
+- **Performance**: Excellent
+- **Best for**: UI elements, effects, stylized games
+
+### Lambert Material
+- **Use case**: Matte surfaces that respond to lighting
+- **Performance**: Good
+- **Best for**: Organic objects, cloth, paper
+
+### Phong Material
+- **Use case**: Shiny surfaces with highlights
+- **Performance**: Good
+- **Best for**: Plastic, metal objects
+
+### Standard Material (PBR)
+- **Use case**: Realistic materials
+- **Performance**: Moderate
+- **Best for**: Photorealistic games, architectural visualization
+
+## Creating Dynamic Lighting Systems
+
+### Three-Point Lighting Setup
+
+This classic photography technique works beautifully in 3D:
+
+```javascript
+// Key Light (main light source)
+MakeIt3D.CreateDirectionalLight("keyLight", "#FFFFFF", 1.2)
+MakeIt3D.SetLightPosition("keyLight", 5, 5, 5)
+
+// Fill Light (softer, fills shadows)
+MakeIt3D.CreateDirectionalLight("fillLight", "#87CEEB", 0.6)
+MakeIt3D.SetLightPosition("fillLight", -3, 2, 3)
+
+// Rim Light (separates object from background)
+MakeIt3D.CreateDirectionalLight("rimLight", "#FFE4B5", 0.8)
+MakeIt3D.SetLightPosition("rimLight", 0, -2, -5)
+```
+
+### Environmental Lighting
+
+For outdoor scenes, combine:
+- **Directional Light**: Sun simulation
+- **Ambient Light**: Sky illumination
+- **Hemisphere Light**: Ground reflection
+
+### Point Light Systems
+
+Perfect for indoor scenes:
+- Use multiple point lights for room illumination
+- Add colored lights for mood
+- Animate intensity for flickering effects
+
+## Advanced Material Properties
+
+### Metallic-Roughness Workflow
+
+```javascript
+// Create a realistic metal material
+MakeIt3D.CreateStandardMaterial("steel")
+MakeIt3D.SetMaterialProperty("steel", "metalness", 0.9)
+MakeIt3D.SetMaterialProperty("steel", "roughness", 0.1)
+MakeIt3D.SetMaterialProperty("steel", "color", "#C0C0C0")
+```
+
+### Texture Mapping
+
+Enhance materials with textures:
+- **Diffuse Map**: Base color
+- **Normal Map**: Surface detail
+- **Roughness Map**: Surface variation
+- **Metallic Map**: Metal/non-metal areas
+
+## Performance Optimization
+
+### Light Count Management
+- **Mobile**: Max 4-6 lights
+- **Desktop**: 8-12 lights optimal
+- Use light culling for large scenes
+
+### Material Sharing
+```javascript
+// Good: Reuse materials
+MakeIt3D.CreateStandardMaterial("wood")
+// Apply "wood" to multiple meshes
+
+// Avoid: Creating unique materials for each object
+```
+
+### LOD (Level of Detail)
+- Use simpler materials for distant objects
+- Switch to basic materials when appropriate
+- Reduce light calculations for background elements
+
+## Debugging Lighting Issues
+
+### Common Problems
+
+**Scene too dark:**
+- Increase ambient light intensity
+- Add fill lighting
+- Check material properties
+
+**Harsh shadows:**
+- Add multiple light sources
+- Use hemisphere lighting
+- Adjust light positions
+
+**Performance drops:**
+- Reduce light count
+- Use simpler materials
+- Enable frustum culling
+
+### Visual Debugging Tools
+
+Enable MakeIt3D logs to see:
+- Light setup information
+- Material property warnings
+- Performance metrics
+
+## Real-World Examples
+
+### Stylized Games
+- Use basic/lambert materials
+- Bright, saturated colors
+- Simple lighting setups
+
+### Realistic Games
+- PBR materials with texture maps
+- Complex lighting systems
+- Environmental reflections
+
+### Performance-Critical Games
+- Optimize light count
+- Use texture atlases
+- Implement LOD systems
+
+## Next Steps
+
+Experiment with:
+- Shadow mapping techniques
+- Post-processing effects
+- Custom shader materials
+- Dynamic time-of-day systems
+
+Master these techniques and your 3D scenes will look professional and perform smoothly across all devices! 🌟
+
+## Resources
+
+- [Three.js Material Documentation](https://threejs.org/docs/#api/en/materials/Material)
+- [PBR Guide for Game Artists](https://substance3d.adobe.com/tutorials/courses/the-pbr-guide-part-1)
+- [Real-Time Rendering Techniques](https://www.realtimerendering.com/)

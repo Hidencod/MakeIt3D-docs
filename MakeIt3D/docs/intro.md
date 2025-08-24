@@ -132,7 +132,7 @@ Now that you have MakeIt3D up and running, explore these resources to master 3D 
 :::info Getting Support
 - **Documentation Issues**: Check our [FAQ section](./faq)
 - **Bug Reports**: Use the browser console (`F12 → Console`) to identify errors
-- **Community**: Join our [Discord server](https://discord.gg/your-server) for community support
+- **Community**: Join our [Discord server](https://discord.gg/BPmX5mgkkv) for community support
 - **Direct Support**: Contact us through the Construct 3 Marketplace or Itch.io
 :::
 
