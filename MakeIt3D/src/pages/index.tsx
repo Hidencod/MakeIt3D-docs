@@ -5,7 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-
+import BrowserOnly from '@docusaurus/BrowserOnly';
 // Import your custom components
 import Hero3DScene from '@site/src/components/Hero3DScene';
 import FeatureShowcase from '@site/src/components/FeatureShowcase';
@@ -17,11 +17,17 @@ function HomepageHeader(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx(styles.hero)}>
-      <div className={styles.heroBackground} >
-        <Hero3DScene />
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-400 to-purple-600">
-          <RotatingCube />
-        </div>
+      <div className={styles.heroBackground}>
+        <BrowserOnly>
+          {() => (
+            <>
+              <Hero3DScene />
+              <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-400 to-purple-600">
+                <RotatingCube />
+              </div>
+            </>
+          )}
+        </BrowserOnly>
       </div>
 
       <div className={styles.heroContent}>
