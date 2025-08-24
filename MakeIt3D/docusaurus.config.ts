@@ -70,7 +70,7 @@ const config: Config = {
       { name: 'google-site-verification', content: 'unBLBzwdfWibcNjL7zQ6VcclnNOMXYKBjnt0xY3LD5I' },
     ],
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/makeit3d-social-card.png',
     navbar: {
       title: 'MakeIt3D',
       logo: {
