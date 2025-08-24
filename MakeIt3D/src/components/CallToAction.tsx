@@ -51,7 +51,7 @@ export default function CallToAction() {
 
                             <div className={styles.ctaPrice}>
                                 <span className={styles.priceLabel}>Starting from</span>
-                                <span className={styles.priceValue}>$29.99</span>
+                                <span className={styles.priceValue}>$5</span>
                                 <span className={styles.priceNote}>One-time purchase</span>
                             </div>
                         </div>
