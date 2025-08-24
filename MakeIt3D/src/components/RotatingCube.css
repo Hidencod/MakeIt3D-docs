@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .rotating-cube {
@@ -14,6 +15,7 @@
     position: relative;
     transform-style: preserve-3d;
     animation: rotateCube 40s infinite linear;
+   
 }
 
 .cube-face {
@@ -32,6 +34,7 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     /* ✅ keeps video/img inside */
+    
 }
 
 .cube-face img,

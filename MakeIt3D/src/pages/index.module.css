@@ -1,3 +1,77 @@
+/* Light theme (default) */
+:root {
+  --hero-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --hero-title: linear-gradient(45deg, #1e293b, #334155);
+  --hero-text: #1e293b;
+  --hero-button-bg: rgba(255, 255, 255, 0.9);
+  --hero-button-border: rgba(30, 41, 59, 0.2);
+  --hero-button-text: #1e293b;
+  --hero-stat-bg: rgba(255, 255, 255, 0.8);
+  --hero-stat-text: #1e293b;
+  --hero-text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+  --hero-overlay: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --hero-bg: linear-gradient(135deg, #000511 0%, #001122 100%);
+  --hero-title: linear-gradient(45deg, #ffffff, #a5b4fc);
+  --hero-text: #f9fafc;
+  --hero-button-bg: rgba(255, 255, 255, 0.1);
+  --hero-button-border: rgba(255, 255, 255, 0.3);
+  --hero-button-text: #fff;
+  --hero-stat-bg: rgba(255, 255, 255, 0.1);
+  --hero-stat-text: #f9fafc;
+  --hero-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --hero-overlay: rgba(0, 0, 0, 0.2);
+}
+
+/* Explicit light theme (for when data-theme="light" is set) */
+[data-theme="light"] {
+  --hero-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --hero-title: linear-gradient(45deg, #1e293b, #334155);
+  --hero-text: #1e293b;
+  --hero-button-bg: rgba(255, 255, 255, 0.9);
+  --hero-button-border: rgba(30, 41, 59, 0.2);
+  --hero-button-text: #1e293b;
+  --hero-stat-bg: rgba(255, 255, 255, 0.8);
+  --hero-stat-text: #1e293b;
+  --hero-text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+  --hero-overlay: rgba(255, 255, 255, 0.1);
+}
+
+/* Apply variables */
+.hero {
+  background: var(--hero-bg);
+}
+
+.heroText {
+  color: var(--hero-text);
+}
+
+.heroTitle {
+  background: var(--hero-title);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.primaryButton {
+  background: var(--hero-button-bg);
+  border: 2px solid var(--hero-button-border);
+  color: var(--hero-button-text);
+}
+
+.secondaryButton {
+  border: 2px solid var(--hero-button-border);
+  color: var(--hero-button-text);
+}
+
+.stat {
+  background: var(--hero-stat-bg);
+  color: var(--hero-stat-text);
+}
+
 /* Enhanced Landing Page Styles */
 .hero {
   position: relative;
@@ -5,7 +79,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--hero-bg);
 }
 
 .heroBackground {
@@ -19,28 +93,36 @@
 
 .heroContent {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  /* Lower z-index so cubes can appear above */
   width: 100%;
   padding: 2rem 0;
+  background: var(--hero-overlay);
+  /* backdrop-filter: blur(8px); */
+  border-radius: 0;
 }
 
 .heroText {
   text-align: center;
-  color: white;
+  color: var(--hero-text);
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  /* Higher z-index for text content */
 }
 
 .heroTitle {
   font-size: 4rem;
   font-weight: 900;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ffffff, #e0e7ff);
+  background: var(--hero-title);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: var(--hero-text-shadow);
   animation: fadeInUp 1s ease-out;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .heroSubtitle {
@@ -49,6 +131,8 @@
   margin-bottom: 1rem;
   opacity: 0.95;
   animation: fadeInUp 1s ease-out 0.2s both;
+  color: var(--hero-text);
+  text-shadow: var(--hero-text-shadow);
 }
 
 .heroDescription {
@@ -60,6 +144,8 @@
   margin-left: auto;
   margin-right: auto;
   animation: fadeInUp 1s ease-out 0.4s both;
+  color: var(--hero-text);
+  text-shadow: var(--hero-text-shadow);
 }
 
 .heroButtons {
@@ -71,31 +157,32 @@
 }
 
 .primaryButton {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  background: var(--hero-button-bg);
+  border: 2px solid var(--hero-button-border);
+  color: var(--hero-button-text);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
 
 .primaryButton:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--hero-button-bg);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  color: var(--hero-button-text);
+  opacity: 1;
 }
 
 .secondaryButton {
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  color: white;
+  border: 2px solid var(--hero-button-border);
+  color: var(--hero-button-text);
   transition: all 0.3s ease;
 }
 
 .secondaryButton:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--hero-button-bg);
   transform: translateY(-2px);
-  color: white;
+  color: var(--hero-button-text);
 }
 
 .heroStats {
@@ -110,16 +197,18 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--hero-stat-bg);
   border-radius: 12px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--hero-button-border);
+  color: var(--hero-stat-text);
 }
 
 .statNumber {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
+  color: var(--hero-stat-text);
 }
 
 .statLabel {
@@ -127,6 +216,7 @@
   opacity: 0.8;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: var(--hero-stat-text);
 }
 
 .heroScrollIndicator {
@@ -135,7 +225,8 @@
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--hero-text);
+  opacity: 0.7;
   animation: fadeInUp 1s ease-out 1s both;
 }
 
@@ -143,6 +234,7 @@
   font-size: 1.5rem;
   animation: bounce 2s infinite;
   margin-top: 0.5rem;
+  color: var(--hero-text);
 }
 
 .main {
