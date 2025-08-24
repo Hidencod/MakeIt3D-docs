@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import { Analytics } from '@vercel/analytics/react'; // Generic React import
 // Import your custom components
 import Hero3DScene from '@site/src/components/Hero3DScene';
 import FeatureShowcase from '@site/src/components/FeatureShowcase';
@@ -36,6 +37,7 @@ function HomepageHeader(): JSX.Element {
             <Heading as="h1" className={styles.heroTitle}>
               MakeIt3D
             </Heading>
+            <Analytics />
             <p className={styles.heroSubtitle}>
               Bring your Construct 3 games to life with stunning 3D graphics
             </p>
