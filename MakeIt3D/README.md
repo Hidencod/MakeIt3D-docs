@@ -1,41 +1,48 @@
-# Website
+## What is MakeIt3D?
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+**MakeIt3D** is a Construct 3 addon that integrates [Three.js](https://threejs.org) — an industry-standard JavaScript 3D library — directly into the Construct 3 runtime.  
+It allows you to add 3D objects, lights, cameras, and animations while still working inside Construct’s visual event system.
+
+### ✨ Features
+
+- Add 3D objects (cubes, spheres, planes, custom models)  
+- Control lights, cameras, and materials  
+- Orbit controls for easy navigation  
+- Built on Three.js WebGL renderer for performance  
+- Works across all platforms supported by Construct 3  
+
+---
 
 ## Installation
 
-```bash
-yarn
-```
+1. Download the `MakeIt3D.c3addon` file.  
+2. In Construct 3:  
+Menu → View → Addon Manager → Install new addon
 
-## Local Development
+yaml
+Copy
+Edit
+3. Select the `.c3addon` file and install.  
+4. Restart Construct 3.  
+5. Insert a new object → look for **MakeIt3D** in the Plugins section.  
 
-```bash
-yarn start
-```
+---
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Quick Example
 
-## Build
+Here’s how to create a simple 3D scene with a rotating cube:
 
-```bash
-yarn build
-```
+```text
+System → On start of layout
+├─ MakeIt3D → Create Scene
+├─ MakeIt3D → Add Cube (Id: "cube1", position: 0,0,0, rotation: 0,0,0, color: MakeIt3D.RGB(255,0,0), scale: 1)
+├─ MakeIt3D → Set Camera Position (x: 0, y: 0, z: 5)
+└─ MakeIt3D → Enable Orbit Controls
+Run your project → you’ll see a red cube that you can orbit around with the mouse. 🚀
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Credits
+This addon includes Three.js licensed under the MIT License.
 
-## Deployment
+© 2010–2025 Three.js Authors.
 
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+MakeIt3D is developed to extend Construct 3 with 3D capabilities using Three.js.
