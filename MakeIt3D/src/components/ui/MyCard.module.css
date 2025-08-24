@@ -88,6 +88,24 @@
     box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.4), 0 10px 10px -5px rgba(16, 185, 129, 0.2);
 }
 
+/* Properties Card */
+.propertiesCard {
+    border-left: 4px solid #f59e0b;
+}
+
+.propertiesCard:hover {
+    border-color: #f59e0b;
+    box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2), 0 10px 10px -5px rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="dark"] .propertiesCard {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(17, 24, 39, 0.9) 100%);
+}
+
+[data-theme="dark"] .propertiesCard:hover {
+    box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.4), 0 10px 10px -5px rgba(245, 158, 11, 0.2);
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -145,6 +163,10 @@
     color: #10b981;
 }
 
+.propertiesContent {
+    color: #f59e0b;
+}
+
 /* Dark mode content colors */
 [data-theme="dark"] .actionsContent {
     color: #a78bfa;
@@ -156,6 +178,10 @@
 
 [data-theme="dark"] .expressionsContent {
     color: #34d399;
+}
+
+[data-theme="dark"] .propertiesContent {
+    color: #fbbf24;
 }
 
 .subtitle {
@@ -197,6 +223,10 @@
 
 .expressionsAccent {
     background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.propertiesAccent {
+    background: linear-gradient(90deg, #f59e0b, #f97316);
 }
 
 /* Subtle pattern overlay */

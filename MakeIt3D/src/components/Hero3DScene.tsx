@@ -1,5 +1,5 @@
 // src/components/Hero3DScene.tsx
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo,useState,useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -149,7 +149,7 @@ function EnergyParticles() {
   const particlesRef = useRef<THREE.Points>(null);
 
   const [positions, colors, velocities] = useMemo(() => {
-    const count = 80;
+    const count = 200;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const velocities = new Float32Array(count * 3);
@@ -537,21 +537,42 @@ function EnergyStream({ start, end, color, offset, index }: any) {
   );
 }
 
+
 export default function Hero3DScene() {
+  const [theme, setTheme] = useState(
+    document.documentElement.getAttribute("data-theme") || "light"
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.getAttribute("data-theme"));
+    });
+    observer.observe(document.documentElement, { attributes: true });
+    return () => observer.disconnect();
+  }, []);
+
+  const gradient =
+    theme === "dark"
+      ? "linear-gradient(180deg, #000511 0%, #001122 100%)"
+      : "linear-gradient(180deg, #f0f4ff 0%, #ffffff 100%)";
+
   return (
-    <div style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      opacity: 0.9,
-      background: 'radial-gradient(ellipse at center, rgba(0, 255, 255, 0.05) 0%, rgba(255, 102, 0, 0.03) 50%, transparent 100%)',
-      filter: 'contrast(1.1) saturate(1.2)'
-    }}>
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        opacity: 0.9,
+        background:
+          "radial-gradient(ellipse at center, rgba(0, 255, 255, 0.05) 0%, rgba(255, 102, 0, 0.03) 50%, transparent 100%)",
+        filter: "contrast(1.1) saturate(1.2)",
+      }}
+    >
       <Canvas
         camera={{ position: [0, 5, 20], fov: 75 }}
-        style={{ background: 'linear-gradient(180deg, #000511 0%, #001122 100%)' }}
+        style={{ background: gradient }}
       >
         <ambientLight intensity={0.1} />
         <pointLight position={[0, 20, 0]} intensity={2} color="#00ffff" />
@@ -560,9 +581,9 @@ export default function Hero3DScene() {
         <pointLight position={[0, -5, 0]} intensity={0.8} color="#0066ff" />
 
         <GridFloor />
-         <EnergyParticles />
-        {/*<DigitalStructures />
-        <EnergyStreams /> */}
+        <EnergyParticles />
+        {/* <DigitalStructures /> */}
+        {/* <EnergyStreams /> */}
       </Canvas>
     </div>
   );

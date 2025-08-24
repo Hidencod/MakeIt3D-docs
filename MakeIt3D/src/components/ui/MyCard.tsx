@@ -7,7 +7,7 @@ interface MyCardProps {
     title?: string;
     children: React.ReactNode;
     className?: string;
-    variant?: 'actions' | 'conditions' | 'expressions';
+    variant?: 'actions' | 'conditions' | 'expressions' | 'properties';
     subtitle?: string;
     href?: string;
     onClick?: () => void;
@@ -32,6 +32,8 @@ export default function MyCard({
                 return `${baseClasses} ${styles.conditionsCard}`;
             case 'expressions':
                 return `${baseClasses} ${styles.expressionsCard}`;
+            case 'properties':
+                return `${baseClasses} ${styles.propertiesCard}`;
             default:
                 return baseClasses;
         }
@@ -45,6 +47,8 @@ export default function MyCard({
                 return `${styles.content} ${styles.conditionsContent}`;
             case 'expressions':
                 return `${styles.content} ${styles.expressionsContent}`;
+            case 'properties':
+                return `${styles.content} ${styles.propertiesContent}`;
             default:
                 return styles.content;
         }
@@ -58,6 +62,8 @@ export default function MyCard({
                 return `${styles.accentLine} ${styles.conditionsAccent}`;
             case 'expressions':
                 return `${styles.accentLine} ${styles.expressionsAccent}`;
+            case 'properties':
+                return `${styles.accentLine} ${styles.propertiesAccent}`;
             default:
                 return styles.accentLine;
         }
@@ -71,6 +77,8 @@ export default function MyCard({
                 return '🎯';
             case 'expressions':
                 return '🧮';
+            case 'properties':
+                return '⚙️';
             default:
                 return '📊';
         }

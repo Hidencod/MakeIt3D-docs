@@ -15,30 +15,31 @@ interface NextStepsProps {
 }
 
 const defaultSteps: NextStepItem[] = [
-    {
-        title: "Learn the Basics",
-        description: "Master fundamental 3D concepts with our step-by-step tutorials",
-        link: "./examples/basic",
-        emoji: "📚"
-    },
+   
     {
         title: "Configuration",
         description: "Discover all plugin properties and customization options",
-        link: "./properties",
+        link: "./aces/properties",
         emoji: "⚙️"
     },
     {
         title: "API Reference",
         description: "Complete documentation of actions, conditions, and expressions",
-        link: "./api",
+        link: "./aces",
         emoji: "🔧"
     },
     {
-        title: "Advanced Tutorials",
-        description: "Build complex 3D scenes with lighting, animations, and effects",
-        link: "./examples/advanced",
-        emoji: "🎯"
-    }
+        title: "Examples",
+        description: "Explore ready-made 3D scenes and projects to jumpstart your development",
+        link: "./examples",
+        emoji: "📚"
+    },
+    // {
+    //     title: "Advanced Tutorials",
+    //     description: "Build complex 3D scenes with lighting, animations, and effects",
+    //     link: "./examples/advanced",
+    //     emoji: "🎯"
+    // }
 ];
 
 export default function NextSteps({ steps = defaultSteps, className = "" }: NextStepsProps) {
