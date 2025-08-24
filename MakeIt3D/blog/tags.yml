@@ -1,19 +1,34 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+threejs:
+  label: Three.js
+  permalink: /threejs
+  description: Three.js related content and tutorials
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+construct3:
+  label: Construct 3
+  permalink: /construct3
+  description: Construct 3 game development tips and guides
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+3d-development:
+  label: 3D Development
+  permalink: /3d-development
+  description: 3D game development techniques and best practices
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+makeit3d:
+  label: MakeIt3D
+  permalink: /makeit3d
+  description: MakeIt3D plugin updates and features
+
+webgl:
+  label: WebGL
+  permalink: /webgl
+  description: WebGL and 3D graphics programming
+
+tutorials:
+  label: Tutorials
+  permalink: /tutorials
+  description: Step-by-step tutorials and guides
+
+gamedev:
+  label: Game Development
+  permalink: /gamedev
+  description: Game development tips and techniques
