@@ -19,9 +19,9 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
       description: "Triggered when a new 3D object is successfully created in the scene.",
       trigger: "A new object is spawned or created",
       parameters: [
-        { name: "objectId", description: "Object Id to check whether created" }
+        { name: "object", description: "Object placeholder to check whether created" }
       ],
-      example: "// On Object Created With Id \"hero\" -> Log \"New object: \" & ObjectID"
+      example: "// On Object Created With placeholder \"hero\" -> Log \"New object: \" & object"
     }}
   />
   <ConditionCard 
@@ -29,12 +29,12 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
     name: "Is Object Loaded In Scene",
     category: "object",
     eventType: "state",
-    description: "Returns true if the object with the specified ID is currently loaded in the scene.",
+    description: "Returns true if the object with the specified placeholder is currently loaded in the scene.",
     trigger: "Checks whether a specific object is present in the scene.",
     parameters: [
-      { name: "objectId", description: "The ID of the object to check for presence in the scene." }
+      { name: "object", description: "The placeholder of the object to check for presence in the scene." }
     ],
-    example: "// If Object with Id \"enemyBoss\" is loaded -> Play animation"
+    example: "// If Object with placeholder \"enemyBoss\" is loaded -> Play animation"
   }}
 />
 
@@ -43,12 +43,24 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
     name: "On Object Destroyed",
     category: "object",
     eventType: "trigger",
-    description: "Triggered when an object is destroyed and removed from the scene. If no object ID is provided, the condition triggers for any object.",
-    trigger: "An object with the specified ID is destroyed or removed from the scene.",
+    description: "Triggered when an object is destroyed and removed from the scene.",
+    trigger: "An object with the specified placeholder is destroyed or removed from the scene.",
     parameters: [
-      { name: "objectId", description: "The ID of the object to monitor for destruction (optional: leave empty to listen for all objects)." }
+      { name: "Object", description: "The placeholder of the object to monitor for destruction (optional: leave empty to listen for all objects)." }
     ],
-    example: "// On Object Destroyed with ID \"barrel01\" -> Spawn explosion effect"
+    example: "// On Object Destroyed with placeholder \"barrel01\" -> Spawn explosion effect"
+  }}
+/>
+<ConditionCard 
+  condition={{
+    name: "On Any Object Destroyed",
+    category: "object",
+    eventType: "trigger",
+    description: "Triggered when an any object is destroyed and removed from the scene.",
+    trigger: "An any object destroyed or removed from the scene.",
+    parameters: [
+      ],
+    example: "// On Any Object Destroyed with placeholder \"barrel01\" -> Spawn explosion effect"
   }}
 />
 <ConditionCard 
@@ -70,21 +82,14 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
       category: "object",
       eventType: "state",
       description: "Check if an object is currently visible to the camera.",
-      parameters: ["objectId"],
+      parameters: [
+         { name: "Object", description: "The placeholder of the object is visible" },
+        ],
       example: "// Check if object is visible\nIs Visible (\"enemy_1\") -> Enable AI Behavior"
     }}
   />
   
-  <ConditionCard 
-    condition={{
-      name: "Is In Camera View",
-      category: "object",
-      eventType: "state",
-      description: "Test whether an object is within the camera's field of view.",
-      parameters: ["objectId", "margin?"],
-      example: "// Check with 10% margin\nIs In Camera View (\"pickup_item\", 0.1) -> Show UI Indicator"
-    }}
-  />
+ 
 </div>
 
 ## Scene Conditions
@@ -124,7 +129,7 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
     description: "Triggered when a specific animation clip finishes playing on an object.",
     trigger: "An animation clip finishes playing completely.",
     parameters: [
-      { name: "objectId", description: "The ID of the object whose animation finished" },
+      { name: "Object", description: "The placeholder of the object whose animation finished" },
       { name: "animationIndex", description: "The index of the animation clip that finished" }
     ],
     example: "// On Animation Clip Finished for object \"player\" index 2 -> Trigger next action"
@@ -138,7 +143,7 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
     description: "Triggered when an animation loop finishes playing on an object.",
     trigger: "An animation loop completes (e.g., a looping walk cycle ends its set loop count).",
     parameters: [
-      { name: "objectId", description: "The ID of the object whose animation loop finished" },
+      { name: "Object", description: "The placeholder of the object whose animation loop finished" },
       { name: "animationIndex", description: "The index of the animation loop that finished" }
     ],
     example: "// On Animation Loop Finished for object \"npc01\" index 0 -> Switch to idle animation"
@@ -152,7 +157,7 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
     description: "Loops through each animation available on a specified object.",
     trigger: "Iterates through all animations for a given object.",
     parameters: [
-      { name: "objectId", description: "The ID of the object whose animations will be iterated" }
+      { name: "Object", description: "The placeholder of the object whose animations will be iterated" }
     ],
     example: "// For Each Animation on object 'enemy' -> Print animation name or index"
   }}
@@ -184,6 +189,6 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
 - Cache condition results when checking the same thing multiple times
 
 ### **Parameter Types**
-- **objectId** - String identifier for specific objects
+- **Object** - Placeholder object(which can be any sprite or dedicated object which is developed alongside with this addon) identifier for specific objects
 - **comparison** - Operators like `>`, `<`, `=`, `>=`, `<=`  
 - **margin** - Float value for tolerance/buffer zones (0.0 to 1.0)
