@@ -11,8 +11,8 @@ Explore these practical examples to see MakeIt3D in action. Each example include
 <ExamplesGrid examples={[
   {
     id: "load-custom-model",
-    title: "Load Custom Model",
-    description: "A simple scene to demonstrate custom model loading by using MakeIt3D in construct3.",
+    title: "Custom Model - Animations",
+    description: "Demonstrates custom model loading and animation playback using MakeIt3D in Construct 3.",
     thumbnail: "https://makeit3d-examples.pages.dev/examples/character_basic/media/thumbnail.png",
     previewMedia: "https://makeit3d-examples.pages.dev/examples/character_basic/media/preview.mp4", // GIF preview
     previewType: "video",

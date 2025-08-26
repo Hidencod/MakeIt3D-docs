@@ -52,6 +52,7 @@
         linear-gradient(45deg, transparent 75%, #3b82f6 75%),
         linear-gradient(-45deg, transparent 75%, #3b82f6 75%);
     background-size: 20px 20px;
+    opacity: 0.9;
 }
 
 .cube-face:nth-child(2) {
@@ -59,23 +60,27 @@
     background: radial-gradient(circle, #8b5cf6 2px, transparent 2px);
     background-size: 15px 15px;
     background-color: #3b82f6;
+    opacity: 1;
 }
 
 .cube-face:nth-child(3) {
     transform: rotateY(180deg) translateZ(125px);
     background: linear-gradient(90deg, #8b5cf6 50%, #3b82f6 50%);
     background-size: 30px 30px;
+    opacity: 1;
 }
 
 .cube-face:nth-child(4) {
     transform: rotateY(-90deg) translateZ(125px);
     background: conic-gradient(from 0deg, #8b5cf6, #3b82f6, #8b5cf6);
+    opacity: 0.9;
 }
 
 .cube-face:nth-child(5) {
     transform: rotateX(90deg) translateZ(125px);
     background: linear-gradient(45deg, #8b5cf6 0%, #3b82f6 100%);
     position: relative;
+    opacity: 0.9;
 }
 
 .cube-face:nth-child(5)::before {
@@ -87,6 +92,7 @@
             transparent 10px,
             rgba(255, 255, 255, 0.1) 10px,
             rgba(255, 255, 255, 0.1) 20px);
+    opacity: 0.9;
 }
 
 .cube-face:nth-child(6) {
@@ -95,6 +101,7 @@
         radial-gradient(circle at 75% 75%, #3b82f6 25%, transparent 25%);
     background-size: 40px 40px;
     background-color: #6d28d9;
+    opacity: 0.9;
 }
 
 /* Glow effect */
