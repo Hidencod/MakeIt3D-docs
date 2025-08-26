@@ -7,6 +7,8 @@ interface ExampleCardProps {
     title: string;
     description: string;
     thumbnail: string;
+    previewMedia?: string; // GIF or video URL for hover preview
+    previewType?: 'gif' | 'video'; // Type of preview media
     difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
     tags?: string[];
     playUrl?: string;
@@ -19,6 +21,8 @@ export default function ExampleCard({
     title,
     description,
     thumbnail,
+    previewMedia,
+    previewType = 'gif',
     difficulty = 'Beginner',
     tags = [],
     playUrl,
@@ -27,6 +31,9 @@ export default function ExampleCard({
     className = ""
 }: ExampleCardProps) {
     const history = useHistory();
+    const [isHovering, setIsHovering] = React.useState(false);
+    const [showPreview, setShowPreview] = React.useState(false);
+    const hoverTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
     const getDifficultyColor = () => {
         switch (difficulty) {
@@ -57,6 +64,32 @@ export default function ExampleCard({
         }
     };
 
+    const handleMouseEnter = () => {
+        setIsHovering(true);
+        if (previewMedia) {
+            hoverTimeoutRef.current = setTimeout(() => {
+                setShowPreview(true);
+            }, 800); // Show preview after 800ms hover
+        }
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovering(false);
+        setShowPreview(false);
+        if (hoverTimeoutRef.current) {
+            clearTimeout(hoverTimeoutRef.current);
+            hoverTimeoutRef.current = null;
+        }
+    };
+
+    React.useEffect(() => {
+        return () => {
+            if (hoverTimeoutRef.current) {
+                clearTimeout(hoverTimeoutRef.current);
+            }
+        };
+    }, []);
+
     return (
         <div className={`${styles.card} ${featured ? styles.featured : ''} ${className}`}>
             {/* Featured star */}
@@ -71,9 +104,31 @@ export default function ExampleCard({
                 <img
                     src={thumbnail}
                     alt={title}
-                    className={styles.thumbnail}
+                    className={`${styles.thumbnail} ${showPreview ? styles.thumbnailHidden : ''}`}
                     loading="lazy"
                 />
+
+                {/* Preview media */}
+                {previewMedia && showPreview && (
+                    <div className={styles.previewContainer}>
+                        {previewType === 'video' ? (
+                            <video
+                                src={previewMedia}
+                                className={styles.previewMedia}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                            />
+                        ) : (
+                            <img
+                                src={previewMedia}
+                                alt={`${title} preview`}
+                                className={styles.previewMedia}
+                            />
+                        )}
+                    </div>
+                )}
 
                 {/* Play overlay */}
                 {playUrl && (
@@ -88,6 +143,13 @@ export default function ExampleCard({
                 <div className={`${styles.difficultyBadge} ${styles[`difficulty${difficulty}`]}`}>
                     {difficulty}
                 </div>
+
+                {/* Preview indicator */}
+                {previewMedia && !showPreview && isHovering && (
+                    <div className={styles.previewIndicator}>
+                        Hold to preview
+                    </div>
+                )}
             </div>
 
             {/* Content */}
@@ -120,8 +182,9 @@ export default function ExampleCard({
                     {c3pUrl && (
                         <button
                             className={`${styles.button} ${styles.downloadButton}`}
-                            onClick={handleDownloadClick}
-                            title="Download .c3p file"
+                            // onClick={handleDownloadClick}
+                            // title="Download .c3p file"
+                            title="Addon not released yet!!"
                         >
                             📁 .c3p
                         </button>
