@@ -8,6 +8,8 @@ interface Example {
     title: string;
     description: string;
     thumbnail: string;
+    previewMedia?: string; // GIF or video URL for hover preview
+    previewType?: 'gif' | 'video'; // Type of preview media
     difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
     tags: string[];
     playUrl?: string;
@@ -86,6 +88,8 @@ export default function ExamplesGrid({ examples, className = "" }: ExamplesGridP
                                 title={example.title}
                                 description={example.description}
                                 thumbnail={example.thumbnail}
+                                previewMedia={example.previewMedia}
+                                previewType={example.previewType}
                                 difficulty={example.difficulty}
                                 tags={example.tags}
                                 playUrl={example.playUrl}
@@ -110,6 +114,8 @@ export default function ExamplesGrid({ examples, className = "" }: ExamplesGridP
                                 title={example.title}
                                 description={example.description}
                                 thumbnail={example.thumbnail}
+                                previewMedia={example.previewMedia}
+                                previewType={example.previewType}
                                 difficulty={example.difficulty}
                                 tags={example.tags}
                                 playUrl={example.playUrl}
