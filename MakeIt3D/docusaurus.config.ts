@@ -61,19 +61,15 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+        changefreq: 'weekly',
+        priority: 0.5,
+        filename: 'sitemap.xml',
+      },
       } satisfies Preset.Options,
     ],
   ],
-plugins: [
-  [
-    '@docusaurus/plugin-sitemap',
-    {
-      changefreq: 'weekly',
-      priority: 0.5,
-      filename: 'sitemap.xml',
-    },
-  ],
-],
+
   themeConfig: {
     metadata: [
       { name: 'google-site-verification', content: 'unBLBzwdfWibcNjL7zQ6VcclnNOMXYKBjnt0xY3LD5I' },
