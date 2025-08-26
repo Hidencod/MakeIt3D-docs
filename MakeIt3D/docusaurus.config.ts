@@ -68,6 +68,15 @@ const config: Config = {
   themeConfig: {
     metadata: [
       { name: 'google-site-verification', content: 'unBLBzwdfWibcNjL7zQ6VcclnNOMXYKBjnt0xY3LD5I' },
+      {
+        name: 'keywords',
+        content: 'Construct 3 addon, Construct3 3D, Three.js integration, game development, 3D plugin, Construct3, game engine addon, WebGL'
+      },
+      { name: 'author', content: 'Jammanna' },
+      {
+        name: 'description',
+        content: 'Documentation for the Make It 3D Construct 3 addon, which brings Three.js-powered 3D support to Construct game projects.'
+      },
     ],
     // Replace with your project's social card
     image: 'img/makeit3d-social-card.png',
