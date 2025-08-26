@@ -64,7 +64,16 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
+plugins: [
+  [
+    '@docusaurus/plugin-sitemap',
+    {
+      changefreq: 'weekly',
+      priority: 0.5,
+      filename: 'sitemap.xml',
+    },
+  ],
+],
   themeConfig: {
     metadata: [
       { name: 'google-site-verification', content: 'unBLBzwdfWibcNjL7zQ6VcclnNOMXYKBjnt0xY3LD5I' },
