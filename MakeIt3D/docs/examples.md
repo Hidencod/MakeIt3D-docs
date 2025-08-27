@@ -23,6 +23,20 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     featured: true,
     category: "Basic 3D"
   }
+  {
+    id: "model-performance",
+    title: "Basic - Performance",
+    description: "Basic performance test.",
+    thumbnail: "https://makeit3d-examples.pages.dev/examples/character_performance/media/preview.png",
+    previewMedia: "https://makeit3d-examples.pages.dev/examples/character_basic/media/preview.mp4", // GIF preview
+    previewType: "video",
+    difficulty: "Beginner",
+    tags: ["3D Objects", "Animation"],
+    playUrl: "https://makeit3d-examples.pages.dev/examples/character_performance/",
+    c3pUrl: "https://example.com/download/rotating-cube.c3p",
+    featured: true,
+    category: "Basic 3D"
+  }
 ]} />
 <!-- {
     id: "lighting-demo",
