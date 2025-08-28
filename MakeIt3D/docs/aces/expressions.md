@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Expressions
+# 🧮Expressions
 
 Expressions retrieve data from your 3D scene and return values that can be used in Construct 3 events. They're perfect for getting positions, rotations, scene information, and more.
 

@@ -7,7 +7,7 @@ interface MyCardProps {
     title?: string;
     children: React.ReactNode;
     className?: string;
-    variant?: 'actions' | 'conditions' | 'expressions' | 'properties';
+    variant?: 'actions' | 'conditions' | 'expressions' | 'properties' | 'dependency';
     subtitle?: string;
     href?: string;
     onClick?: () => void;
@@ -23,6 +23,7 @@ export default function MyCard({
     onClick
 }: MyCardProps) {
     const history = useHistory();
+
     const getCardClasses = () => {
         const baseClasses = styles.card;
         switch (variant) {
@@ -34,6 +35,8 @@ export default function MyCard({
                 return `${baseClasses} ${styles.expressionsCard}`;
             case 'properties':
                 return `${baseClasses} ${styles.propertiesCard}`;
+            case 'dependency':
+                return `${baseClasses} ${styles.dependencyCard}`;
             default:
                 return baseClasses;
         }
@@ -49,6 +52,8 @@ export default function MyCard({
                 return `${styles.content} ${styles.expressionsContent}`;
             case 'properties':
                 return `${styles.content} ${styles.propertiesContent}`;
+            case 'dependency':
+                return `${styles.content} ${styles.dependencyContent}`;
             default:
                 return styles.content;
         }
@@ -64,6 +69,8 @@ export default function MyCard({
                 return `${styles.accentLine} ${styles.expressionsAccent}`;
             case 'properties':
                 return `${styles.accentLine} ${styles.propertiesAccent}`;
+            case 'dependency':
+                return `${styles.accentLine} ${styles.dependencyAccent}`;
             default:
                 return styles.accentLine;
         }
@@ -79,6 +86,8 @@ export default function MyCard({
                 return '🧮';
             case 'properties':
                 return '⚙️';
+            case 'dependency':
+                return '🔗';
             default:
                 return '📊';
         }
