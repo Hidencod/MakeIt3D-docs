@@ -76,21 +76,22 @@ InstanceID = 2  // Third instance
 ![UID Location](/img/dependency_example_img/placeholder_example_addcube.png)
 ### Creating Multiple Characters
 
-Let's say you have a placeholder object named "Enemy" with UID `5`:
+Let's say you have a placeholder object named "Hero" with UID `3`:
 
 ```javascript
 // Create different enemy instances
-CreateObject("Enemy", 0)  // Creates: Enemy_5_0
-CreateObject("Enemy", 1)  // Creates: Enemy_5_1  
-CreateObject("Enemy", 2)  // Creates: Enemy_5_2
+CreateObject("Hero", 0)  // Creates: Hero_3_0
+CreateObject("Hero", 1)  // Creates: Hero_3_1  
+CreateObject("Hero", 2)  // Creates: Hero_3_2
 ```
 
 Now you have three different 3D enemies, all based on the same placeholder!
 
-### Accessing Object Properties
+### Accessing Object Properties using expressions
 
 To get the X position of a specific instance:
 
+![UID Location](/img/dependency_example_img/expression_example.png)
 ```javascript
 // Get position X of Enemy_5_1
 var posX = MakeIt3D.PositionX("Enemy_5_1");
