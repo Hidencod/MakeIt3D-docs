@@ -176,6 +176,22 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
   }}
 />
 
+## Utils
+<ConditionCard 
+  condition={{
+    name: "Pick Object By Instace Id",
+    category: "utils",
+    eventType: "state",
+    description: "Picks Object instance by id( currently it picks only one object per block)",
+    
+    parameters: [
+      { name: "Object", description: "The placeholder object to pick" },
+      { name: "Instance id", description: "Instance id to pick the placeholder object specific instance" }
+
+    ],
+    example: "// On pick object \"PlaceholderObject\" with instance id 2 -> Log \"Set Postion X to 5\""
+  }}
+/>
 
 ## Usage Tips
 
