@@ -74,6 +74,10 @@ const config: Config = {
     metadata: [
       { name: 'title', content: 'MakeIt3D - 3D Plugin for Construct 3' }, 
       { name: 'google-site-verification', content: 'unBLBzwdfWibcNjL7zQ6VcclnNOMXYKBjnt0xY3LD5I' },
+      { property: 'og:title', content: 'MakeIt3D - 3D Plugin for Construct 3' },
+  { property: 'og:description', content: 'Powerful 3D support for Construct 3 using Three.js' },
+  { property: 'og:image', content: 'https://make-it-3d.vercel.app/img/makeit3d-social-card.png' },
+  { property: 'og:type', content: 'website' },
       {
         name: 'keywords',
         content: 'Construct 3 addon, Construct3 3D, Three.js integration, game development, 3D plugin, Construct3, game engine addon, WebGL'
