@@ -72,6 +72,7 @@ const config: Config = {
 
   themeConfig: {
     metadata: [
+      { name: 'title', content: 'MakeIt3D - 3D Plugin for Construct 3' }, 
       { name: 'google-site-verification', content: 'unBLBzwdfWibcNjL7zQ6VcclnNOMXYKBjnt0xY3LD5I' },
       {
         name: 'keywords',
