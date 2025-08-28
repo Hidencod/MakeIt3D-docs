@@ -1,4 +1,4 @@
-# Properties
+# ⚙️Properties
 
 Configure your **MakeIt3D** plugin through the Properties Panel in Construct 3.
 

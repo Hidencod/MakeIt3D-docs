@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Conditions
+# 🎯Conditions
 
 Conditions allow you to check the state of your 3D scene or respond to events. Use these in Construct 3 Event Sheets to create interactive 3D experiences.
 

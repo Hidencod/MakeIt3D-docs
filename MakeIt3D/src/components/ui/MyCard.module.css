@@ -106,11 +106,62 @@
     box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.4), 0 10px 10px -5px rgba(245, 158, 11, 0.2);
 }
 
+/* Dependency Card - New styling */
+.dependencyCard {
+    border-left: 4px solid #ef4444;
+    position: relative;
+}
+
+.dependencyCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(239, 68, 68, 0.05) 10px,
+            rgba(239, 68, 68, 0.05) 20px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dependencyCard:hover::before {
+    opacity: 1;
+}
+
+.dependencyCard:hover {
+    border-color: #ef4444;
+    box-shadow: 0 20px 25px -5px rgba(239, 68, 68, 0.2), 0 10px 10px -5px rgba(239, 68, 68, 0.1);
+    transform: translateY(-4px) rotateX(2deg);
+}
+
+[data-theme="dark"] .dependencyCard {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(17, 24, 39, 0.9) 100%);
+}
+
+[data-theme="dark"] .dependencyCard::before {
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 8px,
+            rgba(239, 68, 68, 0.08) 8px,
+            rgba(239, 68, 68, 0.08) 16px);
+}
+
+[data-theme="dark"] .dependencyCard:hover {
+    box-shadow: 0 20px 25px -5px rgba(239, 68, 68, 0.4), 0 10px 10px -5px rgba(239, 68, 68, 0.2);
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .title {
@@ -139,11 +190,32 @@
     transform: scale(1.1);
 }
 
+/* Special dependency icon animation */
+.dependencyCard:hover .icon {
+    animation: dependencyPulse 2s ease-in-out infinite;
+}
+
+@keyframes dependencyPulse {
+
+    0%,
+    100% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
 .content {
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .card:hover .content {
@@ -167,6 +239,11 @@
     color: #f59e0b;
 }
 
+.dependencyContent {
+    color: #ef4444;
+    text-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
 /* Dark mode content colors */
 [data-theme="dark"] .actionsContent {
     color: #a78bfa;
@@ -184,6 +261,11 @@
     color: #fbbf24;
 }
 
+[data-theme="dark"] .dependencyContent {
+    color: #f87171;
+    text-shadow: 0 0 20px rgba(248, 113, 113, 0.4);
+}
+
 .subtitle {
     font-size: 0.75rem;
     font-weight: 500;
@@ -192,6 +274,8 @@
     letter-spacing: 0.05em;
     margin-top: 0.5rem;
     opacity: 0.8;
+    position: relative;
+    z-index: 2;
 }
 
 [data-theme="dark"] .subtitle {
@@ -207,6 +291,7 @@
     height: 2px;
     opacity: 0;
     transition: opacity 0.3s ease;
+    z-index: 3;
 }
 
 .card:hover .accentLine {
@@ -229,6 +314,24 @@
     background: linear-gradient(90deg, #f59e0b, #f97316);
 }
 
+.dependencyAccent {
+    background: linear-gradient(90deg, #ef4444, #dc2626, #b91c1c);
+    height: 3px;
+    animation: dependencyFlow 3s ease-in-out infinite;
+}
+
+@keyframes dependencyFlow {
+
+    0%,
+    100% {
+        background: linear-gradient(90deg, #ef4444, #dc2626, #b91c1c);
+    }
+
+    50% {
+        background: linear-gradient(90deg, #dc2626, #b91c1c, #ef4444);
+    }
+}
+
 /* Subtle pattern overlay */
 .patternOverlay {
     position: absolute;
@@ -240,6 +343,7 @@
     pointer-events: none;
     transition: opacity 0.3s ease;
     opacity: 0;
+    z-index: 1;
 }
 
 [data-theme="dark"] .patternOverlay {
@@ -248,4 +352,13 @@
 
 .card:hover .patternOverlay {
     opacity: 1;
+}
+
+/* Special dependency pattern overlay */
+.dependencyCard .patternOverlay {
+    background: radial-gradient(circle at 80% 20%, rgba(239, 68, 68, 0.15) 0%, transparent 60%);
+}
+
+[data-theme="dark"] .dependencyCard .patternOverlay {
+    background: radial-gradient(circle at 80% 20%, rgba(239, 68, 68, 0.1) 0%, transparent 60%);
 }

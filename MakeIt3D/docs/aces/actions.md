@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Actions
+# ⚡Actions
 
 This section lists all available **Actions** in MakeIt3D. Use these in Construct 3 Event Sheets to create and control 3D elements.
 
