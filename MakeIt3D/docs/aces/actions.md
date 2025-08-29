@@ -17,12 +17,12 @@ import ActionCard from '@site/src/components/ui/ActionCard';
     category: "scene",
     description: "Initialize a new 3D scene with optional helpers and controls.",
     parameters: [
-      { name: "layerIndex?", description: "Index or name of layer where scene is created." },
-      { name: "addRoomLighting?", description: "Add basic ambient lighting to the scene." },
-      { name: "enablePostProcessing?", description: "Enable visual effects like bloom or depth of field." },
-      { name: "addAxisHelper?", description: "Show XYZ axis helper for orientation." },
-      { name: "addGridHelper?", description: "Add a ground grid to help with scale and positioning." },
-      { name: "enableOrbitControls?", description: "Enable camera orbit controls with mouse/touch." }
+      { name: "layerIndex", description: "Index or name of layer where scene is created." },
+      { name: "addRoomLighting", description: "Add basic ambient lighting to the scene." },
+      { name: "enablePostProcessing", description: "Enable visual effects like bloom or depth of field." },
+      { name: "addAxisHelper", description: "Show XYZ axis helper for orientation." },
+      { name: "addGridHelper", description: "Add a ground grid to help with scale and positioning." },
+      { name: "enableOrbitControls", description: "Enable camera orbit controls with mouse/touch." }
     ],
     example: "MakeIt3D.CreateScene(0 or Layer name, true, false, true, true, true)"
   }}
@@ -35,13 +35,13 @@ import ActionCard from '@site/src/components/ui/ActionCard';
       category: "scene",
       description: "Loads json scene saved by three.js editor",
        parameters: [
-      { name: "layerIndex?", description: "Index or name of layer where scene is created." },
-      { name: "path?", description: "path for json (select from dropdown)" },
-      { name: "useSceneCamera?", description: "check this to use camera from json scene" },
-      { name: "enablePostProcessing?", description: "Enable visual effects like bloom or depth of field." },
-      { name: "addAxisHelper?", description: "Show XYZ axis helper for orientation." },
-      { name: "addGridHelper?", description: "Add a ground grid to help with scale and positioning." },
-      { name: "enableOrbitControls?", description: "Enable camera orbit controls with mouse/touch." }
+      { name: "layerIndex", description: "Index or name of layer where scene is created." },
+      { name: "path", description: "path for json (select from dropdown)" },
+      { name: "useSceneCamera", description: "check this to use camera from json scene" },
+      { name: "enablePostProcessing", description: "Enable visual effects like bloom or depth of field." },
+      { name: "addAxisHelper", description: "Show XYZ axis helper for orientation." },
+      { name: "addGridHelper", description: "Add a ground grid to help with scale and positioning." },
+      { name: "enableOrbitControls", description: "Enable camera orbit controls with mouse/touch." }
     ],
       example: "MakeIt3D.CreateScene(0 or Layer name, json path, false, false, true, true, true)"
     }}
@@ -55,7 +55,7 @@ This 3D scene uses Construct's HTML Layer feature to render Three.js. The plugin
       category: "scene",
       description: "If the automatic render loop update is inconsistent, users can manually update the render loop by calling this function with the delta time on each tick.",
        parameters: [
-      { name: "deltaTime?", description: "Delta time from construct3 event sheet" },
+      { name: "deltaTime", description: "Delta time from construct3 event sheet" },
     ],
       example: "MakeIt3D.UpdateRenderLoop(dt)"
     }}
@@ -95,7 +95,7 @@ parameters:  [
     description: "Follow the object continuosly with the given placeholder object, maintaining a specified offset and smoothing the movement using a lerp factor. You can stop following by using <i>Stop Camera Following Object</i> Action"
 ,
 parameters: [
-  { name: "Object", description: "The placeholder of the object to follow." },
+  { name: "Placeholder Object", description: "The placeholder of the object to follow." },
   { name: "Offset X", description: "Camera offset along the X-axis." },
   { name: "Offset Y", description: "Camera offset along the Y-axis." },
   { name: "Offset Z", description: "Camera offset along the Z-axis." },
@@ -173,7 +173,7 @@ parameters: [
     category: "camera",
     description: "Makes the camera to look at the object continously with the given placeholder and smoothing the lookat using a lerp factor.",
 parameters: [
-  { name: "Object", description: "The placeholder of the object to lookat." },
+  { name: "Placeholder Object", description: "The placeholder of the object to lookat." },
   { name: "Offset X", description: "Camera lookat offset along the X-axis." },
   { name: "Offset Y", description: "Camera lookat offset along the Y-axis." },
   { name: "Offset Z", description: "Camera lookat offset along the Z-axis." },
@@ -263,7 +263,7 @@ parameters: [
     category: "objects",
     description: "Creates a plane geometry to the scene with customizable segments.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position To Place Object( Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation To Rotate Object( Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the plane (e.g., MakeIt3D(255,0,0) for red)" },
@@ -284,7 +284,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
       category: "objects",
       description: "Create a cube object with id at the specified position with optional parameters.",
       parameters: [
-        { name: "Object", description: "The placeholder of the object to create." },
+        { name: "Placeholder Object", description: "The placeholder of the object to create." },
         { name: "Position", description: "Position To Place Object( Use MakeIt3D.Vector3(x,y,z) to input position)" },
         { name: "Rotation", description: "Rotation To Rotate Object( Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
         { name: "Color", description: "RGB color of the plane (e.g., MakeIt3D(255,0,0) for red)." },
@@ -304,7 +304,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a cylinder geometry to the scene with customizable radius, height, segments, and angle settings.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the cylinder (e.g., MakeIt3D.RGB(255,0,0) for red)" },
@@ -328,7 +328,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a 20-sided polyhedron (icosahedron) to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the icosahedron (e.g., MakeIt3D.RGB(255,0,0) for red)" },
@@ -346,7 +346,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a torus (donut shape) to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the torus (e.g., MakeIt3D.RGB(255,0,0) for red)" },
@@ -366,7 +366,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a complex torus knot to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the torus knot (e.g., MakeIt3D.RGB(255,0,0) for red)" },
@@ -388,7 +388,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a cone geometry to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the cone (e.g., MakeIt3D(255,0,0) for red)" },
@@ -409,7 +409,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a capsule (pill shape) geometry to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the capsule (e.g., MakeIt3D(255,0,0) for red)" },
@@ -430,7 +430,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a flat ring geometry to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the ring (e.g., MakeIt3D(255,0,0) for red)" },
@@ -453,7 +453,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a flat circle geometry to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the circle (e.g., MakeIt3D(255,0,0) for red)" },
@@ -474,7 +474,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a 12-sided polyhedron (dodecahedron) to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the dodecahedron (e.g., MakeIt3D(255,0,0) for red)" },
@@ -493,7 +493,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates an 8-sided polyhedron (octahedron) to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the octahedron (e.g., MakeIt3D(255,0,0) for red)" },
@@ -512,7 +512,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Creates a 4-sided polyhedron (tetrahedron) to the scene.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to identify later" },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to identify later" },
       { name: "Position", description: "Position to place the object (Use MakeIt3D.Vector3(x,y,z) to input position)" },
       { name: "Rotation", description: "Rotation to rotate the object (Use MakeIt3D.Vector3(x,y,z) to input rotation)" },
       { name: "Color", description: "RGB color of the tetrahedron (e.g., MakeIt3D(255,0,0) for red)" },
@@ -532,7 +532,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "objects",
     description: "Load a custom 3D model from a given path with position, rotation, scale, and visibility options.",
     parameters: [
-      { name: "Object", description: "The unique placeholder of the object to reference it." },
+      { name: "Placeholder Object", description: "The unique placeholder of the object to reference it." },
       { name: "Path", description: "Path where model is located" },
       { name: "Position", description: "Position to place model (leave 0 to place at origin (0,0,0))" },
       { name: "Rotation", description: "Rotation of model in radians (leave 0 to have default rotation)" },
@@ -549,7 +549,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
       category: "objects",
       description: "Remove an object from the scene.",
       parameters: [
-        { name: "Object", description: "The unique placeholder of the object to destroy" }
+        { name: "Placeholder Object", description: "The unique placeholder of the object to destroy" }
       ],
       example: "MakeIt3D.DestroyObject(\"cube_1\")"
     }}
@@ -560,7 +560,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "visibility",
     description: "Set whether a 3D object is visible or not.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set visibility" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set visibility" },
       { name: "Visible", description: "Whether the object should be visible or not" },
       { name: "Visible (Numeric)", description: "Whether the object should be visible (1) or not (0). Default is -1. Note: If set to -1, it will not override the visible checkbox above." }
     ],
@@ -580,7 +580,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the position of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set position" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set position" },
       { name: "X Position", description: "X coordinate of the position" },
       { name: "Y Position", description: "Y coordinate of the position" },
       { name: "Z Position", description: "Z coordinate of the position" },
@@ -595,7 +595,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the rotation of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set rotation" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set rotation" },
       { name: "X Rotation", description: "X rotation in radians" },
       { name: "Y Rotation", description: "Y rotation in radians" },
       { name: "Z Rotation", description: "Z rotation in radians" },
@@ -610,7 +610,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Sets the rotation of a 3D object to align with the given surface normal vector.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set rotation" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set rotation" },
       { name: "Normal X", description: "X component of the surface normal" },
       { name: "Normal Y", description: "Y component of the surface normal" },
       { name: "Normal Z", description: "Z component of the surface normal" },
@@ -626,7 +626,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the scale of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set scale" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set scale" },
       { name: "X Scale", description: "X scale factor" },
       { name: "Y Scale", description: "Y scale factor" },
       { name: "Z Scale", description: "Z scale factor" },
@@ -641,7 +641,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the X position of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set position" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set position" },
       { name: "X Position", description: "X coordinate of the position" },
       { name: "Lerp Factor", description: "Lerp factor to smoothly interpolate" }
     ],
@@ -654,7 +654,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the Y position of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set position" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set position" },
       { name: "Y Position", description: "Y coordinate of the position" },
       { name: "Lerp Factor", description: "Lerp factor to smoothly interpolate" }
     ],
@@ -667,7 +667,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the Z position of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set position" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set position" },
       { name: "Z Position", description: "Z coordinate of the position" },
       { name: "Lerp Factor", description: "Lerp factor to smoothly interpolate" }
     ],
@@ -680,7 +680,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the X rotation of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set rotation" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set rotation" },
       { name: "X Rotation", description: "X rotation in radians" },
       { name: "Lerp Factor", description: "Lerp factor to smoothly interpolate" }
     ],
@@ -693,7 +693,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the Y rotation of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set rotation" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set rotation" },
       { name: "Y Rotation", description: "Y rotation in radians" },
       { name: "Lerp Factor", description: "Lerp factor to smoothly interpolate" }
     ],
@@ -706,7 +706,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Set the Z rotation of a 3D object in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to set rotation" },
+      { name: "Placeholder Object", description: "The placeholder of the object to set rotation" },
       { name: "Z Rotation", description: "Z rotation in radians" },
       { name: "Lerp Factor", description: "Lerp factor to smoothly interpolate" }
     ],
@@ -719,7 +719,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Translate (move) a 3D object relative to its current position in the scene.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to move" },
+      { name: "Placeholder Object", description: "The placeholder of the object to move" },
       { name: "X Offset", description: "Amount to move along the X axis" },
       { name: "Y Offset", description: "Amount to move along the Y axis" },
       { name: "Z Offset", description: "Amount to move along the Z axis" },
@@ -734,7 +734,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "transforms",
     description: "Sets the orientation of a 3D object to look at a specific point in space.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to move" },
+      { name: "Placeholder Object", description: "The placeholder of the object to move" },
       { name: "X", description: "x target co-ordinate to look at" },
       { name: "Y", description: "y target co-ordinate to look at" },
       { name: "Z", description: "z target co-ordinate to look at" },
@@ -755,7 +755,7 @@ This plugin uses the place holder object to hold the object Id (which can be any
     category: "lights",
     description: "Creates a Point Light to the scene.",
     parameters: [
-      { name: "Object", description: "Unique ID for the light." },
+      { name: "Placeholder Object", description: "Unique ID for the light." },
       { name: "Position", description: "Position to place the light." },
       { name: "Color", description: "Color of the light." },
       { name: "Intensity", description: "Light intensity." },
@@ -778,7 +778,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "lights",
     description: "Creates a Directional Light to the scene.",
     parameters: [
-      { name: "Object", description: "Unique placeholder for the light." },
+      { name: "Placeholder Object", description: "Unique placeholder for the light." },
       { name: "Position", description: "Position to place the light." },
       { name: "Target Id", description: "Object placeholder to target." },
       { name: "Target Position", description: "Target position for the light to aim at." },
@@ -797,7 +797,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "lights",
     description: "Creates an Ambient Light to the scene.",
     parameters: [
-      { name: "Object", description: "Unique placeholder for the light." },
+      { name: "Placeholder Object", description: "Unique placeholder for the light." },
       { name: "Color", description: "Color of the light." },
       { name: "Intensity", description: "Light intensity." },
       { name: "Show Helper", description: "Show a helper for the light." },
@@ -812,7 +812,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "lights",
     description: "Creates a Spot Light to the scene.",
     parameters: [
-      { name: "Object", description: "Unique placeholder for the light." },
+      { name: "Placeholder Object", description: "Unique placeholder for the light." },
       { name: "Position", description: "Position to place the light." },
       { name: "Target Position", description: "Target position for the light to aim at." },
       { name: "Color", description: "Color of the light." },
@@ -835,7 +835,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "lights",
     description: "Creates a Hemisphere Light to the scene.",
     parameters: [
-      { name: "Object", description: "Unique placeholder for the light." },
+      { name: "Placeholder Object", description: "Unique placeholder for the light." },
       { name: "Position", description: "Position to place the light." },
       { name: "Sky Color", description: "Sky color of the light." },
       { name: "Ground Color", description: "Ground color of the light." },
@@ -854,7 +854,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "animation",
     description: "Play an animation for a 3D model",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to animate" },
+      { name: "Placeholder Object", description: "The placeholder of the object to animate" },
       { name: "Animation Index Or Name", description: "Index or Name of the animation to play (leave empty to use name)", type: "any" },
       { name: "Fade Duration", description: "Time (in seconds) to crossfade between animations. Set 0 for instant switch.", type: "number" },
       { name: "Loop", description: "Whether to loop the animation", type: "boolean", default: true },
@@ -870,7 +870,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "animation",
     description: "Play and blend two animations simultaneously for a 3D model.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to animate" },
+      { name: "Placeholder Object", description: "The placeholder of the object to animate" },
       { name: "Animation A Index Or Name", description: "Index or name of the first animation", type: "any" },
       { name: "Animation A Weight", description: "Influence weight for Animation A (0.0 to 1.0)", type: "float", default: 1.0 },
       { name: "Animation B Index Or Name", description: "Index or name of the second animation", type: "any" },
@@ -890,7 +890,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "animation",
     description: "Smoothly transition from one animation to another for a 3D model using crossfade.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to animate" },
+      { name: "Placeholder Object", description: "The placeholder of the object to animate" },
       { name: "From Animation Index Or Name", description: "Index or name of the currently playing animation", type: "any" },
       { name: "To Animation Index Or Name", description: "Index or name of the new animation to transition to", type: "any" },
       { name: "Fade Duration", description: "Time (in seconds) to crossfade between animations", type: "number", default: 0.5 },
@@ -907,7 +907,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "animation",
     description: "Pause the currently playing animation for a 3D model",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to pause animation" },
+      { name: "Placeholder Object", description: "The placeholder of the object to pause animation" },
     ],
     example: "MakeIt3D.PauseAnimation('model01')"
   }}
@@ -918,7 +918,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "animation",
     description: "Resume the paused animation for a 3D model",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to resume animation" },
+      { name: "Placeholder Object", description: "The placeholder of the object to resume animation" },
     ],
     example: "MakeIt3D.ResumeAnimation('model01')"
   }}
@@ -929,7 +929,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "animation",
     description: "Stop the currently playing animation for a 3D model",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to stop animation" },
+      { name: "Placeholder Object", description: "The placeholder of the object to stop animation" },
     ],
     example: "MakeIt3D.StopAnimation('model01')"
   }}
@@ -979,7 +979,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "raycast",
     description: "Casts the ray using object's specified local axis. Updates with object's position and rotation.",
     parameters: [
-      { name: "Object", description: "Object from which raycast is fired", type: "object" },
+      { name: "Placeholder Object", description: "Object from which raycast is fired", type: "object" },
       { name: "Direction", description: "Ray direction as MakeIt3D.Vector3(x, y, z). Common: forward (0,0,-1), back (0,0,1), up (0,1,0), down (0,-1,0), right (1,0,0), left (-1,0,0).", type: "vector3" },
       { name: "Ray Length", description: "Length of the raycast (default 1000)", type: "number", default: 1000 },
       { name: "Debug Ray", description: "Draw debug line between origin and direction", type: "boolean", default: false },
@@ -1021,7 +1021,7 @@ Only create lights once — such as in **On Start of Layout** or when needed.
     category: "material",
     description: "Apply a MeshStandardMaterial to a 3D object. Standard material supports physically-based rendering (PBR) with metalness and roughness for realistic surfaces.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Color", description: "Material color (hex)", type: "string" },
       { name: "Metalness", description: "Metalness value (0-1)", type: "number" },
       { name: "Roughness", description: "Roughness value (0-1)", type: "number" },
@@ -1044,7 +1044,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Apply a MeshPhongMaterial to a 3D object. Good for shiny, glossy surfaces and older-style 3D rendering.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Color", description: "Material color (hex)", type: "string" },
       { name: "Shininess", description: "Shininess value", type: "number" },
       { name: "Wireframe", description: "Render as wireframe", type: "boolean" },
@@ -1062,7 +1062,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Apply a MeshLambertMaterial to a 3D object. Good for matte surfaces without specular highlights.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Color", description: "Material color (hex)", type: "string" },
       { name: "Wireframe", description: "Render as wireframe", type: "boolean" },
       { name: "Opacity", description: "Material opacity (0-1)", type: "number" },
@@ -1078,7 +1078,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Apply a MeshBasicMaterial to a 3D object. Not affected by lights. Useful for unlit or UI elements.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Color", description: "Material color (hex)", type: "string" },
       { name: "Wireframe", description: "Render as wireframe", type: "boolean" },
       { name: "Opacity", description: "Material opacity (0-1)", type: "number" },
@@ -1092,7 +1092,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Apply a custom GLSL shader to a 3D object for advanced visual effects and control.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Vertex Shader", description: "GLSL code for the vertex shader", type: "string" },
       { name: "Fragment Shader", description: "GLSL code for the fragment shader", type: "string" },
       { name: "Uniforms", description: "Uniforms object (optional)", type: "object" },
@@ -1108,7 +1108,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set a single uniform value on a custom shader material at runtime.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Uniform Name", description: "The name of the uniform (e.g., 'time')", type: "string" },
       { name: "Value", description: "The value to set for the uniform", type: "any" },
     ],
@@ -1121,7 +1121,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set a texture on a 3D object.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Path", description: "Path to the texture image", type: "string" },
     ],
     example: "MakeIt3D.SetTexture('obj01', '/textures/wood.jpg')"
@@ -1133,7 +1133,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set the wrapping mode for an object's texture.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Wrap S", description: "Horizontal wrap mode", type: "enum", items: ["repeat", "clamp", "mirror"] },
       { name: "Wrap T", description: "Vertical wrap mode", type: "enum", items: ["repeat", "clamp", "mirror"] },
     ],
@@ -1146,7 +1146,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set the repeat values for an object's texture.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Repeat X", description: "Repeat value in X direction", type: "number" },
       { name: "Repeat Y", description: "Repeat value in Y direction", type: "number" },
     ],
@@ -1159,7 +1159,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set the opacity of an object's material.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Opacity", description: "Opacity value (0.0 - 1.0)", type: "number" },
     ],
     example: "MakeIt3D.SetTextureOpacity('obj01', 0.75)"
@@ -1171,7 +1171,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set the emissive map (glow) texture for the object's material. Note: only works with basic material.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object (Note: set basic material to use emissive map)", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object (Note: set basic material to use emissive map)", type: "object" },
       { name: "Texture URL", description: "URL or path to the emissive texture", type: "string" },
       { name: "Intensity", description: "Emissive intensity", type: "number" },
     ],
@@ -1184,7 +1184,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set the normal map texture for the object's material.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Texture URL", description: "URL or path to the normal map texture", type: "string" },
       { name: "Invert Normal Map", description: "Invert the normal map", type: "boolean" },
       { name: "Normal Map Strength", description: "Strength (bumpiness) of the normal map", type: "number" },
@@ -1198,7 +1198,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set the roughness map texture for the object's material.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Texture URL", description: "URL or path to the roughness map texture", type: "string" },
     ],
     example: "MakeIt3D.SetRoughnessMap('obj01', '/textures/roughness.png')"
@@ -1210,7 +1210,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set the metalness map texture for the object's material.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Texture URL", description: "URL or path to the metalness map texture", type: "string" },
     ],
     example: "MakeIt3D.SetMetalnessMap('obj01', '/textures/metal.png')"
@@ -1222,7 +1222,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set the color of the object's material.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Color", description: "Color to set (e.g., '#ff0000')", type: "string" },
     ],
     example: "MakeIt3D.SetColor('obj01', '#00ffcc')"
@@ -1234,7 +1234,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Remove the texture from the object's material.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
     ],
     example: "MakeIt3D.UnloadTexture('obj01')"
   }}
@@ -1245,7 +1245,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "material",
     description: "Set a video file as the texture on the object.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object", type: "object" },
       { name: "Video URL", description: "URL or path to the video file", type: "string" },
       { name: "Loop", description: "Whether the video should loop", type: "boolean" },
       { name: "Autoplay", description: "Whether the video should autoplay", type: "boolean" },
@@ -1263,7 +1263,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "lines",
     description: "Draws a straight line from start to end position or using a series of points.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to create the line", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object to create the line", type: "object" },
       { name: "Start Position", description: "Line starting position (e.g., MakeIt3D.Vector3(x, y, z))", type: "vector3" },
       { name: "End Position", description: "Line ending position (e.g., MakeIt3D.Vector3(x, y, z))", type: "vector3" },
       { name: "Points(optional)", description: "An object or array of points (MakeIt3D.ToArray(...))", type: "array/vector3" },
@@ -1278,7 +1278,7 @@ Materials should be created **once** and reused — ideally during **On Start of
     category: "lines",
     description: "Draws a dashed line from start to end position or using points with dash, gap, and scale settings.",
     parameters: [
-      { name: "Object", description: "The placeholder of the object to create the line", type: "object" },
+      { name: "Placeholder Object", description: "The placeholder of the object to create the line", type: "object" },
       { name: "Start Position", description: "Line starting position (e.g., MakeIt3D.Vector3(x, y, z))", type: "vector3" },
       { name: "End Position", description: "Line ending position (e.g., MakeIt3D.Vector3(x, y, z))", type: "vector3" },
       { name: "Points(optional)", description: "An object or array of points", type: "array/vector3" },
