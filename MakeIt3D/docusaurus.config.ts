@@ -71,6 +71,14 @@ const config: Config = {
   ],
 
   themeConfig: {
+    algolia: {
+      appId: 'DTB6K4KZCU',    
+      apiKey: '48231a31db613bf587e01acbeedbd91e',
+      indexName: 'Documentation Website',
+      contextualSearch: true, // optional
+      searchParameters: {},   // optional
+      insights: true,         // optional
+    },
     metadata: [
       { name: 'title', content: 'MakeIt3D - 3D Plugin for Construct 3' }, 
       { name: 'google-site-verification', content: 'unBLBzwdfWibcNjL7zQ6VcclnNOMXYKBjnt0xY3LD5I' },
