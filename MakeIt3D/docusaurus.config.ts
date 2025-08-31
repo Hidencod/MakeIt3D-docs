@@ -87,6 +87,7 @@ const config: Config = {
         name: 'description',
         content: 'Documentation for the Make It 3D Construct 3 addon, which brings Three.js-powered 3D support to Construct game projects.'
       },
+      { name:"algolia-site-verification" , content : "36D23068545C756E" }
     ],
     // Replace with your project's social card
     image: 'img/makeit3d-social-card.png',
