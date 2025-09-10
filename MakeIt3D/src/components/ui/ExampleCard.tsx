@@ -1,20 +1,20 @@
 // src/components/ui/ExampleCard.tsx
 import React from "react";
-import { useHistory } from '@docusaurus/router';
 import styles from './ExampleCard.module.css';
 
 interface ExampleCardProps {
     title: string;
     description: string;
     thumbnail: string;
-    previewMedia?: string; // GIF or video URL for hover preview
-    previewType?: 'gif' | 'video'; // Type of preview media
+    previewMedia?: string;
+    previewType?: 'gif' | 'video';
     difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
     tags?: string[];
     playUrl?: string;
     c3pUrl?: string;
     featured?: boolean;
     className?: string;
+    onPlayClick?: (url: string, title: string) => void; // New prop for modal handling
 }
 
 export default function ExampleCard({
@@ -28,31 +28,25 @@ export default function ExampleCard({
     playUrl,
     c3pUrl,
     featured = false,
-    className = ""
+    className = "",
+    onPlayClick // New prop
 }: ExampleCardProps) {
-    const history = useHistory();
     const [isHovering, setIsHovering] = React.useState(false);
     const [showPreview, setShowPreview] = React.useState(false);
     const hoverTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-    const getDifficultyColor = () => {
-        switch (difficulty) {
-            case 'Beginner':
-                return 'green';
-            case 'Intermediate':
-                return 'orange';
-            case 'Advanced':
-                return 'red';
-            default:
-                return 'blue';
-        }
-    };
-
     const handlePlayClick = (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
+
         if (playUrl) {
-            window.open(playUrl, '_blank');
+            if (onPlayClick) {
+                // Use modal if callback is provided
+                onPlayClick(playUrl, title);
+            } else {
+                // Fallback to new tab
+                window.open(playUrl, '_blank');
+            }
         }
     };
 
@@ -69,7 +63,7 @@ export default function ExampleCard({
         if (previewMedia) {
             hoverTimeoutRef.current = setTimeout(() => {
                 setShowPreview(true);
-            }, 800); // Show preview after 800ms hover
+            }, 800);
         }
     };
 
@@ -91,7 +85,11 @@ export default function ExampleCard({
     }, []);
 
     return (
-        <div className={`${styles.card} ${featured ? styles.featured : ''} ${className}`}>
+        <div
+            className={`${styles.card} ${featured ? styles.featured : ''} ${className}`}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
             {/* Featured star */}
             {featured && (
                 <div className={styles.featuredStar}>
@@ -182,9 +180,8 @@ export default function ExampleCard({
                     {c3pUrl && (
                         <button
                             className={`${styles.button} ${styles.downloadButton}`}
-                            // onClick={handleDownloadClick}
-                            // title="Download .c3p file"
-                            title="Addon not released yet!!"
+                            onClick={handleDownloadClick}
+                            title="Download .c3p file"
                         >
                             📁 .c3p
                         </button>
