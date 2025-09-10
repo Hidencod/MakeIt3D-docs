@@ -36,6 +36,19 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     c3pUrl: "https://example.com/download/rotating-cube.c3p",
     featured: true,
     category: "Basic 3D"
+  },
+  {
+    id: "physics-forces",
+    title: "Physics-Collisions&Forces",
+    description: "A scene about rapier physics forces and collsions.",
+    thumbnail: "https://makeit3d-examples.pages.dev/examples/character-forces/media/preview.png",
+    previewType: "video",
+    difficulty: "Beginner",
+    tags: ["3D Objects", "Animation"],
+    playUrl: "https://makeit3d-examples.pages.dev/examples/character-forces/",
+    c3pUrl: "https://example.com/download/rotating-cube.c3p",
+    featured: true,
+    category: "Basic Physics"
   }
 ]} />
 <!-- {
