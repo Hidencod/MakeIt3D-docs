@@ -1,7 +1,6 @@
 // src/components/ui/ExamplesGrid.tsx
 import React, { useState } from "react";
 import ExampleCard from './ExampleCard';
-import GamePlayerModal from './GamePlayerModal';
 import styles from './ExamplesGrid.module.css';
 
 interface Example {
@@ -9,8 +8,8 @@ interface Example {
     title: string;
     description: string;
     thumbnail: string;
-    previewMedia?: string;
-    previewType?: 'gif' | 'video';
+    previewMedia?: string; // GIF or video URL for hover preview
+    previewType?: 'gif' | 'video'; // Type of preview media
     difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
     tags: string[];
     playUrl?: string;
@@ -28,11 +27,6 @@ export default function ExamplesGrid({ examples, className = "" }: ExamplesGridP
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
     const [selectedDifficulty, setSelectedDifficulty] = useState<string>('All');
 
-    // Modal state
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalGameUrl, setModalGameUrl] = useState('');
-    const [modalTitle, setModalTitle] = useState('');
-
     // Extract unique categories and difficulties
     const categories = ['All', ...new Set(examples.map(ex => ex.category).filter(Boolean))];
     const difficulties = ['All', 'Beginner', 'Intermediate', 'Advanced'];
@@ -47,20 +41,6 @@ export default function ExamplesGrid({ examples, className = "" }: ExamplesGridP
     // Separate featured examples
     const featuredExamples = filteredExamples.filter(ex => ex.featured);
     const regularExamples = filteredExamples.filter(ex => !ex.featured);
-
-    // Handle modal opening
-    const handlePlayClick = (url: string, title: string) => {
-        setModalGameUrl(url);
-        setModalTitle(title);
-        setIsModalOpen(true);
-    };
-
-    // Handle modal closing
-    const handleModalClose = () => {
-        setIsModalOpen(false);
-        setModalGameUrl('');
-        setModalTitle('');
-    };
 
     return (
         <div className={`${styles.container} ${className}`}>
@@ -115,7 +95,6 @@ export default function ExamplesGrid({ examples, className = "" }: ExamplesGridP
                                 playUrl={example.playUrl}
                                 c3pUrl={example.c3pUrl}
                                 featured={example.featured}
-                                onPlayClick={handlePlayClick}
                             />
                         ))}
                     </div>
@@ -142,7 +121,6 @@ export default function ExamplesGrid({ examples, className = "" }: ExamplesGridP
                                 playUrl={example.playUrl}
                                 c3pUrl={example.c3pUrl}
                                 featured={example.featured}
-                                onPlayClick={handlePlayClick}
                             />
                         ))}
                     </div>
@@ -159,14 +137,6 @@ export default function ExamplesGrid({ examples, className = "" }: ExamplesGridP
                     </p>
                 </div>
             )}
-
-            {/* Game Player Modal */}
-            <GamePlayerModal
-                isOpen={isModalOpen}
-                onClose={handleModalClose}
-                gameUrl={modalGameUrl}
-                title={modalTitle}
-            />
         </div>
     );
 }
