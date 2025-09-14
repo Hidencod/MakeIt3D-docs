@@ -80,7 +80,7 @@ const config: Config = {
       insights: true,         // optional
     },
     metadata: [
-      { name: 'title', content: 'MakeIt3D - 3D Plugin for Construct 3' }, 
+      { name: 'title', content: 'MakeIt3D - Construct 3 3D Plugin' }, 
       { name: 'google-site-verification', content: 'unBLBzwdfWibcNjL7zQ6VcclnNOMXYKBjnt0xY3LD5I' },
       { property: 'og:title', content: 'MakeIt3D - 3D Plugin for Construct 3' },
   { property: 'og:description', content: 'Powerful 3D support for Construct 3 using Three.js' },
@@ -88,7 +88,7 @@ const config: Config = {
   { property: 'og:type', content: 'website' },
       {
         name: 'keywords',
-        content: 'Construct 3 addon, Construct3 3D, Three.js integration, game development, 3D plugin, Construct3, game engine addon, WebGL'
+        content: 'Construct 3 addon, Construct3 3D, Three.js integration, game development, 3D plugin, Construct3, game engine addon, WebGL, construct3 3D graphics, interactive 3D, game design, 3D modeling, game assets, construct3 tutorial, game physics, 3D rendering, game mechanics, construct3 community, three.js'
       },
       { name: 'author', content: 'Jammanna' },
       {
