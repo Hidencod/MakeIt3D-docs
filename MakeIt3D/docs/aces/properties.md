@@ -7,6 +7,7 @@ Configure your **MakeIt3D** plugin through the Properties Panel in Construct 3.
 The MakeIt3D Properties Panel contains four main settings:
 
 - **Enable Logs** - Toggle debugging information
+- **Show Stats** - Shows Fps, Ram usage , Render time Cpu and Gpu usage
 - **Three.js Editor** - Launch the visual scene editor
 - **Global Scene** - Control scene persistence across layouts
 - **More Information** - Access help documentation
@@ -27,7 +28,25 @@ Shows detailed information in the browser console for debugging purposes.
 - ❌ **Production:** Uncheck for better performance and cleaner console output
 
 ---
+### 📊 Show Stats
 
+**Type:** Checkbox  
+**Default:** Unchecked  
+
+Displays a **stats.js panel** overlay in the corner of the screen with useful runtime information:  
+- **FPS** – Frames per second  
+- **RAM usage** – Approximate memory consumption  
+- **Render time** – Time taken to render each frame  
+- **CPU usage** – Processing usage  
+- **GPU usage** – Graphics card load 
+ 
+![alt text](../../static/img/stats.png)
+
+#### When to Use
+- ✅ **Development/Debugging:** Enable this to monitor performance and catch bottlenecks in real time  
+- ❌ **Production:** Disable for players, as it impacts immersion and adds overhead  
+
+---
 ### 🚀 Three.js Editor
 
 **Type:** Button  
