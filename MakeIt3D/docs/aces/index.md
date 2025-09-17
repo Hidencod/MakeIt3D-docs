@@ -32,9 +32,9 @@ import MyCard from '@site/src/components/ui/MyCard';
     3
   </MyCard>
 
-  <!-- <MyCard title="PlaceHolder Object" variant="dependency" subtitle="dependency" href="/docs/aces/dependency">
+  <MyCard title="Scripting API" variant="dependency" subtitle="scripting interface" href="/docs/aces/scripting">
     1
-  </MyCard> -->
+  </MyCard>
 
 
 </div>
