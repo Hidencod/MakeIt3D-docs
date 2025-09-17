@@ -4,6 +4,95 @@ Access the full power of Three.js through MakeIt3D's scripting interface.
 
 ## Getting Started
 
+
+### 🚀 Listening to MakeIt3D Plugin Events in JavaScript
+
+To integrate and respond to events from the MakeIt3D Construct plugin in your external JavaScript code, follow the pattern below. This allows you to hook into powerful runtime events like object creation, animation completion, raycast hits, and more.
+
+✅ Step 1: Add Your Script as the Main Script
+
+Ensure your external JavaScript file is set as the Main Script in your Construct project settings.
+
+✅ Step 2: Register Event Listeners in runOnStartup
+
+``` javascript
+runOnStartup(async runtime => {
+	// This runs during the loading screen (before any layout starts).
+	// It's a good place to prepare event hooks or pre-initialization code.
+	// Note layouts, objects etc. are not yet available.
+	runtime.addEventListener("beforeprojectstart", () => onBeforeProjectStart(runtime));
+});
+
+```
+✅ Step 3: Listen to MakeIt3D Events
+``` javascript
+async function onBeforeProjectStart(runtime) {
+	// At this point, the first layout and its instances are loaded.
+
+	const makeIt3D = runtime.objects.MakeIt3D.getFirstInstance();
+
+	if (!makeIt3D) {
+		console.warn("MakeIt3D instance not found.");
+		return;
+	}
+
+	// 🌍 Scene is created and ready
+	makeIt3D.addEventListener("onscenecreate", (e) => {
+		console.log("✅ Scene Created:", e);
+
+		// You can access the Three.js context in two ways:
+
+		// Option 1: From global (if available and not in worker)
+		if (typeof window !== "undefined" && window.MakeIt3DContext) {
+			const context = window.MakeIt3DContext;
+			console.log("Global context:", context);
+		}
+
+		// Option 2: Directly from the event
+		const context = e.data.threeJsContext;
+		const { scene, camera, renderer, objects, raycaster } = context;
+
+		console.log("Scene:", scene);
+		console.log("Camera:", camera);
+	});
+
+	// 📦 Fired when a 3D object is created
+	makeIt3D.addEventListener("onobjectcreate", (e) => {
+		console.log("📦 Object Created:", e);
+	});
+
+	// 🎬 Fired when an object's animation finishes
+	makeIt3D.addEventListener("onanimationfinish", (e) => {
+		console.log("🎬 Animation Finished:", e);
+	});
+
+	// 🔁 Fired when a looping animation completes a full cycle
+	makeIt3D.addEventListener("onanimationloopfinish", (e) => {
+		console.log("🔁 Animation Loop Finished:", e);
+	});
+
+	// 🎯 Fired when a raycast hits an object
+	makeIt3D.addEventListener("onraycasthit", (e) => {
+		console.log("🎯 Raycast Hit:", e);
+	});
+
+	// ❌ Fired when a 3D object is removed from the scene
+	makeIt3D.addEventListener("onobjectdestroy", (e) => {
+		console.log("❌ Object Destroyed:", e);
+	});
+
+	// 🎮 Per-frame update hook
+	runtime.addEventListener("tick", () => onTick(runtime));
+}
+```
+🔁 Per-Frame Update (Tick Function)
+``` javascript
+function onTick(runtime) {
+	// Code to run every frame (tick)
+	// You can update UI, sync data, or perform runtime checks here
+}
+```
+
 The MakeIt3D context becomes available globally after scene creation through:
 
 ```javascript
@@ -24,6 +113,7 @@ const { scene, camera, renderer, objects, raycaster } = context.threeJsContext;
 | `canvasSize` | `THREE.Vector2` | Canvas dimensions |
 | `viewportSize` | `THREE.Vector2` | Viewport dimensions |
 | `nextObjectId` | `number` | Auto-incrementing ID for new objects |
+
 
 ## Basic Object Creation
 

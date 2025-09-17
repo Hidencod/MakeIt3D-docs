@@ -2,6 +2,12 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import styles from './CallToAction.module.css';
+import makeit3dlogo from "../../static/img/logo.png"
+import rapierlogo from "../../static/img/rapierlogo.png";
+import construct3 from "../../static/img/construct3logo.png";
+import threejslogo from "../../static/img/Threejslogo.png";
+import construct3editor from "../../static/img/construct3_editor_logo.png";
+
 
 export default function CallToAction() {
     return (
@@ -51,7 +57,7 @@ export default function CallToAction() {
 
                             <div className={styles.ctaPrice}>
                                 <span className={styles.priceLabel}>Starting from</span>
-                                <span className={styles.priceValue}>$5</span>
+                                <span className={styles.priceValue}>$19</span>
                                 <span className={styles.priceNote}>One-time purchase</span>
                             </div>
                         </div>
@@ -69,12 +75,12 @@ export default function CallToAction() {
                             </div>
                             <div className={styles.visualContent}>
                                 <div className={styles.cube}>
+                                    <div className={styles.face}><img src={makeit3dlogo}></img></div>
+                                    <div className={styles.face}><img src={rapierlogo}></img></div>
                                     <div className={styles.face}></div>
-                                    <div className={styles.face}></div>
-                                    <div className={styles.face}></div>
-                                    <div className={styles.face}></div>
-                                    <div className={styles.face}></div>
-                                    <div className={styles.face}></div>
+                                    <div className={styles.face}><img src={construct3}></img></div>
+                                    <div className={styles.face}><img src={threejslogo}></img></div>
+                                    <div className={styles.face}><img src={construct3editor}></img></div>
                                 </div>
                             </div>
                         </div>

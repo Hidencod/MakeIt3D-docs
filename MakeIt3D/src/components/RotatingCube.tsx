@@ -4,6 +4,7 @@ import "./RotatingCube.css";
 import test from "./test.mp4"
 import raycastvideo from "./raycast.mp4"
 import logo from "../../static/img/logo.png"
+import rapiervideo from "../../static/makeit3drapier.mp4"
 
 export default function RotatingCube() {
     return (
@@ -11,7 +12,7 @@ export default function RotatingCube() {
             <div className="glow"></div>
             <div className="rotating-cube">
                 {/* Face 1 (stripes) */}
-                <div className="cube-face"> <img src={logo} alt="logo" style={{ width: "80px", height: "80px" }} /></div>
+                <div className="cube-face"> <img src={logo} alt="logo" style={{ width: "150px", height: "150px" }} /></div>
 
                 {/* Face 2 (radial dots) → VIDEO */}
                 <div className="cube-face">
@@ -37,19 +38,15 @@ export default function RotatingCube() {
 
                 {/* Face 4 (conic gradient) */}
                 <div
-                    className="cube-face"
-                    style={{
-                        fontFamily: "Poppins, sans-serif",
-                        textAlign: "center",
-                        display: "flex",          // add flex here
-                        flexDirection: "column",  // stack vertically
-                        alignItems: "center"      // center horizontally
-                    }}
-                >
-                    <div style={{ fontSize: "24px", fontWeight: "bold" }}>MakeIt3D</div>
-                    <div style={{ fontSize: "12px", opacity: 0.7, marginTop: "4px" }}>
-                        powered by Three.js
-                    </div>
+                    className="cube-face">
+                    <video
+                        src={rapiervideo}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                    />
                 </div>
 
 
