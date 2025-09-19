@@ -48,7 +48,7 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 
 ## 🚀 Installation (Licensed Users)
 
-1. **Purchase** your license from [our store](https://your-store-link.com)
+1. **Purchase** your license from [Construct3 market]()
 2. **Download** the `.c3addon` file from your account dashboard
 3. **Install** in Construct 3: Menu → View → Addon Manager → Install new addon
 4. **Activate** using your license key in the plugin properties
@@ -65,7 +65,7 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 ### Minimum Requirements
 - **Construct 3** r407 or later (Personal/Business license)
 - **Browser** Chrome 70+, Firefox 65+, Safari 14+, Edge 79+
-
+<?--
 ## 📈 Development Roadmap
 
 ### v1.1.0 - Q4 2025
@@ -81,7 +81,7 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 - 🔄 Mobile performance improvements
 
 *Roadmap updates available to licensed users*
-
+-->
 ## 📞 Professional Support
 
 ### Included Support (1 Year)
@@ -91,11 +91,10 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 - **💬 Community Access** - Private Discord server for licensed users
 
 ### Support Channels
-- **🚨 Critical Issues**: [Priority Support Form](https://your-support-link.com)
 - **🐛 Bug Reports**: [GitHub Issues](https://github.com/Hidencod/MakeIt3D-docs/issues/new?template=bug_report.yml)
 - **💡 Feature Requests**: [Feature Portal](https://github.com/Hidencod/MakeIt3D-docs/issues/new?template=feature_request.yml)
 - **❓ General Questions**: [Documentation](https://your-docs-site-url.com) first, then support
-
+<?--
 ## 🎨 Screenshots & Demos
 
 *Professional showcase of your plugin capabilities*
@@ -110,7 +109,7 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 *Professional product visualization and customization*
 
 **[🎥 Watch Demo Video](https://your-demo-video-link.com)**
-
+-->
 ## ⚖️ License & Terms
 
 This is commercial software. By purchasing MakeIt3D, you agree to our:
