@@ -1,6 +1,5 @@
 # MakeIt3D - Professional Three.js Integration for Construct 3
 
-[![Version](https://img.shields.io/github/v/release/Hidencod/MakeIt3D-docs?style=flat-square)](https://github.com/Hidencod/MakeIt3D-docs/releases)
 [![License](https://img.shields.io/badge/license-Commercial-blue?style=flat-square)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/Hidencod/MakeIt3D-docs?style=flat-square)](https://github.com/Hidencod/MakeIt3D-docs/issues)
 [![Support](https://img.shields.io/badge/support-Professional-green?style=flat-square)](#-support)
@@ -12,63 +11,40 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 ## ✨ Professional Features
 
 - **🎮 Complete 3D Scene System** - Advanced scene management with optimized rendering pipeline
-- **📦 Universal Model Support** - GLTF, FBX, OBJ, Collada, and custom formats
+- **📦 Universal Model Support** - GLTF, FBX
 - **💡 Advanced Lighting Engine** - PBR lighting with shadows, HDR, and post-processing
-- **🎭 Professional Material System** - Custom shaders, texture atlasing, and material libraries  
-- **🎪 Animation Framework** - Skeletal, morph, and procedural animation systems
-- **🎯 Multi-Input Controls** - Mouse, touch, gamepad, and VR controller support
-- **⚡ Performance Optimized** - LOD systems, frustum culling, and memory management
-- **🔧 Visual Property Editor** - Integrated Construct 3 properties panel
-- **📱 Cross-Platform Ready** - Desktop, mobile, WebXR, and progressive web apps
+- **🎭 Professional Material System** - Custom shaders and material libraries  
+- **📱 Cross-Platform Ready** - Desktop, mobile, and progressive web apps
 - **🛡️ Enterprise Support** - Professional documentation, examples, and direct support
 
 ## 🛒 Purchase & Licensing
 
-**[💰 Buy MakeIt3D - $29.99](https://your-store-link.com)**
+**[💰 Buy MakeIt3D - $19.99]()**
 
-### License Options
-- **📱 Indie License** - $29.99 - For projects earning <$100K annually
-- **🏢 Commercial License** - $99.99 - Unlimited revenue, team usage
-- **🎓 Educational License** - $14.99 - Students and educational institutions
-
-*All licenses include lifetime updates and 1 year of support*
+*Buy once and recieve updates for life time*
 
 ## 📖 Documentation & Resources
 
-**[📚 Professional Documentation](https://your-docs-site-url.com)** - Complete guides and API reference
+**[📚 Professional Documentation](https://make-it-3d.vercel.app/)** - Complete guides and API reference
 
 ### Quick Links
-- [🚀 Getting Started](https://your-docs-site-url.com/docs/getting-started) - Installation and first project
-- [📋 API Reference](https://your-docs-site-url.com/docs/api) - Complete method documentation  
-- [🎯 Example Projects](https://your-docs-site-url.com/docs/examples) - Real-world implementations
-- [⚡ Performance Guide](https://your-docs-site-url.com/docs/performance) - Optimization best practices
-- [🛠️ Troubleshooting](https://your-docs-site-url.com/docs/troubleshooting) - Common issues and solutions
+- [🚀 Getting Started](https://make-it-3d.vercel.app/docs/intro) - Installation and first project
+- [📋 API Reference](https://make-it-3d.vercel.app/docs/aces/) - Complete method documentation  
+- [🎯 Example Projects](https://make-it-3d.vercel.app/docs/examples) - Real-world implementations
 
 ## 🎯 What You Can Build
 
 ### 3D Product Configurators
 - Interactive product visualization
 - Real-time customization
-- AR preview capabilities
-- E-commerce integration
 
 ### Immersive Games
 - First/third-person adventures
-- VR experiences
-- Racing simulators
-- Architectural walkthroughs
-
-### Educational Applications
-- 3D scientific models
-- Interactive training simulations
-- Virtual laboratories
-- Historical reconstructions
 
 ### Professional Visualizations
 - Data visualization in 3D
 - Interactive presentations
 - Portfolio showcases
-- Marketing experiences
 
 ## 🚀 Installation (Licensed Users)
 
@@ -79,39 +55,16 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 5. **Start creating** professional 3D experiences!
 
 ### Quick Example
-```javascript
-// Initialize 3D scene with professional settings
-const scene = runtime.objects.MakeIt3D.getFirstInstance();
-scene.createScene({
-    shadows: true,
-    hdr: true,
-    antialiasing: "MSAA"
-});
+<img width="1043" height="267" alt="image" src="https://github.com/user-attachments/assets/473b71b6-087f-4b2c-9ac2-4cac6bb56d70" />
+<img width="1068" height="597" alt="image" src="https://github.com/user-attachments/assets/621c7f4c-31ff-4387-8e2c-23e696615423" />
 
-// Load optimized 3D model
-await scene.loadModel("models/product.gltf", {
-    optimize: true,
-    generateLOD: true
-});
 
-// Professional lighting setup
-scene.addHDREnvironment("studio_lighting.hdr");
-scene.addDirectionalLight({ intensity: 2, castShadow: true });
-```
 
 ## 🛠️ System Requirements
 
 ### Minimum Requirements
-- **Construct 3** r340 or later (Personal/Business license)
+- **Construct 3** r407 or later (Personal/Business license)
 - **Browser** Chrome 70+, Firefox 65+, Safari 14+, Edge 79+
-- **Hardware** Integrated graphics (Intel HD 4000+)
-- **Memory** 4GB RAM minimum
-
-### Recommended for Professional Use  
-- **Hardware** Dedicated GPU (GTX 1060+ / equivalent)
-- **Memory** 8GB+ RAM
-- **Storage** SSD for faster asset loading
-- **Display** Hardware-accelerated display
 
 ## 📈 Development Roadmap
 
@@ -142,12 +95,6 @@ scene.addDirectionalLight({ intensity: 2, castShadow: true });
 - **🐛 Bug Reports**: [GitHub Issues](https://github.com/Hidencod/MakeIt3D-docs/issues/new?template=bug_report.yml)
 - **💡 Feature Requests**: [Feature Portal](https://github.com/Hidencod/MakeIt3D-docs/issues/new?template=feature_request.yml)
 - **❓ General Questions**: [Documentation](https://your-docs-site-url.com) first, then support
-
-### Response Times
-- **Critical bugs**: 24 hours
-- **General support**: 48 hours  
-- **Feature requests**: Weekly review
-- **Documentation updates**: Bi-weekly
 
 ## 🎨 Screenshots & Demos
 
@@ -185,11 +132,11 @@ This is commercial software. By purchasing MakeIt3D, you agree to our:
 MakeIt3D is developed by **[Your Name]**, a professional plugin developer specializing in Construct 3 extensions. With [X years] of experience in 3D graphics and game development, MakeIt3D represents a commitment to quality and professional-grade tools.
 
 ### Contact
-- **📧 Business Inquiries**: business@your-email.com
-- **🛠️ Technical Support**: support@your-email.com  
-- **💼 LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- **🐦 Twitter**: [@YourTwitter](https://twitter.com/yourhandle)
-
+- **📧 Email**: jammanna017@gmail.com 
+- **💼 LinkedIn**: [Jammanna](https://linkedin.com/in/yourprofile)
+- **💼 Discord**: [MakeIt3D](https://discord.gg/BPmX5mgkkv)
+- **🐦 Twitter**: [@Jammanna](https://x.com/james_zenitsu?t=At2SX_XoqP0WBMU4ae3q-g&s=09)
+<?--
 ## 🏆 Customer Reviews
 
 > *"MakeIt3D transformed our product visualization workflow. The support is exceptional and the plugin is rock-solid."*  
@@ -199,11 +146,11 @@ MakeIt3D is developed by **[Your Name]**, a professional plugin developer specia
 > **- Developer Name**
 
 *[See all reviews](https://your-reviews-link.com)*
-
+-->
 ---
 
 **🚀 Ready to create professional 3D experiences?**
 
-**[Buy MakeIt3D Now - $29.99](https://your-store-link.com)**
+**[Buy MakeIt3D Now - $29.99]**
 
 *Professional 3D development for Construct 3. Trusted by developers worldwide.*
