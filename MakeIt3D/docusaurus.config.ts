@@ -118,6 +118,7 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        
       ],
     },
     footer: {
@@ -159,6 +160,23 @@ const config: Config = {
             },
           ],
         },
+        {
+          title: 'Support',
+          items: [
+            {
+              label: '🐛 Report Bug',
+              href: 'https://github.com/Hidencod/MakeIt3D-docs/issues/new?template=bug_report.yml',
+            },
+            {
+              label: '🚀 Feature Request',
+              href: 'https://github.com/Hidencod/MakeIt3D-docs/issues/new?template=feature_request.yml',
+            },
+            {
+              label: 'All Issues',
+              href: 'https://github.com/Hidencod/MakeIt3D-docs/issues',
+            },
+          ],
+        }
       ],
       copyright: `Copyright © ${new Date().getFullYear()} MakeIt3D.`,
     },
