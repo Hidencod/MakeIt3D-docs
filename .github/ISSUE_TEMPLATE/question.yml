@@ -1,0 +1,45 @@
+name: ❓ Question
+description: Ask a question about using the plugin
+title: "[QUESTION] "
+labels: ["question", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question? Please check the documentation first at [your-docs-link].
+        
+        For quick questions, you might also want to try our Discord/forum [if you have one].
+
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin Version
+      description: Which version are you using?
+      placeholder: e.g., v1.0.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What would you like to know?
+      placeholder: Ask your question here
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What are you trying to achieve? Any relevant project details?
+      placeholder: Provide context about your project or what you're trying to accomplish
+
+  - type: textarea
+    id: attempted-solutions
+    attributes:
+      label: What Have You Tried?
+      description: What solutions have you already attempted?
+      placeholder: List what you've tried so far
