@@ -65,23 +65,7 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 ### Minimum Requirements
 - **Construct 3** r407 or later (Personal/Business license)
 - **Browser** Chrome 70+, Firefox 65+, Safari 14+, Edge 79+
-<?--
-## 📈 Development Roadmap
 
-### v1.1.0 - Q4 2025
-- ✅ Enhanced VR/AR support
-- ✅ Visual shader editor
-- ✅ Advanced particle systems
-- ✅ Performance profiler
-
-### v1.2.0 - Q1 2026
-- 🔄 Ray tracing support
-- 🔄 Multiplayer networking helpers
-- 🔄 Asset optimization tools
-- 🔄 Mobile performance improvements
-
-*Roadmap updates available to licensed users*
--->
 ## 📞 Professional Support
 
 ### Included Support (1 Year)
@@ -94,22 +78,7 @@ MakeIt3D brings the full power of Three.js to Construct 3 with a comprehensive, 
 - **🐛 Bug Reports**: [GitHub Issues](https://github.com/Hidencod/MakeIt3D-docs/issues/new?template=bug_report.yml)
 - **💡 Feature Requests**: [Feature Portal](https://github.com/Hidencod/MakeIt3D-docs/issues/new?template=feature_request.yml)
 - **❓ General Questions**: [Documentation](https://your-docs-site-url.com) first, then support
-<?--
-## 🎨 Screenshots & Demos
 
-*Professional showcase of your plugin capabilities*
-
-![3D Scene Example](path-to-screenshot1.png)
-*Enterprise-grade 3D scene with advanced lighting and materials*
-
-![VR Experience](path-to-screenshot2.png)  
-*WebXR virtual reality experience*
-
-![Product Configurator](path-to-screenshot3.png)
-*Professional product visualization and customization*
-
-**[🎥 Watch Demo Video](https://your-demo-video-link.com)**
--->
 ## ⚖️ License & Terms
 
 This is commercial software. By purchasing MakeIt3D, you agree to our:
@@ -128,28 +97,17 @@ This is commercial software. By purchasing MakeIt3D, you agree to our:
 
 ## 👨‍💻 About the Developer
 
-MakeIt3D is developed by **[Your Name]**, a professional plugin developer specializing in Construct 3 extensions. With [X years] of experience in 3D graphics and game development, MakeIt3D represents a commitment to quality and professional-grade tools.
+MakeIt3D is developed by **Jammanna**, With 2 years of experience in 3D graphics and game development, MakeIt3D represents a commitment to quality and professional-grade tools.
 
 ### Contact
 - **📧 Email**: jammanna017@gmail.com 
 - **💼 LinkedIn**: [Jammanna](https://linkedin.com/in/yourprofile)
 - **💼 Discord**: [MakeIt3D](https://discord.gg/BPmX5mgkkv)
 - **🐦 Twitter**: [@Jammanna](https://x.com/james_zenitsu?t=At2SX_XoqP0WBMU4ae3q-g&s=09)
-<?--
-## 🏆 Customer Reviews
-
-> *"MakeIt3D transformed our product visualization workflow. The support is exceptional and the plugin is rock-solid."*  
-> **- Client Name, Company**
-
-> *"Finally, professional 3D capabilities in Construct 3. Worth every penny for serious developers."*  
-> **- Developer Name**
-
-*[See all reviews](https://your-reviews-link.com)*
--->
 ---
 
 **🚀 Ready to create professional 3D experiences?**
 
-**[Buy MakeIt3D Now - $29.99]**
+**[Buy MakeIt3D Now - $19.99]**
 
 *Professional 3D development for Construct 3. Trusted by developers worldwide.*
