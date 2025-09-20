@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# API Reference
+# MakeIt3D API Reference
 
 **MakeIt3D** provides a wide range of **Actions, Conditions, and Expressions (ACE)** 
 that you can use in Construct 3 Event Sheets to create and control 3D scenes.
@@ -16,23 +16,23 @@ import MyCard from '@site/src/components/ui/MyCard';
   padding: '2rem 0',
   marginTop: '2rem'
 }}>
-  <MyCard title="Actions" variant="actions" subtitle="Available Methods" href="/docs/aces/actions">
+  <MyCard title="Actions" variant="actions" subtitle="Available Methods" href="/docs/aces_makeit3d/actions">
     91
   </MyCard>
 
-  <MyCard title="Conditions" variant="conditions" subtitle="Logic Checks" href="/docs/aces/conditions">
+  <MyCard title="Conditions" variant="conditions" subtitle="Logic Checks" href="/docs/aces_makeit3d/conditions">
     11
   </MyCard>
 
-  <MyCard title="Expressions" variant="expressions" subtitle="Data Getters" href="/docs/aces/expressions">
+  <MyCard title="Expressions" variant="expressions" subtitle="Data Getters" href="/docs/aces_makeit3d/expressions">
     34
   </MyCard>
 
-  <MyCard title="Plugin Properties" variant="properties" subtitle="Properties" href="/docs/aces/properties">
+  <MyCard title="Plugin Properties" variant="properties" subtitle="Properties" href="/docs/aces_makeit3d/properties">
     3
   </MyCard>
 
-  <MyCard title="Scripting API" variant="dependency" subtitle="scripting interface" href="/docs/aces/scripting">
+  <MyCard title="Scripting API" variant="dependency" subtitle="scripting interface" href="/docs/aces_makeit3d/scripting">
     1
   </MyCard>
 

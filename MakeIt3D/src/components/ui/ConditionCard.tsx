@@ -31,7 +31,9 @@ export default function ConditionCard({ condition, className = "" }: ConditionCa
             scene: '🌍',
             camera: '📷',
             animation: '🎬',
-            physics: '⚡'
+            forces_torques: '⚡',
+            collision: '💥',
+
         };
         return icons[category as keyof typeof icons] || '📋';
     };
@@ -43,7 +45,9 @@ export default function ConditionCard({ condition, className = "" }: ConditionCa
             scene: 'var(--scene-color)',
             camera: 'var(--camera-color)',
             animation: 'var(--animation-color)',
-            physics: 'var(--physics-color)'
+            physics: 'var(--physics-color)',
+            forces_torques: 'var(--forces-torques-color)',
+            collision: 'var(--collisions-color)',
         };
         return colors[category as keyof typeof colors] || '#6b7280';
     };

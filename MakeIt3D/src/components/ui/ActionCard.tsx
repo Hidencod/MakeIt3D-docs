@@ -26,6 +26,7 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
     const getCategoryIcon = (category: string) => {
         const icons = {
             scene: '🌍',
+            world: '🌍',
             objects: '📦',
             transforms: '🔄',
             camera: '📷',
@@ -35,7 +36,11 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
             utils: '🔧',
             raycast: '🎯',  // Target icon for raycasting
             lines: '📏',
-            postprocessing: '🪄'
+            postprocessing: '🪄',
+            forces: '💪',
+            torques: '🌀',
+            collision: '💥',
+            joints: '🔗'
         };
         return icons[category as keyof typeof icons] || '⚙️';
     };
@@ -43,6 +48,7 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
     const getCategoryColor = (category: string) => {
         const colors = {
             scene: 'var(--scene-color)',
+            world: 'var(--world-color)',
             objects: 'var(--objects-color)',
             transforms: 'var(--transformations-color)',
             camera: 'var(--camera-color)',
@@ -52,7 +58,11 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
             utils: 'var(--utils-color)',
             raycast: 'var(--raycast-color)',
             lines: 'var(--line-color)',
-            postprocessing: 'var(--postprocessing-color)'
+            postprocessing: 'var(--postprocessing-color)',
+            forces: 'var(--force-color)',
+            torques: 'var(--torques-color)',
+            collision: 'var(--collision-color)',
+            joints: 'var(--joints-color)'
         };
         return colors[category as keyof typeof colors] || '#6b7280';
     };

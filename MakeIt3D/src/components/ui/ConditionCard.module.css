@@ -7,6 +7,9 @@
     --camera-color: #f59e0b;
     --animation-color: #06b6d4;
     --physics-color: #ef4444;
+    --forces-torques-color: #ff6f61;
+    --collisions-color: #ff4444;
+
 }
 
 .conditionCard {

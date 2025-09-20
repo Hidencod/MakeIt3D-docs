@@ -32,7 +32,9 @@ export default function ExpressionCard({ expression, className = "" }: Expressio
             model: '🗿',
             animation: '🎬',
             raycast: '⚡',
-            utils: '🔧'
+            utils: '🔧',
+            force_and_torques: '💪',
+            collision: '💥'
         };
         return icons[category as keyof typeof icons] || '📊';
     };
@@ -45,7 +47,9 @@ export default function ExpressionCard({ expression, className = "" }: Expressio
             model: 'var(--model-color)',
             animation: 'var(--animation-color)',
             raycast: 'var(--physics-color)',
-            utils: 'var(--utils-color)'
+            utils: 'var(--utils-color)',
+            force_and_torques: 'var(--force-and-torques-color)',
+            collision: 'var(--collision-color)'
         };
         return colors[category as keyof typeof colors] || '#6b7280';
     };

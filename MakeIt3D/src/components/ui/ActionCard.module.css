@@ -2,6 +2,7 @@
 
 :root {
     --scene-color: #8b5cf6;
+    --world-color: #8b5cf6;
     --objects-color: #3b82f6;
     --transformations-color: #10b981;
     --camera-color: #f59e0b;
@@ -12,6 +13,10 @@
     --raycast-color: #f97316;
     --line-color: #33cc99;
     --postprocessing-color: #a66cff;
+    --force-color: #ff6f61;
+    --torques-color: #6511ec;
+    --collision-color: #ff4444;
+    --joints-color: #ff8c00;
 }
 
 .actionCard {
