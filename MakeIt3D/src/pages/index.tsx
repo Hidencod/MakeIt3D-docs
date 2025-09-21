@@ -42,10 +42,10 @@ function HomepageHeader(): JSX.Element {
               Bring your Construct 3 games to life with stunning 3D graphics
             </p>
             <p className={styles.heroDescription}>
-              The most powerful Three.js integration for Construct 3. Create immersive 3D worlds,
-              characters, and effects without leaving your favorite game engine.
+              MakeIt3D uses a separate Three.js rendering system that overlays on Construct 3's canvas. 3D objects do not integrate with Construct's layout system, sprite behaviors, or collision detection. This is a standalone 3D rendering solution controlled through events, not an extension of Construct's 2D object system.
             </p>
-
+           
+          
             <div className={styles.heroButtons}>
               <Link
                 className={clsx('button', 'button--primary', 'button--lg', styles.primaryButton)}

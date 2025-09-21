@@ -7,6 +7,10 @@ sidebar_position: 4
 **Rapier** provides a wide range of **Actions, Conditions, and Expressions (ACE)** 
 that you can use in Construct 3 Event Sheets to create and control physics.
 
+:::danger **Important Technical Note** 
+MakeIt3D uses a separate Three.js rendering system that overlays on Construct 3's canvas. 3D objects do not integrate with Construct's layout system, sprite behaviors, or collision detection. This is a standalone 3D rendering solution controlled through events, not an extension of Construct's 2D object system.
+:::
+
 import MyCard from '@site/src/components/ui/MyCard';
 
 <div style={{
