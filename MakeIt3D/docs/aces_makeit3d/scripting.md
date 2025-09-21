@@ -438,5 +438,3 @@ function updateEnvironment() {
   cubeCamera.update(renderer, scene);
 }
 ```
-
-This simplified format makes it much easier to add new sections, examples, and maintain the documentation. You can easily extend it by adding new sections with the same markdown structure.

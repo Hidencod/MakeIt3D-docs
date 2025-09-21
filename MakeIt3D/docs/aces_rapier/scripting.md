@@ -1,13 +1,21 @@
-# Rapier Scripting API
+# 📜 Rapier Physics Scripting API
 
-Access the full power of rapier through MakeIt3D's Rapier scripting interface.
+Access the full power of Rapier Physics through the Rapier Physics plugin's scripting interface.
 
 ## Getting Started
 
+### 🚀 Listening to Rapier Physics Plugin Events in JavaScript
 
-### 🚀 Listening to MakeIt3D Plugin Events in JavaScript
+To integrate and respond to events from the Rapier Physics Construct plugin in your external JavaScript code, follow the pattern below. This allows you to hook into powerful physics events like world initialization, object creation/destruction, collision detection, and more.
 
-To integrate and respond to events from the MakeIt3D Construct plugin in your external JavaScript code, follow the pattern below. This allows you to hook into powerful runtime events like object creation, animation completion, raycast hits, and more.
+:::note Event Requirements
+These physics events require:
+
+Rapier Physics initialization via event sheets
+Object creation/destruction via event sheet actions
+
+Objects created/destroyed directly in JavaScript code will not trigger onobjectadded/onobjectdestroy events - only event sheet actions will dispatch these notifications.
+:::
 
 ✅ Step 1: Add Your Script as the Main Script
 
@@ -15,428 +23,810 @@ Ensure your external JavaScript file is set as the Main Script in your Construct
 
 ✅ Step 2: Register Event Listeners in runOnStartup
 
-``` javascript
+```javascript
 runOnStartup(async runtime => {
 	// This runs during the loading screen (before any layout starts).
 	// It's a good place to prepare event hooks or pre-initialization code.
 	// Note layouts, objects etc. are not yet available.
-	runtime.addEventListener("beforeprojectstart", () => onBeforeProjectStart(runtime));
+	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));
 });
-
 ```
-✅ Step 3: Listen to MakeIt3D Events
-``` javascript
-async function onBeforeProjectStart(runtime) {
+
+✅ Step 3: Listen to Rapier Physics Events
+
+```javascript
+async function OnBeforeProjectStart(runtime) {
 	// At this point, the first layout and its instances are loaded.
 
-	const makeIt3D = runtime.objects.MakeIt3D.getFirstInstance();
+	const rapierPhysics = runtime.objects.Rapier.getFirstInstance();// change this if you rename the plugin
 
-	if (!makeIt3D) {
-		console.warn("MakeIt3D instance not found.");
+	if (!rapierPhysics) {
+		console.warn("Rapier Physics instance not found.");
 		return;
 	}
 
-	// 🌍 Scene is created and ready
-	makeIt3D.addEventListener("onscenecreate", (e) => {
-		console.log("✅ Scene Created:", e);
+	// 🌍 Physics world is initialized and ready
+	rapierPhysics.addEventListener("onrapierinit", (e) => {
+		console.log("✅ Rapier Physics Initialized:", e);
 
-		// You can access the Three.js context in two ways:
+		// You can access the Rapier context in two ways:
 
 		// Option 1: From global (if available and not in worker)
 		if (typeof window !== "undefined" && window.MakeIt3DContext) {
-			const context = window.MakeIt3DContext;
-			console.log("Global context:", context);
+			const rapierContext = window.MakeIt3DContext.rapierContext;
+			console.log("Global Rapier context:", rapierContext);
 		}
 
 		// Option 2: Directly from the event
-		const context = e.data.threeJsContext;
-		const { scene, camera, renderer, objects, raycaster } = context;
+		const rapierContext = e.data;
+		const { rapier, world, objects, characterControllers, joints } = rapierContext;
 
-		console.log("Scene:", scene);
-		console.log("Camera:", camera);
+		console.log("Rapier Library:", rapier);
+		console.log("Physics World:", world);
+		console.log("Objects Registry:", objects);
 	});
 
-	// 📦 Fired when a 3D object is created
-	makeIt3D.addEventListener("onobjectcreate", (e) => {
-		console.log("📦 Object Created:", e);
+	// 📦 Fired when a physics object (body/collider) is added
+	rapierPhysics.addEventListener("onobjectadded", (e) => {
+		console.log("📦 Physics Object Added:", e);
+		console.log("Object ID:", e.data.objectId);
+		console.log("Object Tag:", e.data.tag);
 	});
 
-	// 🎬 Fired when an object's animation finishes
-	makeIt3D.addEventListener("onanimationfinish", (e) => {
-		console.log("🎬 Animation Finished:", e);
+	// ❌ Fired when a physics object is removed from the world
+	rapierPhysics.addEventListener("onobjectdestroy", (e) => {
+		console.log("❌ Physics Object Destroyed:", e);
+		console.log("Object ID:", e.data.objectId);
 	});
 
-	// 🔁 Fired when a looping animation completes a full cycle
-	makeIt3D.addEventListener("onanimationloopfinish", (e) => {
-		console.log("🔁 Animation Loop Finished:", e);
-	});
-
-	// 🎯 Fired when a raycast hits an object
-	makeIt3D.addEventListener("onraycasthit", (e) => {
+	// 🎯 Fired when a raycast hits objects
+	rapierPhysics.addEventListener("onraycasthit", (e) => {
 		console.log("🎯 Raycast Hit:", e);
-	});
-
-	// ❌ Fired when a 3D object is removed from the scene
-	makeIt3D.addEventListener("onobjectdestroy", (e) => {
-		console.log("❌ Object Destroyed:", e);
+		console.log("First Hit:", e.data.firstHit);
+		console.log("All Hits:", e.data.allHits);
 	});
 
 	// 🎮 Per-frame update hook
-	runtime.addEventListener("tick", () => onTick(runtime));
-}
-```
-🔁 Per-Frame Update (Tick Function)
-``` javascript
-function onTick(runtime) {
-	// Code to run every frame (tick)
-	// You can update UI, sync data, or perform runtime checks here
+	runtime.addEventListener("tick", () => Tick(runtime));
 }
 ```
 
-The MakeIt3D context becomes available globally after scene creation through:
+📝 Per-Frame Update (Tick Function)
 
 ```javascript
-const context = window.MakeIt3DContext;
-const { scene, camera, renderer, objects, raycaster } = context.threeJsContext;
+function Tick(runtime) {
+	// Code to run every frame (tick)
+	// You can update UI, sync physics data, or perform runtime checks here
+	
+	// Example: Access physics world for custom updates
+	if (typeof window !== "undefined" && window.MakeIt3DContext) {
+		const { world, bodies } = window.MakeIt3DContext.rapierContext;
+		
+		// Custom physics logic here
+		// world.step() is handled automatically by the plugin
+	}
+}
+```
+
+The Rapier Physics context becomes available globally after initialization through:
+
+```javascript
+const rapierContext = window.MakeIt3DContext.rapierContext;
+const { rapier, world, objects, characterControllers, joints, eventQueue } = rapierContext;
 ```
 
 ## Context API Reference
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `scene` | `THREE.Scene` | The main Three.js scene object |
-| `camera` | `THREE.Camera` | The active camera (Perspective/Orthographic) |
-| `renderer` | `THREE.WebGLRenderer` | The WebGL renderer instance |
-| `objects` | `Map<string, THREE.Object3D>` | Registry of all MakeIt3D objects |
-| `raycaster` | `THREE.Raycaster` | For mouse/touch interaction and collision |
-| `domElement` | `HTMLCanvasElement` | The canvas element |
-| `canvasSize` | `THREE.Vector2` | Canvas dimensions |
-| `viewportSize` | `THREE.Vector2` | Viewport dimensions |
-| `nextObjectId` | `number` | Auto-incrementing ID for new objects |
+| `rapier` | `RAPIER` | The main Rapier physics library instance |
+| `world` | `RAPIER.World` | The main physics world instance |
+| `eventQueue` | `RAPIER.EventQueue` | Physics event queue for collisions |
+| `objects` | `Map<string, Object>` | Registry of mesh + rigidBody pairs |
+| `colliderTypes` | `RAPIER.ColliderDesc` | Collider descriptor types for easy access |
+| `characterControllers` | `Map<string, RAPIER.KinematicCharacterController>` | Character controllers registry |
+| `joints` | `Map<string, RAPIER.Joint>` | Registry of all joints/constraints |
+| `jointSet` | `RAPIER.ImpulseJointSet` | The joint set for physics simulation |
+| `pluginUtils` | `Object` | Utility functions (UpdateWorldStep, MoveCharacter) |
 
+## Basic Physics Object Creation
 
-## Basic Object Creation
-
-### Creating and Registering Objects
+### Creating Dynamic Bodies
 
 ```javascript
-// Create a basic cube
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
+// Access the Rapier context
+const { rapier, world, objects } = window.MakeIt3DContext.rapierContext;
 
-// Add to scene and register in MakeIt3D
-scene.add(cube);
-objects.set("myCube", cube);
+// Create a dynamic rigid body
+const bodyDesc = rapier.RigidBodyDesc.dynamic()
+    .setTranslation(0.0, 5.0, 0.0)
+    .setLinvel(0.0, 0.0, 0.0);
 
-// Access the cube later
-const myCube = objects.get("myCube");
-myCube.rotation.x += 0.01;
+const body = world.createRigidBody(bodyDesc);
+
+// Create a box collider
+const colliderDesc = rapier.ColliderDesc.cuboid(0.5, 0.5, 0.5)
+    .setDensity(1.0)
+    .setFriction(0.5)
+    .setRestitution(0.3);
+
+const collider = world.createCollider(colliderDesc, body);
+
+// Store the object pair in the objects map
+const objectId = "dynamicBox_" + Date.now();
+objects.set(objectId, {
+    rigidBody: body,
+    collider: collider,
+    mesh: null, // Will be populated if you have a corresponding 3D mesh
+    type: "dynamic",
+    tag: "box"
+});
+
+console.log("Created dynamic box with ID:", objectId);
 ```
 
-### Loading 3D Models
+### Creating Static Bodies (Ground, Walls)
 
 ```javascript
-// Load GLTF model
-const loader = new THREE.GLTFLoader();
-loader.load('models/character.glb', (gltf) => {
-  const model = gltf.scene;
-  
-  // Scale and position
-  model.scale.setScalar(0.5);
-  model.position.set(0, 0, 0);
-  
-  // Add to scene and register
-  scene.add(model);
-  objects.set("character", model);
-  
-  // Handle animations if available
-  if (gltf.animations.length > 0) {
-    const mixer = new THREE.AnimationMixer(model);
-    const action = mixer.clipAction(gltf.animations[0]);
-    action.play();
-    objects.set("characterMixer", mixer);
-  }
+const { rapier, world, objects } = window.MakeIt3DContext.rapierContext;
+
+// Create static ground
+const groundBodyDesc = rapier.RigidBodyDesc.fixed()
+    .setTranslation(0.0, -1.0, 0.0);
+
+const groundBody = world.createRigidBody(groundBodyDesc);
+
+const groundColliderDesc = rapier.ColliderDesc.cuboid(10.0, 0.1, 10.0)
+    .setFriction(0.7);
+
+const groundCollider = world.createCollider(groundColliderDesc, groundBody);
+
+// Store in objects map
+objects.set("ground", {
+    rigidBody: groundBody,
+    collider: groundCollider,
+    mesh: null,
+    type: "static",
+    tag: "ground"
 });
 ```
 
-## Working with Materials and Textures
-
-### Basic Material Setup
+### Creating Kinematic Bodies
 
 ```javascript
-// Create textured sphere
-const geometry = new THREE.SphereGeometry(1, 32, 32);
-const textureLoader = new THREE.TextureLoader();
-const texture = textureLoader.load('textures/metal.jpg');
+const { rapier, world, objects } = window.MakeIt3DContext.rapierContext;
 
-const material = new THREE.MeshStandardMaterial({ 
-  map: texture,
-  metalness: 0.5,
-  roughness: 0.3
+// Create kinematic body (can be moved but not affected by forces)
+const kinematicBodyDesc = rapier.RigidBodyDesc.kinematicVelocityBased()
+    .setTranslation(2.0, 0.0, 0.0);
+
+const kinematicBody = world.createRigidBody(kinematicBodyDesc);
+
+const kinematicColliderDesc = rapier.ColliderDesc.ball(0.5);
+const kinematicCollider = world.createCollider(kinematicColliderDesc, kinematicBody);
+
+// Store in objects map
+objects.set("movingPlatform", {
+    rigidBody: kinematicBody,
+    collider: kinematicCollider,
+    mesh: null,
+    type: "kinematic",
+    tag: "platform"
 });
 
-const sphere = new THREE.Mesh(geometry, material);
-sphere.position.set(2, 0, 0);
-scene.add(sphere);
-objects.set("texturedSphere", sphere);
+// Move kinematic body
+kinematicBody.setLinvel({ x: 1.0, y: 0.0, z: 0.0 });
 ```
 
-### Custom Lighting
+## Working with Forces and Impulses
+
+### Applying Forces
 
 ```javascript
-// Add custom point light
-const light = new THREE.PointLight(0xffffff, 1, 100);
-light.position.set(5, 5, 5);
-scene.add(light);
-objects.set("customLight", light);
-```
+// Get an object from registry
+const objectData = objects.get("dynamicBox_123");
 
-## Animation and Interaction
-
-### Object Animation Loop
-
-```javascript
-function animateObject() {
-  const cube = objects.get("myCube");
-  if (cube) {
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-  }
-  requestAnimationFrame(animateObject);
-}
-animateObject();
-```
-
-### Raycasting for Interaction
-
-```javascript
-function onMouseClick(event) {
-  const mouse = new THREE.Vector2();
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  
-  raycaster.setFromCamera(mouse, camera);
-  const intersects = raycaster.intersectObjects(scene.children);
-  
-  if (intersects.length > 0) {
-    const clickedObject = intersects[0].object;
-    clickedObject.material.color.setHex(Math.random() * 0xffffff);
-  }
-}
-
-document.addEventListener('click', onMouseClick);
-```
-
-### Working with Model Animations
-
-#### For Already Loaded Models
-
-```javascript
-// Access animations from an already registered model
-const { threeJsContext } = window.MakeIt3DContext;
-const object = threeJsContext.objects.get("myCharacter");
-
-if (object) {
-  const model = object;
-  const animations = object.animations || [];
-  
-  if (animations.length > 0) {
-    // Create mixer if it doesn't exist
-    let mixer = threeJsContext.objects.get("myCharacterMixer");
-    if (!mixer) {
-      mixer = new THREE.AnimationMixer(model);
-    }
+if (objectData && objectData.rigidBody) {
+    const body = objectData.rigidBody;
     
-    // Create animation actions
-    const animationActions = {};
-    animations.forEach((clip, index) => {
-      const actionName = clip.name || `animation_${index}`;
-      animationActions[actionName] = mixer.clipAction(clip);
+    // Apply force at center of mass
+    body.addForce({ x: 0.0, y: 100.0, z: 0.0 }, true);
+    
+    // Apply force at specific point
+    const forcePoint = { x: 0.0, y: 0.0, z: 0.0 };
+    const force = { x: 50.0, y: 0.0, z: 0.0 };
+    body.addForceAtPoint(force, forcePoint, true);
+    
+    // Apply impulse (instant velocity change)
+    body.applyImpulse({ x: 0.0, y: 10.0, z: 0.0 }, true);
+    
+    // Apply torque impulse (rotation)
+    body.applyTorqueImpulse({ x: 0.0, y: 5.0, z: 0.0 }, true);
+}
+```
+
+### Setting Velocities
+
+```javascript
+const objectData = objects.get("player");
+
+if (objectData && objectData.rigidBody) {
+    const body = objectData.rigidBody;
+    
+    // Set linear velocity
+    body.setLinvel({ x: 5.0, y: 0.0, z: 0.0 });
+    
+    // Set angular velocity
+    body.setAngvel({ x: 0.0, y: 2.0, z: 0.0 });
+    
+    // Get current velocities
+    const linvel = body.linvel();
+    const angvel = body.angvel();
+    
+    console.log("Linear velocity:", linvel);
+    console.log("Angular velocity:", angvel);
+}
+```
+
+## Raycasting and Spatial Queries
+
+### Basic Raycasting
+
+```javascript
+const { world } = window.MakeIt3DContext.rapierContext;
+
+// Define ray
+const rayOrigin = { x: 0.0, y: 5.0, z: 0.0 };
+const rayDirection = { x: 0.0, y: -1.0, z: 0.0 };
+const maxDistance = 10.0;
+const solid = true;
+
+// Cast ray and get first hit
+const hit = world.castRay(
+    rayOrigin,
+    rayDirection,
+    maxDistance,
+    solid
+);
+
+if (hit) {
+    console.log("Ray hit at distance:", hit.toi);
+    console.log("Hit point:", {
+        x: rayOrigin.x + rayDirection.x * hit.toi,
+        y: rayOrigin.y + rayDirection.y * hit.toi,
+        z: rayOrigin.z + rayDirection.z * hit.toi
     });
-    
-    
-    // Play animation by name or index
-    const playAnimation = (nameOrIndex) => {
-      const actionKey = typeof nameOrIndex === 'string' ? nameOrIndex : `animation_${nameOrIndex}`;
-      if (animationActions[actionKey]) {
-        // Stop all current animations
-        Object.values(animationActions).forEach(action => action.stop());
-        // Play new animation
-        animationActions[actionKey].play();
-      }
-    };
-    
-    // Example: Play first animation
-    playAnimation(0);
-    // Example: Play by name
-    playAnimation("idle");
-  }
+    console.log("Hit normal:", hit.normal);
 }
 ```
 
-#### For New Models Being Loaded
+### Advanced Raycasting with Filters
 
 ```javascript
-// Load model and access animations
-const loader = new THREE.GLTFLoader();
-loader.load('models/character.glb', (gltf) => {
-  const model = gltf.scene;
-  scene.add(model);
-  objects.set("character", model);
-  
-  // Create animation mixer and store it
-  if (gltf.animations.length > 0) {
-    const mixer = new THREE.AnimationMixer(model);
-   
-    
-    // Store individual animations for easy access
-    const animations = {};
-    gltf.animations.forEach((clip, index) => {
-      animations[clip.name || `animation_${index}`] = mixer.clipAction(clip);
-    });
-    objects.animations = animations;
-    
-    // Play default animation
-    const idleAnimation = animations.idle || animations.animation_0;
-    if (idleAnimation) {
-      idleAnimation.play();
+const { world } = window.MakeIt3DContext.rapierContext;
+
+// Cast ray and get all intersections
+const hits = [];
+world.intersectionsWithRay(
+    rayOrigin,
+    rayDirection,
+    maxDistance,
+    solid,
+    (hit) => {
+        hits.push(hit);
+        return true; // Continue searching for more hits
     }
-  }
+);
+
+console.log("Found", hits.length, "intersections");
+hits.forEach((hit, index) => {
+    console.log(`Hit ${index}:`, hit);
 });
 ```
 
-#### Animation Control Functions
+### Shape Casting
 
 ```javascript
-// Play specific animation for any model
-function playModelAnimation(objectId, animationName) {
-  const actions = objects.get(`${objectId}Actions`);
-  if (actions && actions[animationName]) {
-    // Stop current animations
-    Object.values(actions).forEach(action => action.stop());
-    // Play new animation
-    actions[animationName].play();
-  }
+const { rapier, world } = window.MakeIt3DContext.rapierContext;
+
+// Create a shape to cast (sphere in this case)
+const shape = new rapier.Ball(0.5);
+const shapePos = { x: 0.0, y: 5.0, z: 0.0 };
+const shapeRot = { w: 1.0, x: 0.0, y: 0.0, z: 0.0 };
+const shapeVel = { x: 0.0, y: -1.0, z: 0.0 };
+
+// Cast shape
+const hit = world.castShape(
+    shapePos,
+    shapeRot,
+    shapeVel,
+    shape,
+    maxDistance,
+    solid
+);
+
+if (hit) {
+    console.log("Shape hit at time:", hit.toi);
+}
+```
+
+## Collision Detection and Events
+
+### Setting Up Collision Events
+
+```javascript
+const { world, eventQueue, objects } = window.MakeIt3DContext.rapierContext;
+
+// Process collision events each frame
+function processCollisionEvents() {
+    eventQueue.drainCollisionEvents((handle1, handle2, started) => {
+        // Get colliders involved in collision
+        const collider1 = world.getCollider(handle1);
+        const collider2 = world.getCollider(handle2);
+        
+        if (started) {
+            console.log("Collision started between:", handle1, "and", handle2);
+            
+            // Find object IDs from our registry
+            let objectId1 = null, objectId2 = null;
+            
+            for (const [id, objectData] of objects.entries()) {
+                if (objectData.collider && objectData.collider.handle === handle1) objectId1 = id;
+                if (objectData.collider && objectData.collider.handle === handle2) objectId2 = id;
+            }
+            
+            console.log("Objects involved:", objectId1, objectId2);
+        } else {
+            console.log("Collision ended between:", handle1, "and", handle2);
+        }
+    });
 }
 
-// Blend between animations
-function blendModelAnimations(objectId, fromAnim, toAnim, duration = 0.5) {
-  const actions = objects.get(`${objectId}Actions`);
-  if (actions && actions[fromAnim] && actions[toAnim]) {
-    actions[fromAnim].crossFadeTo(actions[toAnim], duration, true);
-    actions[toAnim].play();
-  }
+// Call this in your tick function
+function onTick(runtime) {
+    processCollisionEvents();
+}
+```
+
+### Custom Collision Response
+
+```javascript
+function handleCollision(objectId1, objectId2) {
+    const objectData1 = objects.get(objectId1);
+    const objectData2 = objects.get(objectId2);
+    
+    if (objectData1 && objectData2) {
+        const body1 = objectData1.rigidBody;
+        const body2 = objectData2.rigidBody;
+        
+        // Example: Explosion effect on collision
+        if (objectData1.tag === "explosive" || objectData2.tag === "explosive") {
+            const explosionForce = 1000.0;
+            const pos1 = body1.translation();
+            const pos2 = body2.translation();
+            
+            // Calculate direction from explosion center
+            const direction = {
+                x: pos2.x - pos1.x,
+                y: pos2.y - pos1.y,
+                z: pos2.z - pos1.z
+            };
+            
+            // Normalize and apply force
+            const distance = Math.sqrt(direction.x * direction.x + direction.y * direction.y + direction.z * direction.z);
+            if (distance > 0) {
+                const force = {
+                    x: (direction.x / distance) * explosionForce,
+                    y: (direction.y / distance) * explosionForce,
+                    z: (direction.z / distance) * explosionForce
+                };
+                
+                body2.applyImpulse(force, true);
+            }
+        }
+    }
+}
+
+// Usage
+const playerController = new AdvancedCharacterController("player");
+
+// In your tick function
+function onTick(runtime) {
+    const deltaTime = runtime.dt;
+    playerController.update(deltaTime);
+    
+    // Handle input
+    if (runtime.keyboard.isKeyDown("ArrowRight")) {
+        playerController.move({ x: 1, y: 0, z: 0 });
+    }
+    if (runtime.keyboard.isKeyDown("Space")) {
+        playerController.jump();
+    }
+}
+```
+
+## Character Controller
+
+### Basic Character Movement
+
+```javascript
+const { world, characterControllers, pluginUtils } = window.MakeIt3DContext.rapierContext;
+
+// Use the plugin's built-in character movement function
+function moveCharacter(controllerId, inputX, inputZ, speed) {
+    // This uses the plugin's utility function
+    pluginUtils.MoveCharacter(controllerId, inputX, inputZ, speed);
+}
+
+// Alternative: Manual character controller usage
+function manualMoveCharacter(controllerId, movement) {
+    const controller = characterControllers.get(controllerId);
+    const objectData = objects.get(controllerId);
+    
+    if (controller && objectData && objectData.collider) {
+        controller.computeColliderMovement(
+            objectData.collider,
+            movement
+        );
+        
+        const correctedMovement = controller.computedMovement();
+        const currentPos = objectData.collider.translation();
+        
+        // Apply movement to the collider's parent body
+        const body = objectData.rigidBody;
+        if (body) {
+            body.setTranslation({
+                x: currentPos.x + correctedMovement.x,
+                y: currentPos.y + correctedMovement.y,
+                z: currentPos.z + correctedMovement.z
+            }, true);
+        }
+        
+        // Check if character is grounded
+        const isGrounded = controller.computedGrounded();
+        console.log("Character grounded:", isGrounded);
+    }
 }
 
 // Usage examples
-playModelAnimation("myCharacter", "run");
-blendModelAnimations("myCharacter", "idle", "walk", 0.3);
+moveCharacter("player", 1.0, 0.0, 5.0); // Move right at speed 5
+const movement = { x: 0.1, y: 0.0, z: 0.0 }; // Move right manually
+manualMoveCharacter("player", movement);
 ```
 
-Note: Animation mixer updates are handled automatically by the plugin's render loop.
+### Advanced Character Controller
 
+```javascript
+class AdvancedCharacterController {
+    constructor(collider) {
+        this.collider = collider;
+        this.body = collider.parent();
+        this.controller = window.MakeIt3DContext.rapierContext.characterController;
+        
+        // Movement properties
+        this.speed = 5.0;
+        this.jumpForce = 10.0;
+        this.isGrounded = false;
+    }
+    
+    update(deltaTime) {
+        const currentPos = this.collider.translation();
+        let movement = { x: 0, y: 0, z: 0 };
+        
+        // Apply gravity if not grounded
+        if (!this.isGrounded) {
+            movement.y = -9.81 * deltaTime;
+        }
+        
+        // Compute collision-aware movement
+        this.controller.computeColliderMovement(this.collider, movement);
+        const correctedMovement = this.controller.computedMovement();
+        
+        // Update position
+        this.body.setTranslation({
+            x: currentPos.x + correctedMovement.x,
+            y: currentPos.y + correctedMovement.y,
+            z: currentPos.z + correctedMovement.z
+        }, true);
+        
+        // Update grounded state
+        this.isGrounded = this.controller.computedGrounded();
+    }
+    
+    move(direction) {
+        const currentVel = this.body.linvel();
+        this.body.setLinvel({
+            x: direction.x * this.speed,
+            y: currentVel.y,
+            z: direction.z * this.speed
+        });
+    }
+    
+    jump() {
+        if (this.isGrounded) {
+            this.body.applyImpulse({ x: 0, y: this.jumpForce, z: 0 }, true);
+        }
+    }
+}
+
+// Usage
+const playerCollider = colliders.get("player");
+const playerController = new AdvancedCharacterController(playerCollider);
+
+// In your tick function
+function onTick(runtime) {
+    const deltaTime = runtime.dt;
+    playerController.update(deltaTime);
+    
+    // Handle input
+    if (runtime.keyboard.isKeyDown("ArrowRight")) {
+        playerController.move({ x: 1, y: 0, z: 0 });
+    }
+    if (runtime.keyboard.isKeyDown("Space")) {
+        playerController.jump();
+    }
+}
+```
+
+## Joints and Constraints
+
+### Fixed Joint
+
+```javascript
+const { rapier, world, objects, joints } = window.MakeIt3DContext.rapierContext;
+
+const objectData1 = objects.get("object1");
+const objectData2 = objects.get("object2");
+
+if (objectData1 && objectData2) {
+    const body1 = objectData1.rigidBody;
+    const body2 = objectData2.rigidBody;
+    
+    const jointDesc = rapier.JointDesc.fixed(
+        { x: 0.0, y: 0.0, z: 0.0 }, // anchor point on body1
+        { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }, // rotation on body1
+        { x: 1.0, y: 0.0, z: 0.0 }, // anchor point on body2
+        { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }  // rotation on body2
+    );
+    
+    const joint = world.createImpulseJoint(jointDesc, body1, body2, true);
+    joints.set("fixedJoint1", joint);
+}
+```
+
+### Revolute Joint (Hinge)
+
+```javascript
+const { rapier, world, objects, joints } = window.MakeIt3DContext.rapierContext;
+
+const doorData = objects.get("door");
+const frameData = objects.get("doorFrame");
+
+if (doorData && frameData) {
+    const body1 = doorData.rigidBody;
+    const body2 = frameData.rigidBody;
+    
+    const jointDesc = rapier.JointDesc.revolute(
+        { x: 0.0, y: 0.0, z: 0.0 }, // anchor on body1
+        { x: -0.5, y: 0.0, z: 0.0 }, // anchor on body2
+        { x: 0.0, y: 1.0, z: 0.0 }   // rotation axis
+    );
+    
+    // Set joint limits
+    jointDesc.setLimits(-1.57, 1.57); // -90 to +90 degrees
+    
+    const joint = world.createImpulseJoint(jointDesc, body1, body2, true);
+    joints.set("doorHinge", joint);
+}
+```
+
+### Prismatic Joint (Slider)
+
+```javascript
+const { rapier, world, objects, joints } = window.MakeIt3DContext.rapierContext;
+
+const pistonData = objects.get("piston");
+const cylinderData = objects.get("cylinder");
+
+if (pistonData && cylinderData) {
+    const body1 = pistonData.rigidBody;
+    const body2 = cylinderData.rigidBody;
+    
+    const jointDesc = rapier.JointDesc.prismatic(
+        { x: 0.0, y: 0.0, z: 0.0 }, // anchor on body1
+        { x: 0.0, y: 0.0, z: 0.0 }, // anchor on body2
+        { x: 0.0, y: 1.0, z: 0.0 }   // slide axis
+    );
+    
+    // Set slide limits
+    jointDesc.setLimits(0.0, 2.0); // Can slide 2 units up
+    
+    const joint = world.createImpulseJoint(jointDesc, body1, body2, true);
+    joints.set("pistonSlider", joint);
+}
+```
 
 ## Best Practices
 
 ### ✅ Object Registration
-Always register objects with `objects.set()` after adding to scene:
+Always register physics objects for easy management:
 ```javascript
-scene.add(myObject);
-objects.set("myObjectId", myObject);
+objects.set("uniqueId", {
+    rigidBody: body,
+    collider: collider,
+    mesh: threeMesh, // if you have a corresponding 3D mesh
+    type: "dynamic", // or "static", "kinematic"
+    tag: "player"    // custom tag for identification
+});
 ```
 
 ### ✅ Use Descriptive IDs
 Use unique, descriptive IDs for easy management:
 ```javascript
-objects.set("player_character", playerModel);
-objects.set("level_1_enemies", enemyGroup);
+objects.set("player_character", {
+    rigidBody: playerBody,
+    collider: playerCollider,
+    type: "dynamic",
+    tag: "player"
+});
+
+objects.set("enemy_01", {
+    rigidBody: enemyBody,
+    collider: enemyCollider,
+    type: "dynamic",
+    tag: "enemy"
+});
 ```
 
 ### ✅ Memory Management
-Clean up objects when removing them:
+Clean up physics objects when removing them:
 ```javascript
-scene.remove(object);
-objects.delete("objectId");
-object.geometry.dispose();
-object.material.dispose();
+const objectData = objects.get("objectId");
+if (objectData) {
+    // Remove from world first
+    if (objectData.rigidBody) {
+        world.removeRigidBody(objectData.rigidBody);
+    }
+    if (objectData.collider) {
+        world.removeCollider(objectData.collider);
+    }
+    
+    // Remove from registry
+    objects.delete("objectId");
+}
+```
+
+### ✅ Efficient Collision Handling
+Process collision events efficiently:
+```javascript
+function processCollisions() {
+    eventQueue.drainCollisionEvents((handle1, handle2, started) => {
+        // Only process collision starts to avoid duplicates
+        if (started) {
+            handleCollision(handle1, handle2);
+        }
+    });
+}
 ```
 
 ## Important Notes
 
 ### ⚠️ Context Availability
-The MakeIt3D context is only available after scene creation. Always check:
+The Rapier context is only available after physics initialization. Always check:
 ```javascript
-if (window.MakeIt3DContext) {
-  const { scene, objects } = window.MakeIt3DContext.threeJsContext;
-  // Your code here
+if (window.MakeIt3DContext && window.MakeIt3DContext.rapierContext) {
+    const { world, objects } = window.MakeIt3DContext.rapierContext;
+    // Your code here
 }
 ```
 
-### ⚠️ Object Registration Required
-Objects must be registered with the objects Map to be accessible by MakeIt3D event system:
-```javascript
-// Required for event system integration
-objects.set("myObject", mesh);
-```
+### ⚠️ World Stepping
+The physics world step is handled automatically by the plugin using `pluginUtils.UpdateWorldStep()`. Avoid calling `world.step()` manually unless you need custom timing.
 
-### ⚠️ Render Loop Management
-MakeIt3D handles the main render loop. Avoid creating additional render loops unless necessary for specific animations.
+### ⚠️ Coordinate System
+Rapier uses a right-handed coordinate system where:
+- X: Right
+- Y: Up  
+- Z: Forward (towards viewer)
+
+### ⚠️ Units and Scale
+Rapier works best with objects sized around 0.1 to 10 units. Avoid very large or very small objects for stability.
 
 ## Advanced Examples
 
-### Custom Shader Material
+### Custom Physics Material
 
 ```javascript
-const vertexShader = `
-  varying vec2 vUv;
-  void main() {
-    vUv = uv;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`;
+const { rapier, world } = window.MakeIt3DContext.rapierContext;
 
-const fragmentShader = `
-  uniform float time;
-  varying vec2 vUv;
-  void main() {
-    vec3 color = vec3(sin(vUv.x * 10.0 + time), cos(vUv.y * 10.0 + time), 0.5);
-    gl_FragColor = vec4(color, 1.0);
-  }
-`;
+// Create collider with custom physics properties
+const colliderDesc = rapier.ColliderDesc.cuboid(1.0, 1.0, 1.0)
+    .setDensity(2.0)          // Heavy object
+    .setFriction(0.9)         // High friction
+    .setRestitution(0.8)      // Bouncy
+    .setFrictionCombineRule(rapier.CoefficientCombineRule.Max)
+    .setRestitutionCombineRule(rapier.CoefficientCombineRule.Max);
 
-const shaderMaterial = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    time: { value: 1.0 }
-  }
-});
-
-const plane = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), shaderMaterial);
-scene.add(plane);
-objects.set("shaderPlane", plane);
+const collider = world.createCollider(colliderDesc, body);
 ```
 
-### Dynamic Environment Mapping
+### Sensor/Trigger Areas
 
 ```javascript
-// Create cube camera for reflections
-const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(128);
-const cubeCamera = new THREE.CubeCamera(1, 1000, cubeRenderTarget);
-scene.add(cubeCamera);
+const { rapier, world, objects } = window.MakeIt3DContext.rapierContext;
 
-// Apply to material
-const reflectiveMaterial = new THREE.MeshStandardMaterial({
-  envMap: cubeRenderTarget.texture,
-  metalness: 1.0,
-  roughness: 0.1
+// Create a sensor that detects but doesn't collide
+const sensorDesc = rapier.ColliderDesc.cuboid(2.0, 2.0, 2.0)
+    .setSensor(true); // This makes it a sensor
+
+const sensor = world.createCollider(sensorDesc, sensorBody);
+
+// Register the sensor
+objects.set("triggerZone", {
+    rigidBody: sensorBody,
+    collider: sensor,
+    type: "sensor",
+    tag: "trigger"
 });
 
-// Update environment map
-function updateEnvironment() {
-  cubeCamera.update(renderer, scene);
+// Handle sensor events
+eventQueue.drainCollisionEvents((handle1, handle2, started) => {
+    const collider1 = world.getCollider(handle1);
+    const collider2 = world.getCollider(handle2);
+    
+    if (collider1.isSensor() || collider2.isSensor()) {
+        if (started) {
+            console.log("Object entered sensor zone");
+        } else {
+            console.log("Object left sensor zone");
+        }
+    }
+});
+```
+
+### Physics-Based Vehicles
+
+```javascript
+class SimpleVehicle {
+    constructor(chassisBody, wheelPositions) {
+        this.chassis = chassisBody;
+        this.wheels = [];
+        
+        // Create wheels and attach them
+        wheelPositions.forEach((pos, index) => {
+            const wheelBody = this.createWheel(pos);
+            const joint = this.attachWheel(wheelBody, pos);
+            
+            this.wheels.push({ body: wheelBody, joint: joint });
+        });
+    }
+    
+    createWheel(position) {
+        const wheelBodyDesc = RAPIER.RigidBodyDesc.dynamic()
+            .setTranslation(position.x, position.y, position.z);
+        const wheelBody = world.createRigidBody(wheelBodyDesc);
+        
+        const wheelColliderDesc = RAPIER.ColliderDesc.ball(0.3)
+            .setFriction(0.8);
+        world.createCollider(wheelColliderDesc, wheelBody);
+        
+        return wheelBody;
+    }
+    
+    attachWheel(wheelBody, position) {
+        const jointDesc = RAPIER.JointDesc.revolute(
+            position, // anchor on chassis
+            { x: 0.0, y: 0.0, z: 0.0 }, // anchor on wheel
+            { x: 0.0, y: 0.0, z: 1.0 }   // rotation axis
+        );
+        
+        return world.createImpulseJoint(jointDesc, this.chassis, wheelBody, true);
+    }
+    
+    applyMotorTorque(torque) {
+        this.wheels.forEach(wheel => {
+            wheel.body.applyTorqueImpulse({ x: 0.0, y: 0.0, z: torque }, true);
+        });
+    }
 }
 ```
-
-This simplified format makes it much easier to add new sections, examples, and maintain the documentation. You can easily extend it by adding new sections with the same markdown structure.
