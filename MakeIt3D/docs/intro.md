@@ -14,7 +14,7 @@ import NextSteps from '@site/src/components/ui/NextSteps';
 
 ## What is MakeIt3D?
 
-MakeIt3D is a powerful Construct 3 plugin that bridges the gap between 2D game development and 3D graphics. Built on top of the industry-standard Three.js library, it provides an intuitive interface for adding 3D objects, lighting, cameras, and animations directly within Construct 3's visual editor.
+MakeIt3D is a powerful Construct 3 plugin that bridges the gap between 2D game development and 3D graphics. Built on top of the industry-standard Three.js library.
 
 :::danger **Important Technical Note** 
 MakeIt3D uses a separate Three.js rendering system that overlays on Construct 3's canvas. 3D objects do not integrate with Construct's layout system, sprite behaviors, or collision detection. This is a standalone 3D rendering solution controlled through events, not an extension of Construct's 2D object system.
@@ -51,8 +51,10 @@ For optimal performance, use Chrome or Edge browsers when developing with MakeIt
 ### Itch.io
 
 1. **Extract Package**
-   - Download the `MakeIt3D.c3addon` file from your Itch.io library
-2 **Install the Plugin**
+   - Download the `MakeIt3D.c3addon` file from your Itch.io library.
+
+
+2. **Install the Plugin**
    ```
    Construct 3 → Menu → View → Addons Manager → Install New Addon
    ```
@@ -93,7 +95,7 @@ System → On start of layout
 ```
 
 ### Step 3: Run Your Project
-Press **F5** to preview your project. You should see a rotating red cube that you can orbit around with your mouse!
+Press **Preview Project** to preview your project. You should see a rotating red cube that you can orbit around with your mouse!
 
 ---
 
