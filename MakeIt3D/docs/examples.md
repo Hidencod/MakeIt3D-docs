@@ -19,7 +19,7 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     difficulty: "Beginner",
     tags: ["3D Objects", "Animation"],
     playUrl: "https://makeit3d-examples.pages.dev/examples/character_basic",
-    c3pUrl: "https://example.com/download/rotating-cube.c3p",
+    c3pUrl: "",
     featured: true,
     category: "Basic 3D"
   },
@@ -33,7 +33,7 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     difficulty: "Beginner",
     tags: ["3D Objects", "Animation"],
     playUrl: "https://makeit3d-examples.pages.dev/examples/character_performance/",
-    c3pUrl: "https://example.com/download/rotating-cube.c3p",
+    c3pUrl: "",
     featured: true,
     category: "Basic 3D"
   },
@@ -46,7 +46,20 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     difficulty: "Beginner",
     tags: ["3D Objects", "Animation"],
     playUrl: "https://makeit3d-examples.pages.dev/examples/character-forces/",
-    c3pUrl: "https://example.com/download/rotating-cube.c3p",
+    c3pUrl: "",
+    featured: true,
+    category: "Basic Physics"
+  },
+  {
+    id: "earth-moon",
+    title: "Earth and Moon",
+    description: "A scene to showcase bokeh effect(blur).",
+    thumbnail: "https://makeit3d-examples.pages.dev/examples/earth_moon_animation/media/preview.png",
+    previewType: "video",
+    difficulty: "Beginner",
+    tags: ["3D Objects", "Post Process"],
+    playUrl: "https://www.construct.net/en/free-online-games/earth-moon-79967/play",
+    c3pUrl: "https://makeit3d-examples.pages.dev/examples/earth_moon_animation/c3p/EarthAndMoonAnimation.c3p",
     featured: true,
     category: "Basic Physics"
   }

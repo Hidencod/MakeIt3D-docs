@@ -182,9 +182,9 @@ export default function ExampleCard({
                     {c3pUrl && (
                         <button
                             className={`${styles.button} ${styles.downloadButton}`}
-                            // onClick={handleDownloadClick}
-                            // title="Download .c3p file"
-                            title="Addon not released yet!!"
+                             onClick={handleDownloadClick}
+                             title="Download .c3p file"
+                            //title="Addon not released yet!!"
                         >
                             📁 .c3p
                         </button>
