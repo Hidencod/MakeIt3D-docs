@@ -62,7 +62,19 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     c3pUrl: "https://makeit3d-examples.pages.dev/examples/earth_moon_animation/c3p/EarthAndMoonAnimation.c3p",
     featured: true,
     category: "Basic Physics"
-  }
+  },
+  {
+    id: "scene-layer",
+    title: "Construct3 Layers",
+    description: "This will show how 3d scene is created on layers. The scene will be create on the specified layer and sprites on top and bottom of scene layer will appear behind and top of 3d scene",
+    difficulty: "Beginner",
+    tags: ["3D Objects", "Layers"],
+    thumbnail: "https://makeit3d-examples.pages.dev/examples/scene_layer/media/preview.png",
+    playUrl: "https://makeit3d-examples.pages.dev/examples/scene_layer/",
+    c3pUrl: "https://makeit3d-examples.pages.dev/examples/scene_layer/c3p/layer_example.c3p",
+    featured: true,
+    category: "Basic Physics"
+  },
 ]} />
 <!-- {
     id: "lighting-demo",

@@ -59,10 +59,17 @@ export default function ExampleCard({
     const handleDownloadClick = (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
+
         if (c3pUrl) {
-            window.open(c3pUrl, '_blank');
+            const link = document.createElement('a');
+            link.href = c3pUrl;
+            link.download = ''; // You can set a filename here like 'file.pdf'
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     };
+
 
     const handleMouseEnter = () => {
         setIsHovering(true);
