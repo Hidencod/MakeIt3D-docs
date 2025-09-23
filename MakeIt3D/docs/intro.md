@@ -51,7 +51,7 @@ For optimal performance, use Chrome or Edge browsers when developing with MakeIt
 ### Itch.io
 
 1. **Extract Package**
-   - Download the `MakeIt3D.c3addon` file from your Itch.io library.
+   - Download the [MakeIt3D](https://jammanna.itch.io/makeit3d-construct3-plugin) file from Itch.io library.
 
 
 2. **Install the Plugin**
