@@ -9,6 +9,17 @@ import ExamplesGrid from '@site/src/components/ui/ExamplesGrid';
 Explore these practical examples to see MakeIt3D in action. Each example includes a playable demo and downloadable .c3p project file.
 
 <ExamplesGrid examples={[
+{
+    id: "car-scene",
+    title: "Sync C3 Sprite to Threejs Object",
+    description: "In this c3 sprites are act as placeholder for three.js objects and they synced. Car behavior is applied to sprite will be synced to three.js object.",
+    tags: ["Sprites", "C3 Sync"],
+    thumbnail: "https://makeit3d-examples.pages.dev/examples/car_scene_example/media/preview.png",
+    playUrl: "https://www.construct.net/en/free-online-games/car-vroom-vroom-80128/play",
+    c3pUrl: "https://makeit3d-examples.pages.dev/examples/car_scene_example/c3p/CarExample.c3p",
+    featured: true,
+    category: "Behaviors"
+  },
   {
     id: "load-custom-model",
     title: "Custom Model - Animations",
@@ -34,7 +45,7 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     tags: ["3D Objects", "Animation"],
     playUrl: "https://makeit3d-examples.pages.dev/examples/character_performance/",
     c3pUrl: "",
-    featured: true,
+    featured: false,
     category: "Basic 3D"
   },
   {
@@ -75,6 +86,7 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     featured: true,
     category: "Basic Physics"
   },
+  
 ]} />
 <!-- {
     id: "lighting-demo",
