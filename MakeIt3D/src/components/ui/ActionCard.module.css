@@ -1,5 +1,4 @@
 /* src/components/ui/ActionCard.module.css */
-
 :root {
     --scene-color: #8b5cf6;
     --world-color: #8b5cf6;
@@ -17,8 +16,9 @@
     --torques-color: #6511ec;
     --collision-color: #ff4444;
     --joints-color: #ff8c00;
+    --spine-color: #a0c4ff;
+    /* Add color for Spine */
 }
-
 .actionCard {
     position: relative;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));

@@ -86,6 +86,18 @@ Explore these practical examples to see MakeIt3D in action. Each example include
     featured: true,
     category: "Basic Physics"
   },
+  {
+    id: "spine-example",
+    title: "🦴Spine 2d",
+    description: "MakeIt3D Now supports latest spine runtime so you can load spine animations with even physics constraints.",
+    difficulty: "Beginner",
+    tags: ["Spine 2d", "animation"],
+    thumbnail: "https://makeit3d-examples.pages.dev/examples/spine_example/media/preview.png",
+    playUrl: "https://makeit3d-examples.pages.dev/examples/spine_example/",
+    c3pUrl: "https://makeit3d-examples.pages.dev/examples/spine_example/c3p/SpineExample.c3p",
+    featured: true,
+    category: "Animation"
+  }
   
 ]} />
 <!-- {

@@ -254,6 +254,94 @@ parameters: [
 />
 </div>
 
+## Spine 2d
+
+<ActionCard
+  action={{
+    name: "Load Spine Object",
+    category: "spine",
+    description: "Creates a Spine skeleton object with specified Id.",
+    parameters: [
+      { name: "Object Id", description: "Unique ID of the Spine object to identify later", type: "string" },
+      { name: "Skeleton JSON", description: "Name of Skeleton Json or Skel file", type: "string" },
+      { name: "Atlas", description: "Atlas file", type: "string" },
+      { name: "Base Url", description: "URL or path to the folder containing Spine files", type: "string" },
+      { name: "Skin Name", description: "Name of the skin to use initially (leave empty for default skin)", type: "string" },
+      { name: "Position", description: "Position to place the Spine object (use MakeIt3D.Vector3(x,y,z))", type: "vector3" },
+      { name: "Rotation", description: "Rotation to apply to the Spine object (use MakeIt3D.Vector3(x,y,z))", type: "vector3" },
+      { name: "Scale", description: "Scale of the Spine object (use MakeIt3D.Vector3(x,y,z))", type: "vector3" },
+      { name: "Material", description: "Type of material", type: "string", items: { "meshbasic": "Mesh Basic Material", "standard": "Mesh Standard Material", "lambert": "Mesh Lambert Material" } },
+      { name: "Initially Visible", description: "Sets whether the Spine object is visible on load", type: "boolean" },
+    ],
+    example: `MakeIt3D.LoadSpineObject('spine01', 'skeleton.json', 'atlas.atlas', '/assets/spine/', 'default', MakeIt3D.Vector3(0, 0, 0), MakeIt3D.Vector3(0, 0, 0), MakeIt3D.Vector3(1, 1, 1), 'meshbasic', true)`
+  }}
+/>
+<ActionCard
+  action={{
+    name: "Play Spine Animation",
+    category: "spine",
+    description: "Play an animation for a spine object.",
+    parameters: [
+      { name: "Object ID", description: "The ID of the spine object to animate", type: "string" },
+      { name: "Animation Index Or Name", description: "Index or Name of the animation to play", type: "any" },
+      { name: "Loop", description: "Whether to loop the animation", type: "boolean", default: true },
+      { name: "Track Index", description: "Track index for the animation", type: "number", default: 0 },
+    ],
+    example: `MakeIt3D.PlaySpineAnimation('spine01', 'walk', true, 0)`
+  }}
+/>
+<ActionCard
+  action={{
+    name: "Set Spine Skin",
+    category: "spine",
+    description: "Set skin for a spine object.",
+    parameters: [
+      { name: "Object ID", description: "The ID of the spine object to animate", type: "string" },
+      { name: "Skin Name", description: "Name of the skin", type: "string" },
+    ],
+    example: `MakeIt3D.SetSpineSkin('spine01', 'dragon_skin')`
+  }}
+/>
+<ActionCard
+  action={{
+    name: "Set Spine Animation Speed",
+    category: "spine",
+    description: "Set the animation speed for a spine object.",
+    parameters: [
+      { name: "Object ID", description: "The ID of the spine object to animate", type: "string" },
+      { name: "Speed", description: "Speed or timescale of the spine skeleton", type: "number" },
+    ],
+    example: `MakeIt3D.SetSpineSpeed('spine01', 1.5)`
+  }}
+/>
+<ActionCard
+  action={{
+    name: "Stop Spine Animation",
+    category: "spine",
+    description: "Smoothly stop the spine animation.",
+    parameters: [
+      { name: "Object ID", description: "The ID of the spine object to animate", type: "string" },
+      { name: "Track Index", description: "Track index", type: "number" },
+      { name: "Fadeout Duration", description: "Fadeout duration in which animation will smoothly stop", type: "number" },
+    ],
+    example: `MakeIt3D.StopSpineAnimation('spine01', 0, 0.5)`
+  }}
+/>
+<ActionCard
+  action={{
+    name: "Set Mix Duration",
+    category: "spine",
+    description: "Set the mix duration of two spine animations.",
+    parameters: [
+      { name: "Object ID", description: "The ID of the spine object to animate", type: "string" },
+      { name: "From Animation", description: "From animation", type: "string" },
+      { name: "To Animation", description: "To animation", type: "string" },
+      { name: "Duration", description: "Mix duration", type: "number" },
+    ],
+    example: `MakeIt3D.SetSpineMixDuration('spine01', 'walk', 'run', 0.3)`
+  }}
+/>
+
 ## 3D Objects (MESH)
 
 <div className="actionsGrid">

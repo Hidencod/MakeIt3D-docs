@@ -40,7 +40,8 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
             forces: '💪',
             torques: '🌀',
             collision: '💥',
-            joints: '🔗'
+            joints: '🔗',
+            spine: '🦴'  // Icon for Spine category
         };
         return icons[category as keyof typeof icons] || '⚙️';
     };
@@ -62,10 +63,12 @@ export default function ActionCard({ action, className = "" }: ActionCardProps) 
             forces: 'var(--force-color)',
             torques: 'var(--torques-color)',
             collision: 'var(--collision-color)',
-            joints: 'var(--joints-color)'
+            joints: 'var(--joints-color)',
+            spine: 'var(--spine-color)'  // Color for Spine category
         };
         return colors[category as keyof typeof colors] || '#6b7280';
     };
+
 
     return (
         <div
