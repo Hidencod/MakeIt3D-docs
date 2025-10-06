@@ -89,15 +89,22 @@ export default function CallToAction() {
                 <div className={styles.ctaFooter}>
                     <div className={styles.socialProof}>
                         <div className={styles.rating}>
-                            <span>✨ Coming Soon</span>
+                            <span>✨ Now Live on Itch.io!</span>
                         </div>
                         <div className={styles.badges}>
+                            <span className={styles.badge}>💥 Available for $19 USD</span>
                             <span className={styles.badge}>🚀 Early Access</span>
-                            <span className={styles.badge}>🔒 Be the First to Try</span>
-                            <span className={styles.badge}>💡 Developer Friendly</span>
+                            <span className={styles.badge}>🔓 Get Started Today</span>
+                        </div>
+                        <div className={styles.buttonContainer}>
+                            <a href="https://jammanna.itch.io/makeit3d-construct3-plugin" target="_blank" rel="noopener noreferrer">
+                                <button className={styles.ctaButton}>Buy Now</button>
+                            </a>
                         </div>
                     </div>
                 </div>
+
+
 
                 {/* <div className={styles.ctaFooter}>
                     <div className={styles.socialProof}>
