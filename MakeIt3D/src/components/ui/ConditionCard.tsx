@@ -33,10 +33,11 @@ export default function ConditionCard({ condition, className = "" }: ConditionCa
             animation: '🎬',
             forces_torques: '⚡',
             collision: '💥',
-
+            spine: '🦴'  // Added icon for spine
         };
         return icons[category as keyof typeof icons] || '📋';
     };
+
 
     const getCategoryColor = (category: string) => {
         const colors = {
@@ -48,9 +49,11 @@ export default function ConditionCard({ condition, className = "" }: ConditionCa
             physics: 'var(--physics-color)',
             forces_torques: 'var(--forces-torques-color)',
             collision: 'var(--collisions-color)',
+            spine: 'var(--spine-color)'  // Added color for spine
         };
         return colors[category as keyof typeof colors] || '#6b7280';
     };
+
 
     const getEventTypeIcon = (eventType?: string) => {
         switch (eventType) {

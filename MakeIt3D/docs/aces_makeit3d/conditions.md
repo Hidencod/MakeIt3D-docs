@@ -158,6 +158,57 @@ import ConditionCard from '@site/src/components/ui/ConditionCard';
   }}
 />
 
+## Spine 2d
+<div className="conditionsGrid">
+  {/* On Spine Animation Started */}
+  <ConditionCard 
+    condition={{
+      name: "On Spine Animation Started",
+      category: "spine",
+      eventType: "trigger",
+      description: "Triggered when a Spine animation starts playing.",
+      trigger: "A Spine animation begins for a skeleton object.",
+      example: `// On Spine animation started -> Log "Animation {animationName} started for object {objectId}"`
+    }}
+  />
+
+  {/* On Spine Animation Completed */}
+  <ConditionCard 
+    condition={{
+      name: "On Spine Animation Completed",
+      category: "spine",
+      eventType: "trigger",
+      description: "Triggered each time a Spine animation completes a loop or finishes playing.",
+      trigger: "A Spine animation finishes its play cycle or loop.",
+      example: `// On Spine animation completed -> Log "Animation {animationName} completed for object {objectId}"`
+    }}
+  />
+
+  {/* On Spine Animation Ended */}
+  <ConditionCard 
+    condition={{
+      name: "On Spine Animation Ended",
+      category: "spine",
+      eventType: "trigger",
+      description: "Triggered when a Spine animation track ends or is replaced/cleared.",
+      trigger: "A Spine animation track ends or is replaced by another animation.",
+      example: `// On Spine animation ended -> Log "Animation {animationName} ended for object {objectId}"`
+    }}
+  />
+
+  {/* On Spine Event Fired */}
+  <ConditionCard 
+    condition={{
+      name: "On Spine Event Fired",
+      category: "spine",
+      eventType: "trigger",
+      description: "Triggered when a Spine animation fires a custom event.",
+      trigger: "A custom event is fired within a Spine animation.",
+      example: `// On Spine event fired -> Log "Event {eventname} fired in animation {animationName} for object {objectId}"`
+    }}
+  />
+</div>
+
 ## Raycast
 <ConditionCard 
   condition={{
